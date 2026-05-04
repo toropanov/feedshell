@@ -389,10 +389,25 @@ function decodeHtml(value) {
   const named = {
     amp: '&',
     apos: "'",
+    bull: '•',
+    copy: '©',
+    ensp: ' ',
+    emsp: ' ',
+    hellip: '…',
+    laquo: '«',
+    ldquo: '“',
+    lsquo: '‘',
+    nbsp: ' ',
     gt: '>',
     lt: '<',
-    nbsp: ' ',
-    quot: '"'
+    mdash: '—',
+    ndash: '–',
+    para: '¶',
+    quot: '"',
+    raquo: '»',
+    rdquo: '”',
+    rsquo: '’',
+    trade: '™'
   };
 
   return String(value)

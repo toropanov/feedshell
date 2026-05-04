@@ -720,7 +720,7 @@ const RU_VIM_KEYS = {
 function printArticles(articles) {
   for (const article of articles) {
     const marker = article.read ? ' ' : '*';
-    console.log(`${marker} ${article.title}`);
+    console.log(`${marker} ${boldText(article.title)}`);
   }
 }
 
