@@ -318,10 +318,10 @@ async function handleArticleKey(configPath, config, state, value, key, render) {
     state.articleScroll = 0;
   } else if (isBottomKey(value, key)) {
     state.articleScroll = maxScroll;
-  } else if (value === 'n') {
+  } else if (vimKey(value) === 'n') {
     moveArticleSelection(config, state, 1);
     await openSelectedArticle(configPath, config, state, render);
-  } else if (value === 'p') {
+  } else if (vimKey(value) === 'p') {
     moveArticleSelection(config, state, -1);
     await openSelectedArticle(configPath, config, state, render);
   }
@@ -514,27 +514,27 @@ function clamp(value, min, max) {
 }
 
 function isOpenKey(value, key) {
-  return value === 'l' || key.name === 'right' || key.name === 'return' || key.name === 'enter';
+  return vimKey(value) === 'l' || key.name === 'right' || key.name === 'return' || key.name === 'enter';
 }
 
 function isBackKey(value, key) {
-  return isQuitKey(value, key) || value === 'h' || key.name === 'left' || key.name === 'escape';
+  return isQuitKey(value, key) || vimKey(value) === 'h' || key.name === 'left' || key.name === 'escape';
 }
 
 function isQuitKey(value, key) {
-  return value === 'q' || key.name === 'q';
+  return vimKey(value) === 'q' || key.name === 'q';
 }
 
 function isRefreshKey(value, key) {
-  return value === 'r' || key.name === 'r';
+  return vimKey(value) === 'r' || key.name === 'r';
 }
 
 function isDownKey(value, key) {
-  return value === 'j' || key.name === 'down';
+  return vimKey(value) === 'j' || key.name === 'down';
 }
 
 function isUpKey(value, key) {
-  return value === 'k' || key.name === 'up';
+  return vimKey(value) === 'k' || key.name === 'up';
 }
 
 function isPageDownKey(value, key) {
@@ -542,15 +542,19 @@ function isPageDownKey(value, key) {
 }
 
 function isPageUpKey(value, key) {
-  return value === 'b' || (key.ctrl && key.name === 'u') || key.name === 'pageup';
+  return vimKey(value) === 'b' || (key.ctrl && key.name === 'u') || key.name === 'pageup';
 }
 
 function isTopKey(value, key) {
-  return value === 'g' || key.name === 'home';
+  return vimKey(value) === 'g' || key.name === 'home';
 }
 
 function isBottomKey(value, key) {
-  return value === 'G' || key.name === 'end';
+  return vimKey(value) === 'G' || key.name === 'end';
+}
+
+function vimKey(value) {
+  return RU_VIM_KEYS[value] || value;
 }
 
 function truncateDisplay(value, width) {
@@ -580,6 +584,29 @@ function cleanDisplay(value) {
     .replace(/\x1b\[[0-?]*[ -/]*[@-~]/g, '')
     .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, ' ');
 }
+
+const RU_VIM_KEYS = {
+  й: 'q',
+  Й: 'Q',
+  к: 'r',
+  К: 'R',
+  о: 'j',
+  О: 'J',
+  л: 'k',
+  Л: 'K',
+  р: 'h',
+  Р: 'H',
+  д: 'l',
+  Д: 'L',
+  п: 'g',
+  П: 'G',
+  т: 'n',
+  Т: 'N',
+  з: 'p',
+  З: 'P',
+  и: 'b',
+  И: 'B'
+};
 
 async function refreshSilently(configPath, config) {
   for (const source of config.sources) {

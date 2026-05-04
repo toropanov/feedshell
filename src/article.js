@@ -24,48 +24,228 @@ async function loadFullArticle(url) {
 }
 
 function extractReadableText(html) {
-  const clean = String(html)
-    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi, ' ')
-    .replace(/<svg\b[^>]*>[\s\S]*?<\/svg>/gi, ' ')
-    .replace(/<header\b[^>]*>[\s\S]*?<\/header>/gi, ' ')
-    .replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/gi, ' ')
-    .replace(/<nav\b[^>]*>[\s\S]*?<\/nav>/gi, ' ')
-    .replace(/<aside\b[^>]*>[\s\S]*?<\/aside>/gi, ' ')
-    .replace(/<form\b[^>]*>[\s\S]*?<\/form>/gi, ' ');
+  const source = String(html);
+  const structured = articleBodyFromJsonLd(source);
+  if (structured) {
+    return htmlToText(structured);
+  }
 
-  const article = firstBlock(clean, 'article') || firstBlock(clean, 'main') || bestContentBlock(clean);
+  const clean = stripNoiseElements(source);
+  const article = bestContentBlock(clean);
   return htmlToText(article || clean);
 }
 
 function bestContentBlock(html) {
-  const candidates = [...html.matchAll(/<(section|div)\b[^>]*>([\s\S]*?)<\/\1>/gi)]
-    .map((match) => match[0])
-    .filter((block) => paragraphCount(block) >= 3)
-    .sort((a, b) => scoreBlock(b) - scoreBlock(a));
+  const candidates = collectContentBlocks(html)
+    .map((block) => ({ ...block, score: scoreBlock(block) }))
+    .filter((block) => block.score > 0)
+    .sort((a, b) => b.score - a.score);
 
-  return candidates[0] || '';
+  return candidates[0] ? candidates[0].html : '';
 }
 
 function scoreBlock(block) {
-  return paragraphCount(block) * 25 + htmlToText(block).length;
+  const text = htmlToText(block.html);
+  const words = wordCount(text);
+  const paragraphs = paragraphCount(block.html);
+  const density = linkDensity(block.html);
+
+  if (words < 20 && paragraphs < 2) {
+    return 0;
+  }
+
+  return words
+    + paragraphs * 45
+    + positiveAttributeScore(block.openTag)
+    + tagScore(block.tag)
+    - negativeAttributeScore(block.openTag) * 120
+    - Math.round(words * density * 2);
 }
 
 function paragraphCount(block) {
   return (block.match(/<p\b/gi) || []).length;
 }
 
-function firstBlock(html, tag) {
-  const pattern = new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i');
-  const match = html.match(pattern);
-  return match ? match[1] : '';
+function collectContentBlocks(html) {
+  const contentTags = new Set(['article', 'main', 'section', 'div']);
+  const blocks = [];
+  const stack = [];
+  const pattern = /<\/?([a-z][a-z0-9:-]*)\b[^>]*\/?>/gi;
+  let match;
+
+  while ((match = pattern.exec(html))) {
+    const openTag = match[0];
+    const tag = match[1].toLowerCase();
+    const closing = openTag.startsWith('</');
+    const selfClosing = openTag.endsWith('/>') || VOID_TAGS.has(tag);
+
+    if (closing) {
+      const index = lastStackIndex(stack, tag);
+      if (index === -1) {
+        continue;
+      }
+
+      const [item] = stack.splice(index, 1);
+      if (contentTags.has(tag)) {
+        blocks.push({
+          tag,
+          openTag: item.openTag,
+          html: html.slice(item.start, pattern.lastIndex)
+        });
+      }
+    } else if (!selfClosing) {
+      stack.push({ tag, start: match.index, openTag });
+    }
+  }
+
+  return blocks;
+}
+
+function stripNoiseElements(html) {
+  return stripElements(html.replace(/<!--[\s\S]*?-->/g, ' '), (tag, openTag) => {
+    return STRIP_TAGS.has(tag) || (ATTRIBUTE_FILTER_TAGS.has(tag) && isNoisyOpenTag(openTag));
+  }).replace(/<(input|link|meta|source|track)\b[^>]*>/gi, ' ');
+}
+
+function stripElements(html, shouldStrip) {
+  const ranges = [];
+  const stack = [];
+  const pattern = /<\/?([a-z][a-z0-9:-]*)\b[^>]*\/?>/gi;
+  let match;
+
+  while ((match = pattern.exec(html))) {
+    const openTag = match[0];
+    const tag = match[1].toLowerCase();
+    const closing = openTag.startsWith('</');
+    const selfClosing = openTag.endsWith('/>') || VOID_TAGS.has(tag);
+
+    if (closing) {
+      const index = lastStackIndex(stack, tag);
+      if (index === -1) {
+        continue;
+      }
+
+      const [item] = stack.splice(index, 1);
+      if (item.strip) {
+        ranges.push({ start: item.start, end: pattern.lastIndex });
+      }
+    } else if (selfClosing) {
+      if (shouldStrip(tag, openTag)) {
+        ranges.push({ start: match.index, end: pattern.lastIndex });
+      }
+    } else {
+      stack.push({ tag, start: match.index, strip: shouldStrip(tag, openTag) });
+    }
+  }
+
+  return removeRanges(html, ranges);
+}
+
+function removeRanges(value, ranges) {
+  if (!ranges.length) {
+    return value;
+  }
+
+  const merged = [];
+  for (const range of ranges.sort((a, b) => a.start - b.start)) {
+    const previous = merged[merged.length - 1];
+    if (previous && range.start <= previous.end) {
+      previous.end = Math.max(previous.end, range.end);
+    } else {
+      merged.push({ ...range });
+    }
+  }
+
+  let result = '';
+  let index = 0;
+  for (const range of merged) {
+    result += value.slice(index, range.start);
+    result += ' ';
+    index = range.end;
+  }
+
+  return result + value.slice(index);
+}
+
+function lastStackIndex(stack, tag) {
+  for (let index = stack.length - 1; index >= 0; index -= 1) {
+    if (stack[index].tag === tag) {
+      return index;
+    }
+  }
+
+  return -1;
 }
 
 function pickTitle(html) {
   return decodeHtml(firstMatch(html, /<meta\b[^>]*(?:property|name)=["']og:title["'][^>]*content=["']([^"']+)["'][^>]*>/i)
     || firstMatch(html, /<title\b[^>]*>([\s\S]*?)<\/title>/i)
     || '').trim();
+}
+
+function articleBodyFromJsonLd(html) {
+  const scripts = String(html).match(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi) || [];
+
+  for (const script of scripts) {
+    const raw = firstMatch(script, /<script\b[^>]*>([\s\S]*?)<\/script>/i);
+    const json = cleanJsonScript(raw);
+
+    for (const candidate of [json, decodeHtml(json)]) {
+      let data;
+      try {
+        data = JSON.parse(candidate);
+      } catch {
+        continue;
+      }
+
+      const body = findArticleBody(data);
+      if (wordCount(body) >= 30) {
+        return body;
+      }
+    }
+  }
+
+  return '';
+}
+
+function cleanJsonScript(value) {
+  return String(value)
+    .replace(/^\s*<!\[CDATA\[/, '')
+    .replace(/\]\]>\s*$/, '')
+    .trim();
+}
+
+function findArticleBody(value) {
+  if (!value) {
+    return '';
+  }
+
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const body = findArticleBody(item);
+      if (body) {
+        return body;
+      }
+    }
+    return '';
+  }
+
+  if (typeof value !== 'object') {
+    return '';
+  }
+
+  if (typeof value.articleBody === 'string') {
+    return value.articleBody;
+  }
+
+  for (const key of ['@graph', 'mainEntity', 'hasPart', 'articleSection']) {
+    const body = findArticleBody(value[key]);
+    if (body) {
+      return body;
+    }
+  }
+
+  return '';
 }
 
 function htmlToText(html) {
@@ -81,9 +261,90 @@ function htmlToText(html) {
     .replace(/\n{3,}/g, '\n\n'))
     .split('\n')
     .map((line) => line.trim())
-    .filter(Boolean)
+    .filter((line) => line && !isNoiseLine(line))
     .join('\n\n')
     .trim();
+}
+
+function linkDensity(html) {
+  const text = htmlToText(html);
+  if (!text) {
+    return 0;
+  }
+
+  const linkText = htmlToText((String(html).match(/<a\b[^>]*>[\s\S]*?<\/a>/gi) || []).join(' '));
+  return linkText.length / text.length;
+}
+
+function wordCount(value) {
+  return (String(value).match(/[A-Za-zА-Яа-яЁё0-9]+/g) || []).length;
+}
+
+function tagScore(tag) {
+  if (tag === 'article') {
+    return 250;
+  }
+
+  if (tag === 'main') {
+    return 160;
+  }
+
+  return 0;
+}
+
+function positiveAttributeScore(openTag) {
+  const attrs = attributeText(openTag);
+  let score = 0;
+
+  if (/\b(article|content|entry|main|post|story|text|body)\b/i.test(attrs)) {
+    score += 220;
+  }
+
+  if (/\b(news|publication|single)\b/i.test(attrs)) {
+    score += 80;
+  }
+
+  return score;
+}
+
+function negativeAttributeScore(openTag) {
+  const attrs = attributeText(openTag);
+  let score = 0;
+
+  if (NOISE_ATTRIBUTE_PATTERN.test(attrs)) {
+    score += 2;
+  }
+
+  if (/\b(navigation|complementary|banner|contentinfo|search)\b/i.test(attrs)) {
+    score += 3;
+  }
+
+  return score;
+}
+
+function isNoisyOpenTag(openTag) {
+  const attrs = attributeText(openTag);
+  return NOISE_ATTRIBUTE_PATTERN.test(attrs)
+    || /\b(navigation|complementary|banner|contentinfo|search)\b/i.test(attrs);
+}
+
+function isNoiseLine(line) {
+  const normalized = String(line).replace(/\s+/g, ' ').trim();
+
+  if (normalized.length > 90) {
+    return false;
+  }
+
+  return /^(advertisement|comments?|continue reading|more from|read also|recommended|related|share|sign up|subscribe|trending)$/i.test(normalized)
+    || /^(комментари[ия]|поделиться|подписаться|реклама|рекомендуем|читайте также|ещ[её] по теме)$/i.test(normalized);
+}
+
+function attributeText(openTag) {
+  return String(openTag)
+    .replace(/^<\/?[a-z][a-z0-9:-]*/i, ' ')
+    .replace(/\/?>$/i, ' ')
+    .replace(/["']/g, ' ')
+    .toLowerCase();
 }
 
 function decodeHtml(value) {
@@ -112,6 +373,53 @@ function assertFetch() {
     throw new Error('Нужен Node.js 18+ с global fetch.');
   }
 }
+
+const VOID_TAGS = new Set([
+  'area',
+  'base',
+  'br',
+  'col',
+  'embed',
+  'hr',
+  'img',
+  'input',
+  'link',
+  'meta',
+  'param',
+  'source',
+  'track',
+  'wbr'
+]);
+
+const STRIP_TAGS = new Set([
+  'aside',
+  'button',
+  'canvas',
+  'dialog',
+  'footer',
+  'form',
+  'header',
+  'iframe',
+  'menu',
+  'nav',
+  'noscript',
+  'script',
+  'select',
+  'style',
+  'svg',
+  'template',
+  'textarea'
+]);
+
+const ATTRIBUTE_FILTER_TAGS = new Set([
+  'article',
+  'div',
+  'ol',
+  'section',
+  'ul'
+]);
+
+const NOISE_ATTRIBUTE_PATTERN = /\b(ad|ads|advert|advertisement|banner|breadcrumb|comment|comments|cookie|modal|newsletter|outbrain|popup|popular|promo|recommend|recommended|recommendation|related|share|social|subscribe|taboola|tags|teaser|trending|widget|yandex|zen)\b/i;
 
 module.exports = {
   extractReadableText,
