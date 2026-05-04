@@ -126,7 +126,7 @@
       "title": "Caddy handles reverse proxying so well that I ditched my entire toolchain"
     },
     "https://www.xda-developers.com/i-replaced-chatgpt-and-claude-with-this-local-llm/": {
-      "read": false,
+      "read": true,
       "published_at": "2026-05-01T11:30:21.000Z",
       "title": "I replaced ChatGPT and Claude with this powerful local LLM and saved over $20 a month while gaining full control"
     },
