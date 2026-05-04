@@ -6,6 +6,7 @@ const { fetchFeed, mergeArticles } = require('./feed');
 const { loadFullArticle } = require('./article');
 
 const DEFAULT_LIMIT = 50;
+const ARTICLE_SCROLL_STEP = 4;
 
 async function main(argv) {
   const parsed = parseArgs(argv);
@@ -307,9 +308,9 @@ async function handleArticleKey(configPath, config, state, value, key, render) {
     state.article = null;
     state.articleScroll = 0;
   } else if (isDownKey(value, key)) {
-    state.articleScroll = clamp(state.articleScroll + 1, 0, maxScroll);
+    state.articleScroll = clamp(state.articleScroll + ARTICLE_SCROLL_STEP, 0, maxScroll);
   } else if (isUpKey(value, key)) {
-    state.articleScroll = clamp(state.articleScroll - 1, 0, maxScroll);
+    state.articleScroll = clamp(state.articleScroll - ARTICLE_SCROLL_STEP, 0, maxScroll);
   } else if (isPageDownKey(value, key)) {
     state.articleScroll = clamp(state.articleScroll + pageSize, 0, maxScroll);
   } else if (isPageUpKey(value, key)) {
