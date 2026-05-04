@@ -66,9 +66,19 @@ function mergeArticles(existing, incoming, limit) {
     seen.set(item.id, current ? { ...item, read: current.read || item.read } : item);
   }
 
-  return [...seen.values()]
-    .sort((a, b) => dateValue(b.published) - dateValue(a.published))
-    .slice(0, limit);
+  const sorted = [...seen.values()]
+    .sort((a, b) => dateValue(b.published) - dateValue(a.published));
+
+  if (!Number.isFinite(limit) || limit <= 0) {
+    return sorted;
+  }
+
+  const unread = sorted.filter((item) => !item.read);
+  const read = sorted.filter((item) => item.read);
+  const keepRead = Math.max(0, limit - unread.length);
+
+  return [...unread, ...read.slice(0, keepRead)]
+    .sort((a, b) => dateValue(b.published) - dateValue(a.published));
 }
 
 function blocks(xml, tag) {

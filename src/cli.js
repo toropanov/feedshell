@@ -136,10 +136,10 @@ function listArticles(config, args) {
     throw new Error('Источник не найден.');
   }
 
-  const articles = source ? config.articles[source.id] || [] : allArticles(config);
+  const articles = unreadArticles(config, source);
 
   if (!articles.length) {
-    console.log('Статей нет. Выполните: rss fetch');
+    console.log('Непрочитанных статей нет. Выполните: rss fetch');
     return;
   }
 
@@ -320,7 +320,6 @@ async function handleArticleKey(configPath, config, state, value, key, render) {
   } else if (isBottomKey(value, key)) {
     state.articleScroll = maxScroll;
   } else if (vimKey(value) === 'n') {
-    moveArticleSelection(config, state, 1);
     await openSelectedArticle(configPath, config, state, render);
   } else if (vimKey(value) === 'p') {
     moveArticleSelection(config, state, -1);
@@ -388,12 +387,12 @@ function renderArticles(config, state, rows, width) {
   state.articleOffset = fitOffset(state.articleOffset, state.articleIndex, listRows, articles.length);
 
   const lines = [
-    `Articles ${articles.length ? `${state.articleIndex + 1}/${articles.length}` : '0/0'}`,
+    `Unread ${articles.length ? `${state.articleIndex + 1}/${articles.length}` : '0/0'}`,
     ''
   ];
 
   if (!articles.length) {
-    lines.push('No articles');
+    lines.push('No unread articles');
   } else {
     for (let row = 0; row < listRows; row += 1) {
       const index = state.articleOffset + row;
@@ -471,7 +470,7 @@ function clampBrowserState(config, state) {
 }
 
 function currentArticles(config) {
-  return allArticles(config);
+  return unreadArticles(config);
 }
 
 function moveArticleSelection(config, state, delta) {
@@ -639,13 +638,20 @@ function allArticles(config) {
     .sort((a, b) => dateValue(b.published) - dateValue(a.published));
 }
 
+function unreadArticles(config, source = null) {
+  const articles = source ? config.articles[source.id] || [] : allArticles(config);
+  return articles
+    .filter((article) => !article.read)
+    .sort((a, b) => dateValue(b.published) - dateValue(a.published));
+}
+
 function resolveArticle(config, args) {
   if (args.length >= 2) {
     const source = findSource(config, args[0]);
-    return source ? (config.articles[source.id] || [])[toIndex(args[1])] : null;
+    return source ? unreadArticles(config, source)[toIndex(args[1])] : null;
   }
 
-  return allArticles(config)[toIndex(args[0] || '1')];
+  return unreadArticles(config)[toIndex(args[0] || '1')];
 }
 
 function findSource(config, query) {

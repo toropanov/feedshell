@@ -6,6 +6,18 @@
       "title": "Mobile-review.com — Все о мобильной технике и технологиях",
       "url": "https://mobile-review.com/all/feed/",
       "addedAt": "2026-05-04T10:55:43.210Z"
+    },
+    {
+      "id": "www-xda-developers-com-feed-self-hosting",
+      "title": "XDA - Self-Hosting",
+      "url": "https://www.xda-developers.com/feed/self-hosting/",
+      "addedAt": "2026-05-04T11:15:18.284Z"
+    },
+    {
+      "id": "www-xda-developers-com-feed-productivity",
+      "title": "XDA - Productivity & Creativity Tools",
+      "url": "https://www.xda-developers.com/feed/productivity/",
+      "addedAt": "2026-05-04T11:15:26.558Z"
     }
   ],
   "articles": {
@@ -109,6 +121,210 @@
         "summary": "Исследований умственного развития поколений сегодня хватает. А что можно сказать по итогам личных наблюдений?",
         "read": false,
         "fetchedAt": "2026-05-04T10:55:44.862Z"
+      }
+    ],
+    "www-xda-developers-com-feed-self-hosting": [
+      {
+        "id": "79497bc5d74a465a",
+        "sourceId": "www-xda-developers-com-feed-self-hosting",
+        "title": "Building a local LLM news brief taught me my real problem wasn't the sources, it was the apps",
+        "link": "https://www.xda-developers.com/building-local-llm-news-brief-taught-problem-apps/",
+        "published": "2026-05-03T12:30:22.000Z",
+        "summary": "I used to think my news problem was a source problem. I had too many apps , too many feeds, too many alerts, and not enough patience for the mess between them. Every app wanted to be the first thing I checked in the morning, which meant none of them felt worth opening. The more I tried to organize the flow, the more it felt controlled by someone else’s idea of what deserved my attention.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:19.002Z"
+      },
+      {
+        "id": "03ab1508316d36d5",
+        "sourceId": "www-xda-developers-com-feed-self-hosting",
+        "title": "Self-hosted LLMs are way more powerful than a chat interface, here’s how I utilize it fully",
+        "link": "https://www.xda-developers.com/self-hosted-llms-are-way-more-powerful-than-a-chat-interface/",
+        "published": "2026-05-02T14:30:21.000Z",
+        "summary": "Self-hosting your own LLM is usually born out of a desire for two things: absolute privacy and total control. You set up the hardware, pull the models, and finally see that familiar chat box on your screen. It feels like a win, but for most people, that’s where the journey stops. We’ve become so conditioned by the \"type and wait\" loop of ChatGPT that we treat our local setups like a mirror image of a cloud service.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:19.002Z"
+      },
+      {
+        "id": "544b15ef1ddabaa7",
+        "sourceId": "www-xda-developers-com-feed-self-hosting",
+        "title": "5 underrated Jellyfin features I wish I'd discovered sooner",
+        "link": "https://www.xda-developers.com/underrated-jellyfin-features-i-wish-id-discovered-sooner/",
+        "published": "2026-05-01T20:00:21.000Z",
+        "summary": "Jellyfin is one of those self-hosted apps that can look simple at first glance, especially if you only use it as a place to dump movies and TV shows .",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:19.002Z"
+      },
+      {
+        "id": "d58e708494376f2b",
+        "sourceId": "www-xda-developers-com-feed-self-hosting",
+        "title": "I finally ditched Letterboxd for this self-hosted movie tracker and I am never looking back",
+        "link": "https://www.xda-developers.com/ditched-letterboxd-for-self-hosted-movie-tracker-never-looking-back/",
+        "published": "2026-05-01T14:30:22.000Z",
+        "summary": "For way too many years I've used the likes of Trakt and Letterboxd for tracking everything from movies I've watched to rating them, keeping a watchlist and all too often searching through them to find out that I was about to queue up a movie that I'd already seen. It's worked, but since I've been moving most of my services to a self-hosted stack, I've been on the hunt for a tool that can replace that online-first tracking as well.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:19.002Z"
+      },
+      {
+        "id": "2ed51ef0a00bdd06",
+        "sourceId": "www-xda-developers-com-feed-self-hosting",
+        "title": "Caddy handles reverse proxying so well that I ditched my entire toolchain",
+        "link": "https://www.xda-developers.com/caddy-handles-reverse-proxying-so-well-ditched-my-entire-toolchain/",
+        "published": "2026-05-01T14:00:21.000Z",
+        "summary": "Self-hosting services is always neater when you use a reverse proxy like Caddy , whether you want to reach them from anywhere or are only testing things out on your home network. I like Caddy partly because it has a prebuilt Proxmox LXC , but also because it has a powerful and modular construction where I can add the features I want without having to deal with ones I don't.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:19.002Z"
+      },
+      {
+        "id": "0861727e6c72fe2d",
+        "sourceId": "www-xda-developers-com-feed-self-hosting",
+        "title": "I replaced ChatGPT and Claude with this powerful local LLM and saved over $20 a month while gaining full control",
+        "link": "https://www.xda-developers.com/i-replaced-chatgpt-and-claude-with-this-local-llm/",
+        "published": "2026-05-01T11:30:21.000Z",
+        "summary": "As a home labber, I’ve always been an advocate for running services on my local hardware instead of relying on cloud platforms. And my stance on FOSS tools hasn’t changed even after I started running large language models. If anything, I’ve grown to love the 9B and 12B LLMs I’ve deployed on my server nodes, as I don’t have to worry about external firms gaining access to all the documents and log files I upload to my models.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:19.003Z"
+      },
+      {
+        "id": "c2f2d6003580a366",
+        "sourceId": "www-xda-developers-com-feed-self-hosting",
+        "title": "Home Assistant freed me from the smart home brand wars, and now I buy whatever works",
+        "link": "https://www.xda-developers.com/home-assistant-freed-smart-home-brand-wars-buy-whatever-works/",
+        "published": "2026-04-30T17:30:28.000Z",
+        "summary": "Smart home gear used to feel less like buying useful devices and more like choosing sides. Every brand wanted me inside its own app, account system, automation builder, and ecosystem logic. That sounds fine until the house starts filling up with bulbs, sensors, switches, plugs, purifiers, and random gadgets that all want to be the center of attention. At some point, the smart home stopped feeling smart and started feeling like a group project where every participant brought a different rulebook.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:19.003Z"
+      },
+      {
+        "id": "c262146e9d93a685",
+        "sourceId": "www-xda-developers-com-feed-self-hosting",
+        "title": "Your home lab's biggest mistake might be running everything in LXCs",
+        "link": "https://www.xda-developers.com/home-labs-biggest-mistake-running-everything-lxcs/",
+        "published": "2026-04-30T12:00:21.000Z",
+        "summary": "LXCs are one of the reasons Proxmox feels so good in a home lab. They’re light, fast, easy to clone, and usually much less wasteful than spinning up a full VM for every small service. When something only needs a basic Linux environment and a few predictable ports, an LXC can feel like the obvious answer . That convenience is exactly what makes it so tempting to use them for everything.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:19.003Z"
+      },
+      {
+        "id": "a2bbc6e6d01b7049",
+        "sourceId": "www-xda-developers-com-feed-self-hosting",
+        "title": "Four NVMe slots changed how I think about home lab storage, and a $170 mini PC made it click",
+        "link": "https://www.xda-developers.com/four-nvme-slots-changed-home-lab-storage-170-mini-pc-made-click/",
+        "published": "2026-04-30T00:00:21.000Z",
+        "summary": "A Raspberry Pi still makes sense in plenty of home lab setups, especially when the job is small, quiet, and specific. I’ve used them for exactly that kind of work, and I still like the idea of a cheap board handling one clean responsibility without taking over the whole shelf. The problem is that my home lab stopped being that simple a while ago. Once you start stacking containers, dashboards, monitoring tools, and storage needs, the tiny-board charm starts to wear thin .",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:19.003Z"
+      },
+      {
+        "id": "03074675ac0fe257",
+        "sourceId": "www-xda-developers-com-feed-self-hosting",
+        "title": "Running local LLMs every day for five months broke every assumption I had about them",
+        "link": "https://www.xda-developers.com/running-local-llms-for-five-months-broke-every-assumption-i-had-about-them/",
+        "published": "2026-04-29T22:00:21.000Z",
+        "summary": "I got into local LLMs because it seemed interesting, if I’m being completely honest. Running my own AI on my own hardware just felt like something worth trying, and not because I had a specific gap to fill or super strong feelings about data privacy at the time. The novelty was the whole draw at first.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:19.003Z"
+      }
+    ],
+    "www-xda-developers-com-feed-productivity": [
+      {
+        "id": "70b0a7745f9976e5",
+        "sourceId": "www-xda-developers-com-feed-productivity",
+        "title": "This free Photoshop alternative does what GIMP and Krita can't, and I stopped looking after trying it",
+        "link": "https://www.xda-developers.com/forget-gimp-krita-photopeafree-editor-closest-photoshop-replacement/",
+        "published": "2026-05-02T19:00:21.000Z",
+        "summary": "My quest for a true Photoshop alternative always felt like a compromise between the clunky, steep learning curve of GIMP , a niche, painting-focused toolkit of Krita, and a browser-based, ad-filled Photopea.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:27.198Z"
+      },
+      {
+        "id": "a77eca0fc2ae4369",
+        "sourceId": "www-xda-developers-com-feed-productivity",
+        "title": "I stopped paying monthly for productivity tools after finding these alternatives with one-time purchases",
+        "link": "https://www.xda-developers.com/best-productivity-apps-with-affordable-lifetime-license/",
+        "published": "2026-05-01T17:01:21.000Z",
+        "summary": "We have reached a point where every utility, from a simple calculator to a complex project manager, demands a monthly plan to unlock its full potential. As a technology writer, I’m constantly testing new tools, but I have reached a point where I’m tired of renting my productivity.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:27.198Z"
+      },
+      {
+        "id": "6c302498dd7c70c2",
+        "sourceId": "www-xda-developers-com-feed-productivity",
+        "title": "PowerToys finally has a launcher that's just as good as Wox or Flow",
+        "link": "https://www.xda-developers.com/powertoys-finally-has-launcher-thats-as-good-as-wox-or-flow/",
+        "published": "2026-05-01T12:30:20.000Z",
+        "summary": "PowerToys is a collection of tools that Microsoft considers not suitable for mainstream users. I don’t agree with Microsoft’s purview, but I am glad that they really focused on integrating better tools every couple of months. PowerToys Run was a basic form of a floating launcher with search capabilities and a few other quirks. I liked that tool for its simplicity, but Microsoft took it up a notch by rebranding it as Command Palette, with features and a new design that aligns with tools like Flow Launcher.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:27.198Z"
+      },
+      {
+        "id": "d2f5a644918499ac",
+        "sourceId": "www-xda-developers-com-feed-productivity",
+        "title": "Connecting Obsidian to Gemini transformed my notes from archive to actually useful",
+        "link": "https://www.xda-developers.com/connecting-obsidian-to-gemini-transformed-notes-from-archive-to-useful/",
+        "published": "2026-04-30T14:30:22.000Z",
+        "summary": "Most of the Obsidian-AI integrations I’ve come across work the same way - only in one direction. You usually have to install a plugin in the Obsidian app and pull in your model that way, and it either lives in the sidebar or as an inline assistant. But I wanted it the other way around - my vault inside the Gemini interface. That way I could keep using the stuff that makes Gemini actually useful to me , which are the extras like Guided Learning, Gems, and the Canvas. Bringing a Google AI chat panel into my notes app wasn’t the same thing.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:27.198Z"
+      },
+      {
+        "id": "7428a73683b9e186",
+        "sourceId": "www-xda-developers-com-feed-productivity",
+        "title": "I used Obsidian wrong for a year, here's the folder setup that finally clicks",
+        "link": "https://www.xda-developers.com/used-obsidian-wrong-for-year-folder-setup-that-finally-clicks/",
+        "published": "2026-04-29T12:30:19.000Z",
+        "summary": "When I started my Obsidian journey, I was inspired by stunning, graph-heavy setups that looked like digital masterpieces, and for a year, I tried to force my brain into one of them. I spent more time perfecting nested folders and hunting for the perfect plugin than actually writing a single meaningful note.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:27.198Z"
+      },
+      {
+        "id": "c15bf67857567be4",
+        "sourceId": "www-xda-developers-com-feed-productivity",
+        "title": "I tried Euro-Office so you don't have to, and LibreOffice is still the one to beat",
+        "link": "https://www.xda-developers.com/tried-euro-office-dont-have-to-libreoffice/",
+        "published": "2026-04-26T19:00:20.000Z",
+        "summary": "Europe has been on a slow, steady push towards digital sovereignty for a while now, and a lot of that push ends up pointing at the same handful of tools. Nextcloud is the obvious example, sitting somewhere between Google Drive and a full collaboration suite for anyone who wants to self-host. On top of that, Nextcloud has historically leaned on OnlyOffice to handle in-browser document editing, and for the better part of eight years, that arrangement more or less worked.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:27.198Z"
+      },
+      {
+        "id": "2a4e1fc13fe82217",
+        "sourceId": "www-xda-developers-com-feed-productivity",
+        "title": "5 open-source developer tools that are better than their well-funded competitors",
+        "link": "https://www.xda-developers.com/open-source-developer-tools-that-are-better-than-their-competitors/",
+        "published": "2026-04-25T20:30:20.000Z",
+        "summary": "The developer toolkit has reached a tipping point where even the most basic utilities now demand a login and a subscription. For those of us maintaining high-performance home labs or managing complex workflows across different devices, paid, resource-hungry tools feel like a liability.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:27.198Z"
+      },
+      {
+        "id": "75788fdda53402b2",
+        "sourceId": "www-xda-developers-com-feed-productivity",
+        "title": "I uninstalled these 4 Obsidian plugins and my vault instantly became easier to manage",
+        "link": "https://www.xda-developers.com/uninstalled-obsidian-plugins-vault-easier-to-manage/",
+        "published": "2026-04-23T22:00:21.000Z",
+        "summary": "When I first got into Obsidian, I also got into the plugins at the same time. That’s just what you do - every setup video, Reddit thread, or “here’s my vault” post had a plugin list at the end. So I built mine too. But the vault started feeling more like a project I was managing on top of my actual projects. Which is kind of the opposite of what I wanted when I picked Obsidian over something like Notion to begin with.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:27.198Z"
+      },
+      {
+        "id": "cbf9aab699e0bba9",
+        "sourceId": "www-xda-developers-com-feed-productivity",
+        "title": "I used to avoid OneDrive until I discovered these 4 features",
+        "link": "https://www.xda-developers.com/i-used-to-avoid-onedrive-until-i-discovered-these-x-features/",
+        "published": "2026-04-23T14:30:22.000Z",
+        "summary": "Microsoft OneDrive is one of the most frequently disabled services on any new Windows device. For many users, it's one of the first steps after a fresh installation, and one might find countless user forums dedicated to removing it from the OS entirely. This is somewhat understandable. The integration feels forced, the automatic syncing of local data to Microsoft servers raises concerns, and it can often create massive confusion by changing default file paths. After all, who needs a D esktop and a OneDrive Desktop?",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:27.198Z"
+      },
+      {
+        "id": "964ed81b05bf3ba8",
+        "sourceId": "www-xda-developers-com-feed-productivity",
+        "title": "3 reasons I'm finally uninstalling Obsidian - and what I'm replacing it with",
+        "link": "https://www.xda-developers.com/3-reasons-im-finally-uninstalling-obsidian-and-what-im-replacing-it-with/",
+        "published": "2026-04-23T13:31:20.000Z",
+        "summary": "Obsidian is a powerful knowledge management and note-taking tool — if you know how to use it. If you're like me and jumped in with minimal knowledge about the app, then your mileage may vary.",
+        "read": false,
+        "fetchedAt": "2026-05-04T11:15:27.198Z"
       }
     ]
   }
