@@ -1,4 +1,5 @@
 const readline = require('node:readline');
+const { spawn } = require('node:child_process');
 const { stdin, stdout } = require('node:process');
 
 const { createSource, defaultConfigPath, loadConfig, saveConfig } = require('./config');
@@ -284,6 +285,10 @@ async function handleArticlesKey(configPath, config, state, value, key, render, 
     await refreshBrowser(configPath, config, state, render);
   } else if (isOpenKey(value, key)) {
     await openSelectedArticle(configPath, config, state, render);
+  } else if (isReadKey(value, key)) {
+    await markSelectedArticleRead(configPath, config, state, render);
+  } else if (isOpenUrlKey(value, key)) {
+    await openSelectedArticleUrl(config, state);
   } else if (isDownKey(value, key)) {
     state.articleIndex = clamp(state.articleIndex + 1, 0, articles.length - 1);
   } else if (isUpKey(value, key)) {
@@ -324,7 +329,39 @@ async function handleArticleKey(configPath, config, state, value, key, render) {
   } else if (vimKey(value) === 'p') {
     moveArticleSelection(config, state, -1);
     await openSelectedArticle(configPath, config, state, render);
+  } else if (isOpenUrlKey(value, key)) {
+    await openSelectedArticleUrl(config, state);
   }
+}
+
+async function markSelectedArticleRead(configPath, config, state, render) {
+  const articles = currentArticles(config, state);
+  const article = articles[state.articleIndex];
+  if (!article) {
+    state.status = 'No article';
+    return;
+  }
+
+  article.read = true;
+  saveConfig(configPath, config);
+  clampBrowserState(config, state);
+  state.status = 'Marked read';
+  render();
+}
+
+async function openSelectedArticleUrl(config, state) {
+  const article = state.view === 'article' && state.article
+    ? { link: state.article.url }
+    : currentArticles(config, state)[state.articleIndex];
+
+  if (!article) {
+    state.status = 'No article';
+    return;
+  }
+
+  const url = article.link || article.url;
+  openUrl(url);
+  state.status = 'Opened in browser';
 }
 
 async function openSelectedArticle(configPath, config, state, render) {
@@ -408,7 +445,7 @@ function renderArticles(config, state, rows, width) {
     }
   }
 
-  drawLines(lines, rows, width, footerText(state, 'j/k  C-d/C-u  gg/G  Enter/l  r  q'));
+  drawLines(lines, rows, width, footerText(state, 'j/k  C-d/C-u  gg/G  Enter/l  r  R  o  q'));
 }
 
 function renderArticle(state, rows, width) {
@@ -416,7 +453,7 @@ function renderArticle(state, rows, width) {
   const viewRows = Math.max(1, rows - 1);
   state.articleScroll = clamp(state.articleScroll, 0, Math.max(0, lines.length - viewRows));
   const visible = lines.slice(state.articleScroll, state.articleScroll + viewRows);
-  const footer = footerText(state, 'j/k  C-d/C-u  gg/G  n/p  q/h');
+  const footer = footerText(state, 'j/k  C-d/C-u  gg/G  n/p  o  q/h');
   drawLines(visible, rows, width, footer);
 }
 
@@ -526,7 +563,15 @@ function isQuitKey(value, key) {
 }
 
 function isRefreshKey(value, key) {
+  return value === 'R' || (key.name === 'r' && key.shift) || key.name === 'R';
+}
+
+function isReadKey(value, key) {
   return vimKey(value) === 'r' || key.name === 'r';
+}
+
+function isOpenUrlKey(value, key) {
+  return vimKey(value) === 'o' || key.name === 'o';
 }
 
 function isDownKey(value, key) {
@@ -604,6 +649,8 @@ const RU_VIM_KEYS = {
   Т: 'N',
   з: 'p',
   З: 'P',
+  щ: 'o',
+  Щ: 'O',
   и: 'b',
   И: 'B'
 };
@@ -643,6 +690,19 @@ function unreadArticles(config, source = null) {
   return articles
     .filter((article) => !article.read)
     .sort((a, b) => dateValue(b.published) - dateValue(a.published));
+}
+
+function openUrl(url) {
+  if (!url) {
+    return;
+  }
+
+  const platform = process.platform;
+  const command = platform === 'darwin' ? 'open' : platform === 'win32' ? 'cmd' : 'xdg-open';
+  const args = platform === 'win32' ? ['/c', 'start', '', url] : [url];
+  const child = spawn(command, args, { detached: true, stdio: 'ignore' });
+  child.on('error', () => {});
+  child.unref();
 }
 
 function resolveArticle(config, args) {

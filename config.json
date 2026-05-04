@@ -39,7 +39,7 @@
         "link": "https://mobile-review.com/all/articles/operator/tarify-dlya-detej-nashel-luchshij-detskij-tarif/",
         "published": "2026-05-03T21:03:00.000Z",
         "summary": "Мобильная связь давно превратилась в неотъемлемую часть жизни.",
-        "read": false,
+        "read": true,
         "fetchedAt": "2026-05-04T10:55:44.861Z"
       },
       {
@@ -131,7 +131,7 @@
         "link": "https://www.xda-developers.com/building-local-llm-news-brief-taught-problem-apps/",
         "published": "2026-05-03T12:30:22.000Z",
         "summary": "I used to think my news problem was a source problem. I had too many apps , too many feeds, too many alerts, and not enough patience for the mess between them. Every app wanted to be the first thing I checked in the morning, which meant none of them felt worth opening. The more I tried to organize the flow, the more it felt controlled by someone else’s idea of what deserved my attention.",
-        "read": false,
+        "read": true,
         "fetchedAt": "2026-05-04T11:15:19.002Z"
       },
       {
@@ -191,7 +191,7 @@
         "link": "https://www.xda-developers.com/home-assistant-freed-smart-home-brand-wars-buy-whatever-works/",
         "published": "2026-04-30T17:30:28.000Z",
         "summary": "Smart home gear used to feel less like buying useful devices and more like choosing sides. Every brand wanted me inside its own app, account system, automation builder, and ecosystem logic. That sounds fine until the house starts filling up with bulbs, sensors, switches, plugs, purifiers, and random gadgets that all want to be the center of attention. At some point, the smart home stopped feeling smart and started feeling like a group project where every participant brought a different rulebook.",
-        "read": false,
+        "read": true,
         "fetchedAt": "2026-05-04T11:15:19.003Z"
       },
       {
