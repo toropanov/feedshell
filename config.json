@@ -45,719 +45,148 @@
     }
   ],
   "articles": {
-    "mobile-review-com-all-feed": [
-      {
-        "id": "a2aab5d2dddaf6e7",
-        "sourceId": "mobile-review-com-all-feed",
-        "title": "Бирюльки №901. Падение мобильного трафика в России, закрытие розницы",
-        "link": "https://mobile-review.com/all/articles/birulki/biryulki-n901-padenie-mobilnogo-trafika-v-rossii-zakrytie-rozniczy/",
-        "published": "2026-05-03T21:04:00.000Z",
-        "summary": "Первые данные о глубине падения мобильного трафика, впервые в истории России; закрытие операторской розницы, марка «Аренда» набирает популярность; отчет «МВвидео» за год, убытки в три раза выше; как ChatGPT решает математические задачи, нужна ли нам такая «Алиса AI» и что с ИИ в России; чехол с Китом Харингом.",
-        "read": true,
-        "fetchedAt": "2026-05-04T10:55:44.861Z"
-      },
-      {
-        "id": "9fd70bfdf3f8c0c2",
-        "sourceId": "mobile-review-com-all-feed",
-        "title": "Тарифы для детей: нашел лучший детский тариф",
-        "link": "https://mobile-review.com/all/articles/operator/tarify-dlya-detej-nashel-luchshij-detskij-tarif/",
-        "published": "2026-05-03T21:03:00.000Z",
-        "summary": "Мобильная связь давно превратилась в неотъемлемую часть жизни.",
-        "read": true,
-        "fetchedAt": "2026-05-04T10:55:44.861Z"
-      },
-      {
-        "id": "9f0000ccd9b972a3",
-        "sourceId": "mobile-review-com-all-feed",
-        "title": "Россияне скупают PS5. Почему сейчас?",
-        "link": "https://mobile-review.com/all/articles/misc/rossiyane-skupayut-ps5-pochemu-sejchas/",
-        "published": "2026-05-03T21:02:00.000Z",
-        "summary": "Несмотря на официальную приостановку работы многих иностранных компаний в России, рынок…",
-        "read": true,
-        "fetchedAt": "2026-05-04T10:55:44.861Z"
-      },
-      {
-        "id": "dc1cf7c868e7978a",
-        "sourceId": "mobile-review-com-all-feed",
-        "title": "Едем на море. Электроника на пляже и отдыхе, важные советы",
-        "link": "https://mobile-review.com/all/articles/misc/edem-na-more-elektronika-na-plyazhe-i-otdyhe-vazhnye-sovety/",
-        "published": "2026-05-03T21:01:00.000Z",
-        "summary": "Соленая вода и смартфон - как не повредить устройство; про песок и его коварство; жара и охлаждение телефона; что стоит помнить на море и к чему быть готовым.",
-        "read": true,
-        "fetchedAt": "2026-05-04T10:55:44.862Z"
-      },
-      {
-        "id": "558154a70a99f7e6",
-        "sourceId": "mobile-review-com-all-feed",
-        "title": "Технологичная поп-культура. Фильм тридцать пятый. «Время»",
-        "link": "https://mobile-review.com/all/articles/misc/tehnologichnaya-pop-kultura-film-tridczat-pyatyj-vremya/",
-        "published": "2026-05-02T21:02:00.000Z",
-        "summary": "В нашем мире деньги являются настолько универсальным инструментом, что сложно себе представить, что что-то было бы способно его заменить. Поэтому всегда интересно посмотреть за теми, кто пытается.",
-        "read": true,
-        "fetchedAt": "2026-05-04T10:55:44.862Z"
-      },
-      {
-        "id": "1fcfb8375fdae8a6",
-        "sourceId": "mobile-review-com-all-feed",
-        "title": "Game Pass забыт? Эксклюзивы на Xbox — популизм или реальность",
-        "link": "https://mobile-review.com/all/articles/misc/game-pass-zabyt-eksklyuzivy-na-xbox-populizm-ili-realnost/",
-        "published": "2026-05-02T21:01:00.000Z",
-        "summary": "В стенах Microsoft идут активные обсуждения о возврате к эксклюзивным играм, утверждает инсайдер и журналист…",
-        "read": true,
-        "fetchedAt": "2026-05-04T10:55:44.862Z"
-      },
-      {
-        "id": "85fc924f37b3b872",
-        "sourceId": "mobile-review-com-all-feed",
-        "title": "Субботний кофе №381",
-        "link": "https://mobile-review.com/all/articles/saturday-coffee/subbotnij-kofe-n381/",
-        "published": "2026-05-01T21:02:00.000Z",
-        "summary": "Налейте чашку ароматного субботнего кофе и познакомьтесь с новостями недели. Tecno представила новые смартфоны, Trouver привезла к нам портативный пылесос, а я провел неделю с планшетом Redmi...",
-        "read": true,
-        "fetchedAt": "2026-05-04T10:55:44.862Z"
-      },
-      {
-        "id": "e48191b686787e92",
-        "sourceId": "mobile-review-com-all-feed",
-        "title": "Прикладной Blender. Урок №34. Рекурсия искусственности или еще немного про оптимизацию",
-        "link": "https://mobile-review.com/all/articles/misc/prikladnoj-blender-urok-n34-rekursiya-iskusstvennosti-ili-eshhe-nemnogo-pro-optimizacziyu/",
-        "published": "2026-05-01T21:01:00.000Z",
-        "summary": "Продолжаем изучать способы упрощать себе жизнь в процессе создания реалистичных объектов.",
-        "read": true,
-        "fetchedAt": "2026-05-04T10:55:44.862Z"
-      },
-      {
-        "id": "ddb758c7507edb3a",
-        "sourceId": "mobile-review-com-all-feed",
-        "title": "Уголок изобретателя №126. Способ контроля дресс-кода",
-        "link": "https://mobile-review.com/all/articles/misc/ugolok-izobretatelya-n126-sposob-kontrolya-dress-koda/",
-        "published": "2026-04-30T21:02:00.000Z",
-        "summary": "Внешний вид — это первый критерий оценки. И в определенных обстоятельствах он критически важен. Как приучить людей его соблюдать?",
-        "read": true,
-        "fetchedAt": "2026-05-04T10:55:44.862Z"
-      },
-      {
-        "id": "a1fb986ceaa282bd",
-        "sourceId": "mobile-review-com-all-feed",
-        "title": "Что вероятнее: цикличность снижения интеллекта или это наш новый уровень?",
-        "link": "https://mobile-review.com/all/articles/misc/chto-veroyatnee-cziklichnost-snizheniya-intellekta-ili-eto-nash-novyj-uroven/",
-        "published": "2026-04-30T21:01:00.000Z",
-        "summary": "Исследований умственного развития поколений сегодня хватает. А что можно сказать по итогам личных наблюдений?",
-        "read": true,
-        "fetchedAt": "2026-05-04T10:55:44.862Z"
-      }
-    ],
-    "www-xda-developers-com-feed-self-hosting": [
-      {
-        "id": "79497bc5d74a465a",
-        "sourceId": "www-xda-developers-com-feed-self-hosting",
-        "title": "Building a local LLM news brief taught me my real problem wasn't the sources, it was the apps",
-        "link": "https://www.xda-developers.com/building-local-llm-news-brief-taught-problem-apps/",
-        "published": "2026-05-03T12:30:22.000Z",
-        "summary": "I used to think my news problem was a source problem. I had too many apps , too many feeds, too many alerts, and not enough patience for the mess between them. Every app wanted to be the first thing I checked in the morning, which meant none of them felt worth opening. The more I tried to organize the flow, the more it felt controlled by someone else’s idea of what deserved my attention.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:19.002Z"
-      },
-      {
-        "id": "03ab1508316d36d5",
-        "sourceId": "www-xda-developers-com-feed-self-hosting",
-        "title": "Self-hosted LLMs are way more powerful than a chat interface, here’s how I utilize it fully",
-        "link": "https://www.xda-developers.com/self-hosted-llms-are-way-more-powerful-than-a-chat-interface/",
-        "published": "2026-05-02T14:30:21.000Z",
-        "summary": "Self-hosting your own LLM is usually born out of a desire for two things: absolute privacy and total control. You set up the hardware, pull the models, and finally see that familiar chat box on your screen. It feels like a win, but for most people, that’s where the journey stops. We’ve become so conditioned by the \"type and wait\" loop of ChatGPT that we treat our local setups like a mirror image of a cloud service.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:19.002Z"
-      },
-      {
-        "id": "544b15ef1ddabaa7",
-        "sourceId": "www-xda-developers-com-feed-self-hosting",
-        "title": "5 underrated Jellyfin features I wish I'd discovered sooner",
-        "link": "https://www.xda-developers.com/underrated-jellyfin-features-i-wish-id-discovered-sooner/",
-        "published": "2026-05-01T20:00:21.000Z",
-        "summary": "Jellyfin is one of those self-hosted apps that can look simple at first glance, especially if you only use it as a place to dump movies and TV shows .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:19.002Z"
-      },
-      {
-        "id": "d58e708494376f2b",
-        "sourceId": "www-xda-developers-com-feed-self-hosting",
-        "title": "I finally ditched Letterboxd for this self-hosted movie tracker and I am never looking back",
-        "link": "https://www.xda-developers.com/ditched-letterboxd-for-self-hosted-movie-tracker-never-looking-back/",
-        "published": "2026-05-01T14:30:22.000Z",
-        "summary": "For way too many years I've used the likes of Trakt and Letterboxd for tracking everything from movies I've watched to rating them, keeping a watchlist and all too often searching through them to find out that I was about to queue up a movie that I'd already seen. It's worked, but since I've been moving most of my services to a self-hosted stack, I've been on the hunt for a tool that can replace that online-first tracking as well.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:19.002Z"
-      },
-      {
-        "id": "2ed51ef0a00bdd06",
-        "sourceId": "www-xda-developers-com-feed-self-hosting",
-        "title": "Caddy handles reverse proxying so well that I ditched my entire toolchain",
-        "link": "https://www.xda-developers.com/caddy-handles-reverse-proxying-so-well-ditched-my-entire-toolchain/",
-        "published": "2026-05-01T14:00:21.000Z",
-        "summary": "Self-hosting services is always neater when you use a reverse proxy like Caddy , whether you want to reach them from anywhere or are only testing things out on your home network. I like Caddy partly because it has a prebuilt Proxmox LXC , but also because it has a powerful and modular construction where I can add the features I want without having to deal with ones I don't.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:19.002Z"
-      },
-      {
-        "id": "0861727e6c72fe2d",
-        "sourceId": "www-xda-developers-com-feed-self-hosting",
-        "title": "I replaced ChatGPT and Claude with this powerful local LLM and saved over $20 a month while gaining full control",
-        "link": "https://www.xda-developers.com/i-replaced-chatgpt-and-claude-with-this-local-llm/",
-        "published": "2026-05-01T11:30:21.000Z",
-        "summary": "As a home labber, I’ve always been an advocate for running services on my local hardware instead of relying on cloud platforms. And my stance on FOSS tools hasn’t changed even after I started running large language models. If anything, I’ve grown to love the 9B and 12B LLMs I’ve deployed on my server nodes, as I don’t have to worry about external firms gaining access to all the documents and log files I upload to my models.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:19.003Z"
-      },
-      {
-        "id": "c2f2d6003580a366",
-        "sourceId": "www-xda-developers-com-feed-self-hosting",
-        "title": "Home Assistant freed me from the smart home brand wars, and now I buy whatever works",
-        "link": "https://www.xda-developers.com/home-assistant-freed-smart-home-brand-wars-buy-whatever-works/",
-        "published": "2026-04-30T17:30:28.000Z",
-        "summary": "Smart home gear used to feel less like buying useful devices and more like choosing sides. Every brand wanted me inside its own app, account system, automation builder, and ecosystem logic. That sounds fine until the house starts filling up with bulbs, sensors, switches, plugs, purifiers, and random gadgets that all want to be the center of attention. At some point, the smart home stopped feeling smart and started feeling like a group project where every participant brought a different rulebook.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:19.003Z"
-      },
-      {
-        "id": "c262146e9d93a685",
-        "sourceId": "www-xda-developers-com-feed-self-hosting",
-        "title": "Your home lab's biggest mistake might be running everything in LXCs",
-        "link": "https://www.xda-developers.com/home-labs-biggest-mistake-running-everything-lxcs/",
-        "published": "2026-04-30T12:00:21.000Z",
-        "summary": "LXCs are one of the reasons Proxmox feels so good in a home lab. They’re light, fast, easy to clone, and usually much less wasteful than spinning up a full VM for every small service. When something only needs a basic Linux environment and a few predictable ports, an LXC can feel like the obvious answer . That convenience is exactly what makes it so tempting to use them for everything.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:19.003Z"
-      },
-      {
-        "id": "a2bbc6e6d01b7049",
-        "sourceId": "www-xda-developers-com-feed-self-hosting",
-        "title": "Four NVMe slots changed how I think about home lab storage, and a $170 mini PC made it click",
-        "link": "https://www.xda-developers.com/four-nvme-slots-changed-home-lab-storage-170-mini-pc-made-click/",
-        "published": "2026-04-30T00:00:21.000Z",
-        "summary": "A Raspberry Pi still makes sense in plenty of home lab setups, especially when the job is small, quiet, and specific. I’ve used them for exactly that kind of work, and I still like the idea of a cheap board handling one clean responsibility without taking over the whole shelf. The problem is that my home lab stopped being that simple a while ago. Once you start stacking containers, dashboards, monitoring tools, and storage needs, the tiny-board charm starts to wear thin .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:19.003Z"
-      },
-      {
-        "id": "03074675ac0fe257",
-        "sourceId": "www-xda-developers-com-feed-self-hosting",
-        "title": "Running local LLMs every day for five months broke every assumption I had about them",
-        "link": "https://www.xda-developers.com/running-local-llms-for-five-months-broke-every-assumption-i-had-about-them/",
-        "published": "2026-04-29T22:00:21.000Z",
-        "summary": "I got into local LLMs because it seemed interesting, if I’m being completely honest. Running my own AI on my own hardware just felt like something worth trying, and not because I had a specific gap to fill or super strong feelings about data privacy at the time. The novelty was the whole draw at first.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:19.003Z"
-      }
-    ],
-    "www-xda-developers-com-feed-productivity": [
-      {
-        "id": "70b0a7745f9976e5",
-        "sourceId": "www-xda-developers-com-feed-productivity",
-        "title": "This free Photoshop alternative does what GIMP and Krita can't, and I stopped looking after trying it",
-        "link": "https://www.xda-developers.com/forget-gimp-krita-photopeafree-editor-closest-photoshop-replacement/",
-        "published": "2026-05-02T19:00:21.000Z",
-        "summary": "My quest for a true Photoshop alternative always felt like a compromise between the clunky, steep learning curve of GIMP , a niche, painting-focused toolkit of Krita, and a browser-based, ad-filled Photopea.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:27.198Z"
-      },
-      {
-        "id": "a77eca0fc2ae4369",
-        "sourceId": "www-xda-developers-com-feed-productivity",
-        "title": "I stopped paying monthly for productivity tools after finding these alternatives with one-time purchases",
-        "link": "https://www.xda-developers.com/best-productivity-apps-with-affordable-lifetime-license/",
-        "published": "2026-05-01T17:01:21.000Z",
-        "summary": "We have reached a point where every utility, from a simple calculator to a complex project manager, demands a monthly plan to unlock its full potential. As a technology writer, I’m constantly testing new tools, but I have reached a point where I’m tired of renting my productivity.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:27.198Z"
-      },
-      {
-        "id": "6c302498dd7c70c2",
-        "sourceId": "www-xda-developers-com-feed-productivity",
-        "title": "PowerToys finally has a launcher that's just as good as Wox or Flow",
-        "link": "https://www.xda-developers.com/powertoys-finally-has-launcher-thats-as-good-as-wox-or-flow/",
-        "published": "2026-05-01T12:30:20.000Z",
-        "summary": "PowerToys is a collection of tools that Microsoft considers not suitable for mainstream users. I don’t agree with Microsoft’s purview, but I am glad that they really focused on integrating better tools every couple of months. PowerToys Run was a basic form of a floating launcher with search capabilities and a few other quirks. I liked that tool for its simplicity, but Microsoft took it up a notch by rebranding it as Command Palette, with features and a new design that aligns with tools like Flow Launcher.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:27.198Z"
-      },
-      {
-        "id": "d2f5a644918499ac",
-        "sourceId": "www-xda-developers-com-feed-productivity",
-        "title": "Connecting Obsidian to Gemini transformed my notes from archive to actually useful",
-        "link": "https://www.xda-developers.com/connecting-obsidian-to-gemini-transformed-notes-from-archive-to-useful/",
-        "published": "2026-04-30T14:30:22.000Z",
-        "summary": "Most of the Obsidian-AI integrations I’ve come across work the same way - only in one direction. You usually have to install a plugin in the Obsidian app and pull in your model that way, and it either lives in the sidebar or as an inline assistant. But I wanted it the other way around - my vault inside the Gemini interface. That way I could keep using the stuff that makes Gemini actually useful to me , which are the extras like Guided Learning, Gems, and the Canvas. Bringing a Google AI chat panel into my notes app wasn’t the same thing.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:27.198Z"
-      },
-      {
-        "id": "7428a73683b9e186",
-        "sourceId": "www-xda-developers-com-feed-productivity",
-        "title": "I used Obsidian wrong for a year, here's the folder setup that finally clicks",
-        "link": "https://www.xda-developers.com/used-obsidian-wrong-for-year-folder-setup-that-finally-clicks/",
-        "published": "2026-04-29T12:30:19.000Z",
-        "summary": "When I started my Obsidian journey, I was inspired by stunning, graph-heavy setups that looked like digital masterpieces, and for a year, I tried to force my brain into one of them. I spent more time perfecting nested folders and hunting for the perfect plugin than actually writing a single meaningful note.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:27.198Z"
-      },
-      {
-        "id": "c15bf67857567be4",
-        "sourceId": "www-xda-developers-com-feed-productivity",
-        "title": "I tried Euro-Office so you don't have to, and LibreOffice is still the one to beat",
-        "link": "https://www.xda-developers.com/tried-euro-office-dont-have-to-libreoffice/",
-        "published": "2026-04-26T19:00:20.000Z",
-        "summary": "Europe has been on a slow, steady push towards digital sovereignty for a while now, and a lot of that push ends up pointing at the same handful of tools. Nextcloud is the obvious example, sitting somewhere between Google Drive and a full collaboration suite for anyone who wants to self-host. On top of that, Nextcloud has historically leaned on OnlyOffice to handle in-browser document editing, and for the better part of eight years, that arrangement more or less worked.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:27.198Z"
-      },
-      {
-        "id": "2a4e1fc13fe82217",
-        "sourceId": "www-xda-developers-com-feed-productivity",
-        "title": "5 open-source developer tools that are better than their well-funded competitors",
-        "link": "https://www.xda-developers.com/open-source-developer-tools-that-are-better-than-their-competitors/",
-        "published": "2026-04-25T20:30:20.000Z",
-        "summary": "The developer toolkit has reached a tipping point where even the most basic utilities now demand a login and a subscription. For those of us maintaining high-performance home labs or managing complex workflows across different devices, paid, resource-hungry tools feel like a liability.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:27.198Z"
-      },
-      {
-        "id": "75788fdda53402b2",
-        "sourceId": "www-xda-developers-com-feed-productivity",
-        "title": "I uninstalled these 4 Obsidian plugins and my vault instantly became easier to manage",
-        "link": "https://www.xda-developers.com/uninstalled-obsidian-plugins-vault-easier-to-manage/",
-        "published": "2026-04-23T22:00:21.000Z",
-        "summary": "When I first got into Obsidian, I also got into the plugins at the same time. That’s just what you do - every setup video, Reddit thread, or “here’s my vault” post had a plugin list at the end. So I built mine too. But the vault started feeling more like a project I was managing on top of my actual projects. Which is kind of the opposite of what I wanted when I picked Obsidian over something like Notion to begin with.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:27.198Z"
-      },
-      {
-        "id": "cbf9aab699e0bba9",
-        "sourceId": "www-xda-developers-com-feed-productivity",
-        "title": "I used to avoid OneDrive until I discovered these 4 features",
-        "link": "https://www.xda-developers.com/i-used-to-avoid-onedrive-until-i-discovered-these-x-features/",
-        "published": "2026-04-23T14:30:22.000Z",
-        "summary": "Microsoft OneDrive is one of the most frequently disabled services on any new Windows device. For many users, it's one of the first steps after a fresh installation, and one might find countless user forums dedicated to removing it from the OS entirely. This is somewhat understandable. The integration feels forced, the automatic syncing of local data to Microsoft servers raises concerns, and it can often create massive confusion by changing default file paths. After all, who needs a D esktop and a OneDrive Desktop?",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:27.198Z"
-      },
-      {
-        "id": "964ed81b05bf3ba8",
-        "sourceId": "www-xda-developers-com-feed-productivity",
-        "title": "3 reasons I'm finally uninstalling Obsidian - and what I'm replacing it with",
-        "link": "https://www.xda-developers.com/3-reasons-im-finally-uninstalling-obsidian-and-what-im-replacing-it-with/",
-        "published": "2026-04-23T13:31:20.000Z",
-        "summary": "Obsidian is a powerful knowledge management and note-taking tool — if you know how to use it. If you're like me and jumped in with minimal knowledge about the app, then your mileage may vary.",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:15:27.198Z"
-      }
-    ],
-    "brodude-ru-category-dating-feed": [
-      {
-        "id": "3c1433abc9906beb",
-        "sourceId": "brodude-ru-category-dating-feed",
-        "title": "11 признаков, что в отношениях ты слишком зациклен на себе",
-        "link": "https://brodude.ru/11-priznakov-chto-v-otnosheniyah-ty-slishkom-zacziklen-na-sebe/",
-        "published": "2026-05-04T07:00:54.000Z",
-        "summary": "Баланс важен в любых отношениях, будь то родственные, дружеские или романтические. С одной стороны, тебе нужно стараться не терять себя, поддерживать свои интересы, не стирать личные границы. С другой — учитывать мнение партнера, идти на компромиссы, где это возможно, проявлять заботу, уделять внимание. То есть твоя задача — сохранять себя, при этом поддерживать эмоциональную близость с теми, кто тебе важен. Главная проблема, с которой ты можешь столкнуться: перекос в свою сторону для тебя часто неочевиден. Да, твоя девушка может сказать тебе о том, что ты уделяешь ей недостаточно внимания или не воспринимаешь ее слова серьезно. Но здесь велик соблазн списать это на ее плохое настроение, назвать это привычкой преувеличивать и так далее. Ведь тебе самому кажется, что ничего плохого ты не делаешь, а просто ведешь себя естественно. Если ты действительно хочешь сохранить контакт с любимым человеком, сделать вашу связь еще более глубокой и прочной, эта статья для тебя. Ниже разберем... Читать далее ... \n\n 11 признаков, что в отношениях ты слишком зациклен на себе \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:41.347Z"
-      },
-      {
-        "id": "6ff4d9ef479a7fe1",
-        "sourceId": "brodude-ru-category-dating-feed",
-        "title": "6 вещей, которые мгновенно отталкивают женщин от мужчин",
-        "link": "https://brodude.ru/6-veshhej-kotorye-mgnovenno-ottalkivayut-zhenshhin-ot-muzhchin/",
-        "published": "2026-04-27T07:10:19.000Z",
-        "summary": "Девушки часто не знают, чего хотят. Как правило это касается мелочей: что надеть, где поужинать, как подстричься. Но, даже если они имеют некоторые проблемы с выбором того, что им нравится, то уж они абсолютно уверены в том, что им не нравится. Сейчас мы имеем в виду те черты и манеры мужчин, которые заставляют содрогаться многих девушек, как от металлического скрежета по стеклу. Консультант по семейным отношениям Джо Барнетт составил список самых отталкивающих мужских качеств для женщин. Черпал ли он эти знания из своего личного опыта, мы не знаем, зато во многом с ним согласны. 1. Плохие манеры за столом Ты открыл перед ней дверь в ресторан и пропустил вперед, снял с нее пальто и пододвинул стул, но все это обнуляется, если ты превращаешься в неандертальца после того, как принесли еду. Мы не говорим о том, что ты обязан держать приборы как герцог Викторианской эпохи, но поедание пищи должно происходить без... Читать далее ... \n\n 6 вещей, которые мгновенно отталкивают женщин от мужчин \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:41.348Z"
-      },
-      {
-        "id": "42d1da432b388841",
-        "sourceId": "brodude-ru-category-dating-feed",
-        "title": "8 признаков здоровой романтической динамики в общении",
-        "link": "https://brodude.ru/8-priznakov-zdorovoj-romanticheskoj-dinamiki-v-obshhenii/",
-        "published": "2026-04-21T07:00:15.000Z",
-        "summary": "Когда ты встречаешь девушку, которая тебе нравится, велик риск сосредоточиться исключительно на эмоциях. Ты стараешься отследить, есть ли между вами искра, какие чувства ты проживаешь рядом с ней, хочется ли тебе проводить время вместе и так далее. Конечно же, такой анализ важен. Но не стоит забывать о не менее важном факторе — динамике вашего общения. То, как вы с девушкой взаимодействуете друг с другом, может многое рассказать о вас и вашем возможном будущем. Часто именно по общению людей можно понять, насколько они в реальности подходят друг другу. Становится видно, есть ли у них взаимный интерес, комфортно ли им рядом, стремятся ли они уменьшать дистанцию между ними. Стоит помнить о том, что даже самая сильная симпатия — это еще не залог счастливых отношений. В этой статье рассказываем, как же выглядит здоровая романтическая динамика. 1. Инициатива распределяется естественно Если вы друг другу интересны и оба хотите общения, инициатива будет распределяться естественно. Не... Читать далее ... \n\n 8 признаков здоровой романтической динамики в общении \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:41.348Z"
-      },
-      {
-        "id": "a94306173dd2e686",
-        "sourceId": "brodude-ru-category-dating-feed",
-        "title": "Как отличить женский флирт от элементарной вежливости",
-        "link": "https://brodude.ru/kak-otlichit-zhenskij-flirt-ot-elementarnoj-vezhlivosti/",
-        "published": "2026-04-15T09:02:18.000Z",
-        "summary": "Когда девушка с тобой флиртует, это самый верный сигнал к наступлению из всех существующих. Но дело в том, что иногда за пряной улыбкой и сверкающим взглядом таится не симпатия к тебе, а обычная вежливость. Вроде той, которую проявляют продавцы-консультанты, когда хотят продать тебе куртку или смартфон. На самом деле за этой, казалось бы, пустяковой разницей стоят разбитые сердца миллионов парней, которые приняли женское дружелюбие за флирт. Она тебе улыбается — ты, как подлинный альфа-самец, приглашаешь ее на свидание. А что в итоге? «Извини, нет. И я, кстати, замужем». С трудом пытаясь подвергнуть цензуре свое внутреннее негодование, ты не понимаешь, как такое могло произойти. А все дело в том, что мужчины и женщины по-разному оценивают дружелюбие собеседника противоположного пола (особенно если этот собеседник тебе нравится). Там, где женщина может воспринять мужское дружелюбие просто за дружелюбие (тем более когда оно таковым и является), мужчина по всем канонам собственного самолюбия принимает за флирт... Читать далее ... \n\n Как отличить женский флирт от элементарной вежливости \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:41.348Z"
-      },
-      {
-        "id": "90b7b2bc76f9bac7",
-        "sourceId": "brodude-ru-category-dating-feed",
-        "title": "9 ошибок, которые ты совершаешь, пытаясь слишком сильно рационализировать флирт",
-        "link": "https://brodude.ru/9-oshibok-kotorye-ty-sovershaesh-pytayas-slishkom-silno-raczionalizirovat-flirt/",
-        "published": "2026-04-03T09:00:08.000Z",
-        "summary": "Флирт — это особый вид общения, где чрезмерное стремление к рационализации может только мешать. Когда ты ведешь легкую беседу, выражая симпатию девушке, логика и контроль разрушают непринужденную атмосферу. Стараясь сделать все правильно, продумать следующую фразу, вычислить реакцию на слова, избежать неловкости, ты загоняешь себя в ловушку. Страх становится сильнее, отчего живого контакта не получается. Это чувствуешь не только ты, но и девушка, как следствие, разговор заканчивается, не успев начаться. Рассказываем, какие ошибки чаще всего возникают из-за твоих попыток рационализировать флирт. 1. Ты пытаешься заранее просчитать каждую реплику Твое желание говорить только крутые фразы, которые бы представляли твои сильные стороны, вполне понятно. Ты можешь быть уверенным в том, что, подобрав правильные слова, сразу сможешь произвести на девушку хорошее впечатление. Но в реальности это не совсем так. Когда ты начинаешь продумывать каждый свой следующий шаг, выстраивать в голове фразу, которую скажешь после реплики собеседницы, разговор с тобой перестает быть живым. Это хорошо... Читать далее ... \n\n 9 ошибок, которые ты совершаешь, пытаясь слишком сильно рационализировать флирт \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:41.348Z"
-      },
-      {
-        "id": "1c69ee990ef43099",
-        "sourceId": "brodude-ru-category-dating-feed",
-        "title": "Вещи, которые не работают, когда ты хочешь казаться сексуальным",
-        "link": "https://brodude.ru/veshhi-kotorye-ne-rabotayut-kogda-ty-hochesh-kazatsya-seksualnym/",
-        "published": "2026-04-01T09:00:18.000Z",
-        "summary": "Ты наверняка хотя бы раз пытался выглядеть более сексуально, чем есть на самом деле. Где-то добавлял уверенности, где-то — наглости, а иногда просто включал режим «сейчас я произведу впечатление». Проблема в том, что большинство этих попыток работают строго наоборот. Вместо притягательности получается странная смесь показухи, неловкости и откровенной нелепости — и это замечаешь не только ты, но и те, на кого всё это рассчитано. Никто не говорит, что ты один такой — почти каждый через это проходит. Но если уж играть в привлекательность, то хотя бы без откровенных провалов, которые убивают весь эффект ещё на старте. 1. Тонна геля на волосах Можно подумать, что ты зациклился на фильме «Лак для волос», но сегодня время другое — если девушка опустит руку в твои склизкие волосы, то она почувствует, как миллион улиток заблевали ей руку. Гель нужен не для того, чтобы твои волосы выглядели «грязно» — он нужен для поддержания формы прически.... Читать далее ... \n\n Вещи, которые не работают, когда ты хочешь казаться сексуальным \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:41.348Z"
-      },
-      {
-        "id": "68701b68b059a0a0",
-        "sourceId": "brodude-ru-category-dating-feed",
-        "title": "15 способов забыть, что она вообще существует",
-        "link": "https://brodude.ru/15-sposobov-zabyt-chto-ona-voobshhe-sushhestvuet/",
-        "published": "2026-03-23T09:00:05.000Z",
-        "summary": "Независимо от того, что произошло в твоей личной жизни, пережить расставание зачастую становится не по силам. Ты лишаешься сна, теряешь работоспособность, забываешь о смысле своей жизни. Подобные вещи не говорят о тебе как о слюнтяе. Возможно, ты искренне любил эту женщину, но что-то не сложилось. Представим, что тебе действительно плохо, и ты не понимаешь, что делать дальше. Уверяем, со временем ты будешь удивляться тому, как убивался по бывшей. Но пока ты всё еще сходишь по ней с ума, и тебе просто необходимо с этим что-то делать. Не раскисай — вот 15 советов, которые точно пойдут тебе на пользу. 1. Будь занят Обычно мы думаем о своих девушках тогда, когда ничего больше не делаем. Если ты хочешь забыть о подруге, то тебе не следует брать отпуск либо отказываться от работы, хобби, бизнеса. Напротив, ты должен занять свой мозг серьезным делом. Если у твоего ума не будет никакого «свободного времени», то он... Читать далее ... \n\n 15 способов забыть, что она вообще существует \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:41.348Z"
-      },
-      {
-        "id": "dcd1406d27d5bc34",
-        "sourceId": "brodude-ru-category-dating-feed",
-        "title": "11 шагов к легкому знакомству без неловкости",
-        "link": "https://brodude.ru/11-shagov-k-legkomu-znakomstvu-bez-nelovkosti/",
-        "published": "2026-03-19T11:00:56.000Z",
-        "summary": "Даже если в целом ты считаешь себя довольно общительным человеком, момент первого знакомства с девушкой может вызывать у тебя внутреннее напряжение. В голове появляется много мыслей о том, что лучше всего сказать, как начать диалог и как сделать это так, чтобы не выглядеть странным. Чаще всего неловкость может возникать из-за завышенных ожиданий с твоей стороны. Если ты считаешь, что тебе обязательно нужно произвести хорошее впечатление, придумать интересные темы или сразу показать себя с лучшей стороны, ты увеличиваешь давление в первую очередь на самого себя. Для того чтобы избавиться от переживаний, попробуй придерживаться следующих правил. 1. Не начинай разговор с формальностей Использование формальных фраз, особенно в начале диалога, в большинстве случаев усиливает напряжение. Когда первое, что ты говоришь, — это «Здравствуйте, можно познакомиться?», ситуация сразу же принимает официальный окрас, а твоей собеседнице становится понятно: в данный момент происходит попытка познакомиться с ней. Поэтому лучше всего начать разговор непринужденно: с простого наблюдения... Читать далее ... \n\n 11 шагов к легкому знакомству без неловкости \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:41.348Z"
-      },
-      {
-        "id": "a6c93f0df6af2190",
-        "sourceId": "brodude-ru-category-dating-feed",
-        "title": "8 признаков, что интерес к девушке точно односторонний",
-        "link": "https://brodude.ru/8-priznakov-chto-interes-k-devushke-tochno-odnostoronnij/",
-        "published": "2026-03-13T11:00:20.000Z",
-        "summary": "Часто, как только ты начинаешь испытывать к девушке симпатию, ты становишься менее объективным. Тебе хочется верить в то, что между вами есть взаимность, и твой мозг отчаянно ищет этому подтверждение, оправдывая тревожные сигналы. В результате паузы в общении и редкие встречи ты списываешь на ее занятость, скрытность и отстраненность — на стеснительность и боязнь отношений, и дальше по списку. Понять, а уж тем более признать, что твой интерес является односторонним, крайне сложно. Особенно если вы только познакомились и ты еще не в курсе ее особенностей поведения, взглядов и так далее. Но существуют поведенческие сигналы, которые сложно игнорировать. Дело в том, что они проявляются постоянно, их гораздо сложнее назвать случайным стечением обстоятельств или следствием плохого настроения. В этой статье мы собрали несколько признаков, что твой интерес к девушке точно односторонний. 1. Она не задает тебе встречных вопросов Разговор подразумевает активное участие двоих людей. Когда ты интересен девушке, она не только отвечает... Читать далее ... \n\n 8 признаков, что интерес к девушке точно односторонний \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:41.348Z"
-      },
-      {
-        "id": "a72795d52f343eea",
-        "sourceId": "brodude-ru-category-dating-feed",
-        "title": "8 признаков эмоциональной незрелости партнера в быту",
-        "link": "https://brodude.ru/8-priznakov-emoczionalnoj-nezrelosti-partnera-v-bytu/",
-        "published": "2026-03-09T11:00:21.000Z",
-        "summary": "В отношениях каждый человек хочет показать себя с наилучшей стороны. И это может удаваться до того момента, пока вы не начнете жить вместе. Быт является своего рода индикатором эмоциональной зрелости. Только на этом этапе станет четко видно, умеет ли человек договариваться, брать на себя ответственность, контролировать свои эмоции и так далее. К сожалению, далеко не все понимают, чем отличается совместное времяпрепровождение от жизни вдвоем. Поэтому после решения съехаться возникают проблемы: оказывается, что любимого человека, его желания и потребности, мнение, стремления нужно как-то соотнести со своими привычками и ожиданиями. Разница между людьми и их представлениями о совместном быте становится очевиднее. И, если один из партнеров ведет себя инфантильно, второму приходится отыгрывать роль взрослого за двоих: постоянно напоминать о чем-либо, организовывать досуг, сглаживать конфликты, следить за порядком. Такой перекос практически всегда приводит к проблемам в отношениях и грозит их разрывом. Мы собрали несколько тревожных признаков, на которые стоит обратить внимание. Если кто-то... Читать далее ... \n\n 8 признаков эмоциональной незрелости партнера в быту \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:41.348Z"
-      }
-    ],
-    "brodude-ru-category-advices-feed": [
-      {
-        "id": "0253091ad47c685a",
-        "sourceId": "brodude-ru-category-advices-feed",
-        "title": "9 вещей, которые делают твою жизнь скучнее, чем она могла бы быть",
-        "link": "https://brodude.ru/9-veshhej-kotorye-delayut-tvoyu-zhizn-skuchnee-chem-ona-mogla-by-byt/",
-        "published": "2026-04-30T07:00:53.000Z",
-        "summary": "Скука может прийти в твою жизнь по многим причинам: в ней не происходит ничего нового, дни проходят слишком одинаково, не хватает эмоций, разнообразия, общения. Вроде бы у тебя все нормально — ты работаешь, ведешь быт, даже освобождаешь себе время на отдых. Но при этом постоянно чувствуешь скуку, не знаешь, куда себя деть. Самое грустное — в подавляющем большинстве случаев человек сам превращает свою жизнь в плоскую и безрадостную. Не специально, конечно, вряд ли кто-то руководствуется таким стремлением. Просто ты привыкаешь к меньшему, чем хотелось бы, часто занимаешься откладыванием на потом, миришься с тем, что тебя не устраивает. Давай разберемся, что именно делает твою жизнь скучнее, чем она могла бы быть. 1. Одинаковый распорядок дня и недели Соблюдать режим полезно — это помогает избегать выгорания, планировать свой день, успевать больше. Но во всем важно соблюдать меру. Если ты каждый день заставляешь себя жить по одному расписанию, строго соблюдая все временные промежутки... Читать далее ... \n\n 9 вещей, которые делают твою жизнь скучнее, чем она могла бы быть \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:51.284Z"
-      },
-      {
-        "id": "462d0847bf133a03",
-        "sourceId": "brodude-ru-category-advices-feed",
-        "title": "Как города становятся «местами притяжения»",
-        "link": "https://brodude.ru/kak-goroda-stanovyatsya-mestami-prityazheniya/",
-        "published": "2026-04-29T08:00:56.000Z",
-        "summary": "Помнишь цитату из «Монстров на каникулах» про дзынь, случающийся один раз? С городами так тоже бывает. По самым разным причинам: где-то живут наши близкие, где-то мы впервые влюбились, где-то почувствовали себя на своем месте и захотели остаться. Признания в любви городам России слушай в подкасте «Место притяжения» от авиакомпании «ЮТэйр» на любой удобной платформе. Маршрут сезона: Тюмень → Краснодар → Сургут → Уфа → Красноярск → Иркутск → Самара → Грозный → Санкт-Петербург → Москва → Ханты-Мансийск → Геленджик Читать далее ... \n\n Как города становятся «местами притяжения» \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:51.285Z"
-      },
-      {
-        "id": "e5e59c1295dab499",
-        "sourceId": "brodude-ru-category-advices-feed",
-        "title": "7 твоих поступков, основанных на зависти, которые причиняют тебе вред",
-        "link": "https://brodude.ru/7-tvoih-postupkov-osnovannyh-na-zavisti-kotorye-prichinyayut-tebe-vred/",
-        "published": "2026-04-29T07:00:49.000Z",
-        "summary": "В нашем обществе не принято говорить о зависти вслух. Это чувство, напротив, стараются спрятать как можно глубже в себе, дать другое, более приемлемое объяснение своим чувствам, найти логические обоснования различным проявлениям своей недоброжелательности. Ты можешь действовать точно так же: вместо того чтобы признаться самому себе в зависти к кому-либо, ты занимаешься самообманом. Убеждаешь себя в том, что ты просто остаешься объективным, что тебе не нравится подход, выбранный человеком, и так далее. Сама по себе зависть не делает тебя плохим или недостойным человеком. Это абсолютно нормальная реакция, более того, ты можешь обратить ее себе во благо — понять, чего ты на самом деле хочешь, определиться с целями и ценностями, вдохновиться и сделать первый шаг навстречу к мечте. К сожалению, чаще люди склонны выбирать другую модель поведения: они поддаются своим эмоциям. В итоге зависть толкает их на поступки, которые оборачиваются против них самих. Наверняка и ты сам не раз грешил таким. В... Читать далее ... \n\n 7 твоих поступков, основанных на зависти, которые причиняют тебе вред \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:51.285Z"
-      },
-      {
-        "id": "f447cbb892f80fab",
-        "sourceId": "brodude-ru-category-advices-feed",
-        "title": "Как даже небольшие изменения в распорядке дня могут влиять на твое самочувствие",
-        "link": "https://brodude.ru/kak-dazhe-nebolshie-izmeneniya-v-rasporyadke-dnya-mogut-vliyat-na-tvoe-samochuvstvie/",
-        "published": "2026-04-24T07:00:29.000Z",
-        "summary": "Многие люди почему-то уверены: для ощутимых изменений в самочувствии необходимо принимать радикальные решения. Например, кардинально менять образ жизни, резко перестраивать график, полностью отказываться от своих негативных привычек или, напротив, внедрять полезные, жестко контролировать каждый свой шаг. В реальности, как ты, наверное, уже догадался, все чаще работает прямо противоположно. Глобальные изменения приносят сильный стресс и тревогу, что сильно снижает качество жизни и твои шансы на успех. Но вот небольшие перемены, которые ты мог бы назвать несерьезными, приносят ощутимый эффект. Порой для того, чтобы наконец почувствовать себя чуточку лучше, достаточно сделать первый шаг. Все потому, что твой организм чувствителен к твоему ритму жизни, даже если тебе кажется обратное. То, как и сколько ты спишь, как часто отдыхаешь, насколько нагружаешь свое тело, отражается на твоем физическом и ментальном состоянии. Сегодня разберем, почему даже небольшие изменения в распорядке дня оказывают на тебя влияние. 1. У тебя меняется уровень энергии в течение дня В идеале... Читать далее ... \n\n Как даже небольшие изменения в распорядке дня могут влиять на твое самочувствие \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:51.285Z"
-      },
-      {
-        "id": "edfe3fe316d89f49",
-        "sourceId": "brodude-ru-category-advices-feed",
-        "title": "Почему ты выбираешь казаться, а не быть",
-        "link": "https://brodude.ru/pochemu-ty-vybiraesh-kazatsya-a-ne-byt/",
-        "published": "2026-04-22T07:00:20.000Z",
-        "summary": "Современный мир похож на аквариум, где каждый из нас на виду. Благодаря социальным сетям, гаджетам, брендам на одежде и месту работы мы легко определяем статус человека. После чего формируем соответствующие ожидания от предполагаемых контактов. На человека в деловом костюме, с дорогими часами на руке мы возлагаем одни надежды, на курьера с грязным велосипедом — совсем другие. Так формируется среда, где важны не личные качества, а образ, визуализация. Вполне возможно, что потрепанный за длинную смену курьер зарабатывает больше, имеет куда более насыщенную жизнь, чем «иллюзионист» в костюме, нацепивший китайскую реплику Rolex с одной лишь целью — произвести впечатление. Это срабатывает: в первом мы видим обслуживающий персонал, во втором — авторитет. Реальное положение вещей, возможно, и будет раскрыто, но значительно позже. Быть или казаться — это не совсем вопрос личного выбора и морали. Само общество и государственные институты выстраивают такую структуру взаимоотношений между людьми, где казаться не только проще, но часто еще... Читать далее ... \n\n Почему ты выбираешь казаться, а не быть \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:51.285Z"
-      },
-      {
-        "id": "6f0000b151007da3",
-        "sourceId": "brodude-ru-category-advices-feed",
-        "title": "3 способа принять решение, когда ты сомневаешься",
-        "link": "https://brodude.ru/3-sposoba-prinyat-reshenie-kogda-ty-somnevaeshsya/",
-        "published": "2026-04-20T09:00:55.000Z",
-        "summary": "Тебе наверняка известно, что чем больше выбор, тем сложнее его сделать. Дай очень голодному человеку черствый хлеб — он съест его сразу же, не задумываясь. А предоставь меню из сотни разных блюд, и он продлит свой голод еще минут на 30, выбирая самое лучшее. И так во всем, особенно когда дело касается вещей, определяющих твою жизнь. Выбор велик, а ошибка может стоить дорого. В таком случае выбор должен быть решительным и жестким. Возможно, таким же жестким, как тот самый черствый хлеб. 1. Порядок приходит из хаоса Жизнь похожа на сумасшедший аттракцион, в котором ты несешься с бешеной скоростью: события как изображения сменяются перед глазами, а при резких поворотах может даже укачать. Но именно динамика жизни, ее непостоянство и сумбур придают ей особенный смысл. Ты никогда не узнаешь, где можешь оказаться завтра или с каким человеком познакомишься. Неожиданное событие может внезапно изменить не только твои цели, но и мировоззрение, а иногда... Читать далее ... \n\n 3 способа принять решение, когда ты сомневаешься \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:51.285Z"
-      },
-      {
-        "id": "567b52be2fd201e7",
-        "sourceId": "brodude-ru-category-advices-feed",
-        "title": "9 идей хобби для любителей кино и литературы",
-        "link": "https://brodude.ru/9-idej-hobbi-dlya-lyubitelej-kino-i-literatury/",
-        "published": "2026-04-20T07:00:34.000Z",
-        "summary": "Любовь к фильмам и книгам сама по себе уже считается хобби. Но ты можешь не только смотреть кино или читать интересующие тебя произведения. У тебя есть возможность расширить список занятий: найти хобби, которые станут логическим продолжением твоего любимого времяпрепровождения. В этой статье мы как раз перечислили несколько идей, которые могут тебе подойти. 1. Стилизованная фотография Если ты ценитель визуальных образов в кино, у тебя есть любимые стили или тебе нравятся определенные персонажи, ты можешь попробовать воссоздавать их в формате фотографии. Вариантов, как именно это делать, огромное множество. Ты можешь стилизовать съемки под конкретный фильм или эпоху, пытаться повторить запоминающиеся образы или интерпретировать их по-своему, обрабатывать снимки в цветах и оттенках любимой картины и так далее. Это хобби подойдет тебе, даже если ты не являешься профессиональным фотографом и не располагаешь возможностью купить специальную аппаратуру. Если возможности твоего смартфона позволяют тебе делать качественные снимки, этого может быть достаточно. Кроме того, ты можешь... Читать далее ... \n\n 9 идей хобби для любителей кино и литературы \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:51.285Z"
-      },
-      {
-        "id": "87bd35dbf2277a00",
-        "sourceId": "brodude-ru-category-advices-feed",
-        "title": "Как справиться с кризисом, если ты перестал узнавать свою привычную жизнь",
-        "link": "https://brodude.ru/kak-spravitsya-s-krizisom-esli-ty-perestal-uznavat-svoyu-privychnuyu-zhizn/",
-        "published": "2026-04-17T11:00:34.000Z",
-        "summary": "Иногда кризис наступает в результате какого-то события. Это происходит резко, и последствия ощущаются практически мгновенно. Человек понимает, что вчера все было нормально, а уже сегодня привычный мир разрушен. В таком сценарии есть свой плюс — никаких иллюзий или недопонимания. Время не расходуется впустую, не требуется период для осознания, если, конечно, не заниматься самообманом. Другие кризисы могут настигать постепенно, будто вода, заполняющая трюм. Там — небольшая пробоина, здесь — едва заметная течь. Вроде бы ничего катастрофического, но некоторое время спустя ситуация становится угрожающей. Еще немного — и судно пойдет ко дну. В повседневной жизни это можно описать как норму, вдруг ставшую чем-то чуждым, совершенно нежеланным. Работа теряет смысл, цели больше не вдохновляют, окружение раздражает. Это состояние может напугать, ведь рушится не внешний мир, а внутренняя опора, притом далеко не всегда получается определить, где находится источник проблемы. Переход в новое состояние Постепенно все люди меняются, и это нормально. Исключением является лишь небольшой... Читать далее ... \n\n Как справиться с кризисом, если ты перестал узнавать свою привычную жизнь \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:51.285Z"
-      },
-      {
-        "id": "eff4a11341fa35b6",
-        "sourceId": "brodude-ru-category-advices-feed",
-        "title": "Как перестать бояться получить по лицу",
-        "link": "https://brodude.ru/ne-bojsya-poluchit-po-litsu/",
-        "published": "2026-04-17T09:00:17.000Z",
-        "summary": "Страх физической боли от удара по лицу может существенно пошатнуть твою самоуверенность при возникновении экстремальной ситуации. Порой вступить в драку приходится даже в том случае, если ты всегда старался ее избегать. Человек, не привыкший к ударам, в случае их нанесения инстинктивно пытается устраниться от опасности: закрывает лицо руками либо отворачивается. Это может привести к неприятным последствиям, сулящими еще большие травмы. Отсутствие страха перед ударом поможет избежать паники и трезво оценить ситуацию. В конечном счете небольшой фингал под глазом является маленькой платой за возможность выйти из конфликта целым и с достоинством. Есть четыре шага, которые помогут справиться со страхом удара по лицу. 1. Бросок мяча Попроси друга бросать предметы прямо тебе в лицо. Но есть два условия. Предметы не должны быть слишком твердыми — футбольный мяч вполне подойдет. Второе условие: найди друга, которому ты не должен денег, иначе он может перестараться. После каждого броска проследи за своим поведением. Закрываешь глаза, пытаешься... Читать далее ... \n\n Как перестать бояться получить по лицу \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:51.285Z"
-      },
-      {
-        "id": "6d39775d8bf33b89",
-        "sourceId": "brodude-ru-category-advices-feed",
-        "title": "8 способов тренировать насмотренность при помощи кино и сериалов",
-        "link": "https://brodude.ru/8-sposobov-trenirovat-nasmotrennost-pri-pomoshhi-kino-i-serialov/",
-        "published": "2026-04-16T07:00:14.000Z",
-        "summary": "Если ты хочешь развивать чувство стиля, быстрее генерировать идеи, расти в своей сфере деятельности, так или иначе связанной с творчеством, или улучшить качество жизни, ты должен знать, что не последнюю роль в этом играет насмотренность. Это не врожденный талант, а навык, который может сформировать абсолютно каждый человек. Для этого необходимо регулярно тренировать свою наблюдательность, анализировать качественный контент, искать скрытые смыслы и изучать, что и каким образом хотел донести до тебя автор. Один из самых доступных и интересных способов развить насмотренность — знакомство с качественными продуктами киноиндустрии. В хорошем фильме или сериале все продумано до мелочей: свет, цвет, композиция кадра, монтаж, костюмы и так далее. Все это работает для того, чтобы донести тебе конкретную мысль или идею. Единственное уточнение: для тренировки насмотренности тебе недостаточно примерить на себя роль обыкновенного зрителя. Придется научиться копать глубже и действительно разбираться в том, что происходит на экране. Вот несколько действий, которые тебе в этом помогут.... Читать далее ... \n\n 8 способов тренировать насмотренность при помощи кино и сериалов \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:30:51.285Z"
-      }
-    ],
-    "brodude-ru-category-food-feed": [
-      {
-        "id": "eaae380dd677a8ed",
-        "sourceId": "brodude-ru-category-food-feed",
-        "title": "9 способов превратить готовку в удовольствие",
-        "link": "https://brodude.ru/9-sposobov-prevratit-gotovku-v-udovolstvie/",
-        "published": "2026-03-10T11:00:55.000Z",
-        "summary": "Многие воспринимают готовку исключительно как бытовую обязанность, задачу, которую нужно выполнить. Из-за этого они действуют на автомате: смотрят, что из продуктов есть дома, определяют, что из них можно приготовить, стараются сделать как можно больше, чтобы не возвращаться к этому процессу еще несколько дней. Если в этих строках ты узнаешь себя, неудивительно, что готовка не доставляет тебе никакого удовольствия. Можно подойти к процессу приготовления пищи иначе. Это может быть время для себя, способ расслабиться, творческий процесс или даже совместный досуг с любимым человеком. Главное — не забывать: важно не то, что ты готовишь, а то, в каком состоянии ты это делаешь. Вот несколько способов, которые помогут тебе перенести готовку из списка обязанностей в разряд занятий, приносящих тебе удовольствие. 1. Готовь под музыку или подкаст Тишина на кухне усиливает ощущение рутины. Ты можешь думать лишь о том, как быстрее выполнить задачу и вернуться к более приятным занятиям. Но твое настроение может сильно... Читать далее ... \n\n 9 способов превратить готовку в удовольствие \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:00.447Z"
-      },
-      {
-        "id": "58bfcdef241f5d50",
-        "sourceId": "brodude-ru-category-food-feed",
-        "title": "Как цвет еды может повлиять на твое настроение и аппетит",
-        "link": "https://brodude.ru/kak-czvet-edy-mozhet-povliyat-na-tvoe-nastroenie-i-appetit/",
-        "published": "2025-11-19T09:00:09.000Z",
-        "summary": "Теплая золотистая корочка свежей выпечки, хрустящий и сочный зеленый салат — даже если мы не задумываемся об этом, цвета вокруг нас сильно влияют на настроение и решения. И что интересно, они могут не только разжечь аппетит, но и, наоборот, притупить его. Если ты готовишь дома, понимание того, как цвета воздействуют на восприятие еды, поможет сделать блюда более привлекательными и аппетитными или, наоборот, сдержать лишний аппетит, что особенно удобно при подаче сытных и калорийных угощений. В компании друзей или на семейном ужине цвет тоже играет роль: правильно подобранная палитра может задать нужное настроение — от праздничного до камерного. Поэтому стоит разобраться, какие оттенки вызывают желание есть, а какие могут его приглушать, и как ты можешь использовать это в своей кулинарии. Цвета, которые возбуждают аппетит Есть несколько оттенков, которые пробуждают аппетит, хочешь ты того или нет. Добавляя продукты этих цветов в блюда или дополняя им декор стола, ты сможешь произвести впечатление на... Читать далее ... \n\n Как цвет еды может повлиять на твое настроение и аппетит \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:00.447Z"
-      },
-      {
-        "id": "ca4d2d23c5890008",
-        "sourceId": "brodude-ru-category-food-feed",
-        "title": "Какие продукты можно и нельзя хранить в холодильнике: бытовые лайфхаки",
-        "link": "https://brodude.ru/kakie-produkty-mozhno-i-nelzya-hranit-v-holodilnike-bytovye-lajfhaki/",
-        "published": "2025-10-30T10:00:55.000Z",
-        "summary": "Холодильник — главное оружие против испорченной еды. Или, по крайней мере, мы так думаем. На деле он часто превращает свежие продукты в печальное зрелище: помидоры становятся безвкусными, хлеб — сухим, а фрукты — философски сморщенными. Не все, что съедобно, любит холод. При поддержке бренда Hisense рассказываем, какие продукты в холодильнике действительно живут дольше, а какие только делают вид, что им там хорошо. Оставляем: что 100 % нужно хранить в холоде Есть продукты, которые не живут при комнатной температуре. На столе они быстро испортятся, так что тут два пути: сразу готовить и есть или убрать в холодильник. I. Молочные продукты Температура: от +2 °C до +5 °C. При комнатной температуре в молоке, кефире, йогуртах и сливках начинают быстро размножаться бактерии. Холод замедляет этот процесс и сохраняет вкус молочки. Лайфхак: не ставь молоко на дверцу — там слишком тепло и продукт портится быстрее. II. Мясо, рыба и морепродукты Температура: от 0 °C... Читать далее ... \n\n Какие продукты можно и нельзя хранить в холодильнике: бытовые лайфхаки \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:00.448Z"
-      },
-      {
-        "id": "70ebebbd2888a04f",
-        "sourceId": "brodude-ru-category-food-feed",
-        "title": "14 способов оптимизировать расходы на продукты, продолжая питаться хорошо",
-        "link": "https://brodude.ru/14-sposobov-optimizirovat-rashody-na-produkty-prodolzhaya-pitatsya-horosho/",
-        "published": "2025-10-14T07:00:06.000Z",
-        "summary": "Каждому из нас хочется хорошо питаться, но при этом не разориться на походах в магазин. Оптимизация расходов на продукты — это разумное использование денег, времени и ресурсов, чтобы есть вкусно, разнообразно и полезно. Вот одиннадцать способов, которые помогут в этом преуспеть. 1. Планируй меню на неделю Когда ты заранее знаешь, что будешь готовить, риск спонтанных и дорогих покупок снижается. Составь меню на неделю и по нему создавай список продуктов: так ты купишь только то, что действительно нужно, и избежишь лишних трат. Например, если ты знаешь, что в понедельник приготовишь суп из чечевицы, а во вторник пасту с овощами, ты сможешь купить только нужные ингредиенты, не тратя денег на ненужные продукты «про запас». Это также помогает сократить количество выброшенной еды. 2. Составь список и строго его соблюдай Придумав меню, выпиши все, что нужно, и не отклоняйся от списка в магазине. Лишние импульсивные покупки — одна из главных причин, почему твой бюджет... Читать далее ... \n\n 14 способов оптимизировать расходы на продукты, продолжая питаться хорошо \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:00.448Z"
-      },
-      {
-        "id": "c247ea11e4e9599d",
-        "sourceId": "brodude-ru-category-food-feed",
-        "title": "Как составить рацион питания, если ты тренируешься по вечерам",
-        "link": "https://brodude.ru/kak-sostavit-raczion-pitaniya-esli-ty-trenirueshsya-po-vecheram/",
-        "published": "2025-09-24T11:00:25.000Z",
-        "summary": "Вечерние тренировки требуют особого подхода к еде — тут важно не только набрать энергию для зала, но и восстановиться после, при этом не перегрузив организм перед сном. Если питаться хаотично или наобум, можно легко столкнуться с усталостью, замедленным прогрессом и даже проблемами с ночным отдыхом. Чтобы этого избежать, держи в голове несколько правил. Не пропускай основные приемы пищи Весь дневной рацион напрямую влияет на твое состояние вечером. Если днем питаться кое-как или ограничиваться случайными перекусами, тренировка пройдет так себе, в итоге ты получишь лишь упадок сил, головокружение, раздражительность и почти гарантированное переедание после зала. Полноценный завтрак и обед — это база для нормальной тренировки. Они обеспечивают тебя энергией на весь день и помогают держать стабильный уровень сахара в крови. Что можно есть днем: — На завтрак выбирай овсянку на молоке или воде с ягодами и орехами, омлет с овощами и кусочком цельнозернового хлеба, творог с медом и фруктами, сэндвич с... Читать далее ... \n\n Как составить рацион питания, если ты тренируешься по вечерам \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:00.448Z"
-      },
-      {
-        "id": "c8e9da1d5e83be46",
-        "sourceId": "brodude-ru-category-food-feed",
-        "title": "5 необычных рецептов горячих бутербродов для сытного перекуса",
-        "link": "https://brodude.ru/5-neobychnyh-reczeptov-goryachih-buterbrodov-dlya-sytnogo-perekusa/",
-        "published": "2025-09-22T09:00:49.000Z",
-        "summary": "Горячие бутерброды — это спасение, когда хочется быстро и вкусно перекусить. Но классикой с сыром и колбасой никого уже не удивишь. В этой подборке — пять нестандартных рецептов горячих сэндвичей и бутербродов, которые помогут разнообразить привычный перекус и сделать его аппетитным. 1. Сэндвич «Монте-Кристо» Сэндвич «Монте-Кристо» — это блюдо с характером и потрясающим вкусом. Сделать его не сложнее, чем сделать обычный бутерброд с колбасой и сыром. Ингредиенты: — 3 ломтика белого хлеба для сэндвичей; — 110 граммов ветчины или индейки; — 50 граммов тертого сыра гауда; — 2 ч. л. майонеза; — 1 крупное яйцо; — 2 ст. л. молока; — 1 ч. л. паприки; — соль и перец по вкусу; — 2 ст. л. сливочного масла для жарки. Как приготовить: Разложи три ломтика хлеба на разделочной доске. На первый и второй распредели тертый сыр, сверху положи ветчину. Смажь обе стороны третьего ломтика хлеба майонезом. Положи его между двумя сэндвичами... Читать далее ... \n\n 5 необычных рецептов горячих бутербродов для сытного перекуса \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:00.448Z"
-      },
-      {
-        "id": "2249681561ab9466",
-        "sourceId": "brodude-ru-category-food-feed",
-        "title": "7 признаков, что в твоем рационе недостаточно клетчатки",
-        "link": "https://brodude.ru/7-priznakov-chto-v-tvoem-raczione-nedostatochno-kletchatki/",
-        "published": "2025-09-12T09:00:40.000Z",
-        "summary": "Клетчатка часто остается в тени белков и полезных жиров, хотя именно она играет огромную роль для здоровья, влияя на работу практически всех систем организма. Она помогает пищеварению, контролирует уровень сахара и холестерина, поддерживает микробиом. Но проблема в том, что большинство людей получают меньше половины от рекомендуемой нормы клетчатки в день, и это со временем оборачивается неприятными последствиями. Вот несколько сигналов, по которым можно понять, что в твоем рационе слишком мало этого микроэлемента. 1. Туман в голове Ты наверняка замечал, что после обеда иногда становится трудно сосредоточиться: мысли «расползаются», внимание уходит, появляется ощущение, будто мозг работает в замедленном режиме. Такое состояние часто называют туманом в голове, и одна из возможных его причин — недостаток клетчатки. Когда в рационе мало продуктов, которые ее содержат, углеводы усваиваются слишком быстро. Это вызывает резкий подъем сахара в крови, за которым следует такой же резкий спад. В итоге ты чувствуешь усталость, заторможенность и даже легкую сонливость.... Читать далее ... \n\n 7 признаков, что в твоем рационе недостаточно клетчатки \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:00.448Z"
-      },
-      {
-        "id": "9a5e6d4703b5829e",
-        "sourceId": "brodude-ru-category-food-feed",
-        "title": "6 блюд, которые выглядят сложными, но готовятся за 20 минут",
-        "link": "https://brodude.ru/6-blyud-kotorye-vyglyadyat-slozhnymi-no-gotovyatsya-za-20-minut/",
-        "published": "2025-09-05T11:00:56.000Z",
-        "summary": "Кажется, что некоторые рецепты требуют несколько часов у плиты и кулинарного мастерства, но на самом деле их можно повторить быстро и без лишних хлопот. Вот восемь впечатляющих блюд, которые выглядят как шедевры ресторанной кухни, но готовятся всего за двадцать минут. 1. Энчилада с курицей Энчилада с курицей — это одно из самых ярких блюд мексиканской кухни, которое сразу создает атмосферу праздника. Сочетание мягкой тортильи, пряной начинки и тянущегося сыра делает его невероятно аппетитным. На вид оно кажется ресторанным, но готовится очень быстро и просто — идеальный вариант для сытного ужина с мексиканским акцентом. Ингредиенты: — 4 кукурузные тортильи; — 300 граммов вареной курицы; — 1 стакан соуса энчилада; — 100 граммов сыра чеддер; — 1/2 банки консервированной черной фасоли; — 1 ч. л. тмина; — авокадо, сметана, кинза — для подачи. Как приготовить: Разбери курицу на волокна или нарежь мелкими кусочками. Добавь к ней черную фасоль и молотый тмин, хорошо... Читать далее ... \n\n 6 блюд, которые выглядят сложными, но готовятся за 20 минут \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:00.448Z"
-      },
-      {
-        "id": "4066b204fcadaa00",
-        "sourceId": "brodude-ru-category-food-feed",
-        "title": "20 продуктов, необходимых для хорошей реакции и памяти",
-        "link": "https://brodude.ru/20-produktov-neobhodimyh-dlya-horoshej-reakczii-i-pamyati/",
-        "published": "2025-09-04T07:00:15.000Z",
-        "summary": "Ты когда-нибудь замечал, что иногда мозгу нужно чуть больше топлива, чтобы работать на полную? Будь то подготовка к экзамену, сложный проект на работе или желание держать ум в тонусе с возрастом, питание играет огромную роль. Есть продукты, которые помогают мозгу: дают энергию, улучшают память, концентрацию и общее самочувствие — вот они. 1. Черника Черника — настоящий суперфуд для мозга. Она полна антиоксидантов, которые защищают нейроны от окислительного стресса и воспалений. Регулярное употребление черники помогает улучшить память, скорость мышления и даже замедляет возрастное снижение когнитивных функций. Добавляй ее в утренний йогурт, смузи или просто ешь горсть на перекус, и твой мозг получит заряд пользы. 2. Темный шоколад Не нужно полностью отказываться от сладкого — темный шоколад с содержанием какао от семидесяти процентов и выше богат флавоноидами, которые улучшают приток крови к мозгу, поддерживают память и концентрацию. Кофеин в шоколаде слегка бодрит, а антиоксиданты защищают мозг от повреждений. Плюс шоколад поднимает настроение... Читать далее ... \n\n 20 продуктов, необходимых для хорошей реакции и памяти \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:00.448Z"
-      },
-      {
-        "id": "54e1a6cb57930d8a",
-        "sourceId": "brodude-ru-category-food-feed",
-        "title": "Делает ли микроволновка еду вреднее",
-        "link": "https://brodude.ru/delaet-li-mikrovolnovka-edu-vrednee/",
-        "published": "2025-08-07T10:00:44.000Z",
-        "summary": "Как возникают тренды в здоровом питании и какие из них действительно полезные? Как правильно пить матчу и чем она отличается от сенчи? Почему в кинотеатрах принято есть попкорн и что в него добавляют, чтобы добиться яркого вкуса? Об этом и не только говорим в подкасте «Читай состав» от студии Red Barn. Развенчиваем мифы вокруг продуктов, учимся читать этикетки и подходить к питанию осознанно и без тревоги. Слушай на любой удобной платформе и подписывайся, чтобы не пропустить новые выпуски. Читать далее ... \n\n Делает ли микроволновка еду вреднее \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:00.448Z"
-      }
-    ],
-    "brodude-ru-category-brolife-feed": [
-      {
-        "id": "f87ef7bde3e97b5c",
-        "sourceId": "brodude-ru-category-brolife-feed",
-        "title": "Как микробиом влияет на тестостерон, энергию и самочувствие",
-        "link": "https://brodude.ru/kak-mikrobiom-vliyaet-na-testosteron-energiyu-i-samochuvstvie/",
-        "published": "2026-04-27T09:00:55.000Z",
-        "summary": "Значительная часть того, что ты привык списывать на усталость, возраст, стресс или нехватку дисциплины, на самом деле может быть напрямую связана с состоянием твоего кишечника. Речь идет не о банальном пищеварении, а о сложной внутренней экосистеме, от работы которой зависит уровень энергии, гормональный фон, устойчивость к стрессу и даже то, как ты воспринимаешь происходящее вокруг. И в этом смысле попытки «починить» себя исключительно через силу воли, режим или мотивацию часто оказываются поверхностными, потому что они не затрагивают базовый уровень, на котором формируется твое состояние. Кишечник — это не просто переработка еды, а центр управления Долгое время считалось, что функции кишечника сводятся к перевариванию пищи и усвоению питательных веществ, однако современные представления о физиологии человека показывают, что это лишь малая часть его роли. Внутри кишечника существует микробиом — сложная совокупность бактерий, микроорганизмов и биологических процессов, которые постоянно взаимодействуют с организмом, влияя на иммунную систему, обмен веществ и даже нейрохимию. Эта система... Читать далее ... \n\n Как микробиом влияет на тестостерон, энергию и самочувствие \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:07.359Z"
-      },
-      {
-        "id": "f1e8278dcd7ade27",
-        "sourceId": "brodude-ru-category-brolife-feed",
-        "title": "Чем полезно легкое чувство голода и почему от него не нужно срочно избавляться",
-        "link": "https://brodude.ru/chem-polezno-legkoe-chuvstvo-goloda-i-pochemu-ot-nego-ne-nuzhno-srochno-izbavlyatsya/",
-        "published": "2026-04-13T07:00:03.000Z",
-        "summary": "Современный человек привык воспринимать голод как проблему, которую нужно устранить как можно быстрее. Стоит появиться легкому чувству голода — и рука уже тянется к еде, даже если с физиологической точки зрения в этом нет острой необходимости. Но не всякий голод — враг. Более того, состояние легкой, едва заметной нехватки пищи может оказывать на организм и психику куда более благоприятное влияние, чем постоянное ощущение сытости. Конечно, мы говорим не о крайностях и не о жестких ограничениях, а о состоянии, в котором тело остается в тонусе, не перегруженным и не притупленным избытком еды. Сильный, навязчивый голод, сопровождающийся слабостью и раздражительностью, — это уже сигнал о том, что организм испытывает дефицит. Здесь же речь о другом состоянии: когда ты чувствуешь, что мог бы поесть, но спокойно можешь подождать, не испытывая дискомфорта. Организм работает более эффективно Когда ты постоянно находишься в состоянии сытости, тело занято перевариванием пищи практически без остановки. Это требует энергии, ресурсов... Читать далее ... \n\n Чем полезно легкое чувство голода и почему от него не нужно срочно избавляться \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:07.359Z"
-      },
-      {
-        "id": "f2b0f79458d767a1",
-        "sourceId": "brodude-ru-category-brolife-feed",
-        "title": "Развенчиваем мифы о российской фарминдустрии",
-        "link": "https://brodude.ru/razvenchivaem-mify-o-rossijskoj-farmindustrii/",
-        "published": "2026-03-30T08:00:32.000Z",
-        "summary": "Почему диабет называют болезнью цивилизации? Какие группы людей рискуют заразиться гепатитом С? Бывает ли предрасположенность к тревожному расстройству? Ответы на эти и другие вопросы в подкасте «ХИМРАР» и студии Red Barn «Действующее вещество». Рассказываем об инновационных лекарствах и лечении распространенных заболеваний. Слушай подкаст и подписывайся на него на любой удобной платформе, смотри его на YouTube и в «ВКонтакте». Читать далее ... \n\n Развенчиваем мифы о российской фарминдустрии \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:07.359Z"
-      },
-      {
-        "id": "b38f6bb1c3b08835",
-        "sourceId": "brodude-ru-category-brolife-feed",
-        "title": "Что должно быть в аптечке для новорожденного",
-        "link": "https://brodude.ru/chto-dolzhno-byt-v-aptechke-dlya-novorozhdennogo/",
-        "published": "2026-03-20T08:00:59.000Z",
-        "summary": "Подготовку к появлению новорожденного в доме часто списывают на «гнездование»: мол, это все про пеленки, милые бодики и странное желание купить десятый плед. Удобная позиция — пока не понимаешь, что за всей этой «женской суетой» скрывается куда более жесткая реальность. И в ней главный вопрос не в том, какого цвета будет комбинезон, а в том, есть ли у тебя дома все необходимое на случай, если ребенку понадобятся лекарства. Поэтому первое, о чем стоит позаботиться перед рождением ребенка, — правильно собранная аптечка. Спокойствие родителей зависит от того, насколько быстро и безопасно можно оказать первую помощь в ситуации недомогания малыша. Подготовили подборку необходимых средств с учетом возраста ребенка и возможных бытовых ситуаций. Все необходимые препараты и аксессуары удобно приобрести в проверенной аптеке или онлайн, например через «Здравсити Аптеку» — там гарантированы подлинность и правильные условия хранения. Жаропонижающие, болеутоляющие средства Температура у грудничка может подниматься быстро, а боль — появляться внезапно. Поэтому важно... Читать далее ... \n\n Что должно быть в аптечке для новорожденного \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:07.359Z"
-      },
-      {
-        "id": "ea9c817a2d673b52",
-        "sourceId": "brodude-ru-category-brolife-feed",
-        "title": "6 вещей, которые происходят с твоим телом, когда ты сидишь весь в день",
-        "link": "https://brodude.ru/6-veshhej-kotorye-proishodit-s-tvoim-telom-kogda-ty-sidish-ves-v-den/",
-        "published": "2026-03-18T07:00:04.000Z",
-        "summary": "Каждый человек, отработав свои ежедневные 8–10 часов, хочет только одного — рухнуть на диван, открыть банку пива или газировки и забыться. Парадокс в том, что на работе многие из нас неподвижно сидят, перебирая бумажки или пялясь в экран, а когда мы приходим домой, снова садимся. Получается, что мы находимся в сидячем положении более 12 часов — гораздо дольше, чем этого хочет наш организм. Эволюция не рассчитывала, что ты будешь проводить большую часть времени на стуле. Она даже не предполагала существования такого предмета. Человек создавался для жизни в природе, где нужно постоянно двигаться, чтобы выжить. Поэтому нет ничего странного в том, что наше здоровье ухудшается с каждым часом, проведённым в сидячем положении. Думаешь, преувеличиваем? Нет. Любое статичное положение со временем приводит к болезненным ощущениям, ведь тело нельзя «законсервировать» — оно не может долго находиться в покое. Сидение приводит к костной и мышечной дистрофии, сердечным заболеваниям, ожирению, сахарному диабету и в целом... Читать далее ... \n\n 6 вещей, которые происходят с твоим телом, когда ты сидишь весь в день \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:07.359Z"
-      },
-      {
-        "id": "89a160e0aa89c772",
-        "sourceId": "brodude-ru-category-brolife-feed",
-        "title": "Выравнивание зубов: чем может быть опасно и на что обратить внимание",
-        "link": "https://brodude.ru/vyravnivanie-zubov-chem-mozhet-byt-opasno-i-na-chto-obratit-vnimanie/",
-        "published": "2026-02-27T08:00:58.000Z",
-        "summary": "«Поставлю элайнеры — через год будут ровные зубы». Звучит просто, почти как отбеливание или чистка. Надел капы — и улыбка сама собой становится голливудской. Увы, такие обещания — это не более чем реклама. За маркетингом легко забыть, что выравнивание зубов — это полноценное лечение с показаниями и противопоказаниями. Вместе с  «Немецким Имплантологическим Центром» разберемся, что такое выравнивание зубов и какие риски с ним связаны. А также рассказываем, как выбрать метод лечения и ортодонта, чтобы не пожалеть. Чем может быть опасно ортодонтическое лечение Перемещение зубов — это контролируемая травма. Звучит жестко, но именно так и работает ортодонтия: на зуб оказывается давление, костная ткань с одной стороны рассасывается, с другой — нарастает. Это физиологический процесс, в котором неправильно рассчитанная нагрузка связана с рисками. Потеря зубов и резорбция корней Если давление слишком сильное или лечение проводится без полноценной диагностики, возможна резорбция корней — укорочение корня зуба. В тяжелых случаях зуб может начать шататься... Читать далее ... \n\n Выравнивание зубов: чем может быть опасно и на что обратить внимание \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:07.359Z"
-      },
-      {
-        "id": "6d36840c324b78bc",
-        "sourceId": "brodude-ru-category-brolife-feed",
-        "title": "4 ударных упражнения, которые сделают тебя по-настоящему сильным",
-        "link": "https://brodude.ru/4-udarnyx-uprazhneniya-kotorye-sdelayut-tebya-po-nastoyashhemu-xardkornym/",
-        "published": "2026-02-11T09:00:33.000Z",
-        "summary": "Назови отмазки, которые мешают тебе сделать красивый пресс с легендарными кубиками, могучий торс, сильную грудь. Скажи честно, ведь хочется, чтобы рубашка стиралась об выпирающие из-под рубахи куски мускул? А кому не хочется? Выглядеть красиво — вполне адекватное желание. На самом деле пресс можно сделать и без посещения спортзалов. Достаточно регулярно, до посинения и помутнения рассудка выполнять эти 4 упражнения — тогда твое туловище станет объектом зависти престарелых бодибилдеров и тех неудачников, которые не нашли времени на себя. Самое приятное — тебе не придется идти в зал, можно сделать это и дома, но не забывай про режим и питание. 1. Выпады с гантелями над головой Упражнение, которое позволит ощутить мышцам твоего седалища райское блаженство. Ну и помимо всего остального это отличное упражнение для разминки перед другими, более серьезными и выматывающими, поскольку разогреваются и растягиваются с его помощью сразу многие мышцы. Свою порцию напряжения получают глубокие мышцы кора, а ты — хорошую... Читать далее ... \n\n 4 ударных упражнения, которые сделают тебя по-настоящему сильным \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:07.360Z"
-      },
-      {
-        "id": "c9176c0c2b125a17",
-        "sourceId": "brodude-ru-category-brolife-feed",
-        "title": "Гормоны, лишний вес и выпадение волос: почему это может коснуться и тебя",
-        "link": "https://brodude.ru/gormony-lishnij-ves-i-vypadenie-volos-pochemu-eto-mozhet-kosnutsya-i-tebya/",
-        "published": "2026-01-22T08:00:38.000Z",
-        "summary": "Говоря о проблемах с гормонами, многие сразу же представляют женщин. Логика ясна: из-за особенностей физиологии они действительно чаще сталкиваются с дисбалансом. Но мужского здоровья эта тема тоже касается. Просто мужчины чаще игнорируют симптомы, списывая их на стресс или возраст. В статье разбираемся, с какими гормональными проблемами мужчины могут столкнуться после 25 лет и как этого не допустить. Что может указывать на проблемы с гормонами Снижение либидо и эректильная дисфункция Гормоны: тестостерон и его метаболиты. Причины: возраст, метаболические нарушения, лишний вес или ожирение, сахарный диабет, малоподвижный образ жизни, вредные привычки. А также плохой сон и хронический стресс. Набор веса, скопление жира в области живота и уменьшение мышечной массы Гормоны: тестостерон и гормоны метаболизма — инсулин, лептин и другие. Причины: замедление обмена веществ, инсулинорезистентность. Сбои в организме замыкаются друг на друге. Тестостерон падает — вес растет — клетки перестают адекватно реагировать на инсулин — на животе и талии появляется жир, угнетающий тестостерон.... Читать далее ... \n\n Гормоны, лишний вес и выпадение волос: почему это может коснуться и тебя \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:07.360Z"
-      },
-      {
-        "id": "66e4168a3d144560",
-        "sourceId": "brodude-ru-category-brolife-feed",
-        "title": "Как защитить себя от неочевидных половых инфекций",
-        "link": "https://brodude.ru/kak-zashhitit-sebya-ot-neochevidnyh-polovyh-infekczij/",
-        "published": "2026-01-20T08:00:39.000Z",
-        "summary": "Кажется, что ИППП — проблема «неосторожных» и «любвеобильных». Но вот парадокс: даже в моногамных отношениях мужчины сталкиваются с интимными инфекциями. Причина простая: многие из ИППП годами протекают бессимптомно. Поэтому регулярные чекапы и профилактика — это не недоверие к партнеру, а базовая гигиена здоровья. В статье рассказываем о неочевидных, но распространенных половых инфекциях, о том, как от них защищаться и что делать, если заметил симптомы. Инфекции, о которых нужно знать В рамках темы ИППП обычно вспоминают классический «квартет»: хламидиоз, гонорею, сифилис и трихомониаз. Это действительно опасные инфекции, которые требуют диагностики и лечения. Но есть и другой пласт заболеваний — куда более тихих, распространенных и часто протекающих незаметно. Они могут долго существовать в организме, вызывать дискомфорт, передаваться партнеру и в ряде случаев приводить к осложнениям. Важно знать о них хотя бы базово. Так ты будешь понимать, что именно происходит с телом и когда пора провериться. 1. Генитальный герпес Это хроническая вирусная инфекция,... Читать далее ... \n\n Как защитить себя от неочевидных половых инфекций \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:07.360Z"
-      },
-      {
-        "id": "f0c434e004450a8a",
-        "sourceId": "brodude-ru-category-brolife-feed",
-        "title": "Закулисье медицинских специальностей: от трихологии до геронтологии",
-        "link": "https://brodude.ru/zakulise-mediczinskih-speczialnostej-ot-trihologii-do-gerontologii/",
-        "published": "2025-12-26T08:00:53.000Z",
-        "summary": "Чтобы быть активным участником в заботе о своем здоровье, нужно понимать, как мыслят врачи. Как аллерголог ищет триггер среди тысяч возможных? Правда ли, что косметология — это серьезная медицинская дисциплина? Как геронтолог смотрит на старение с точки зрения доказательных подходов? В подкасте «Кто нас лечит» от студии Red Barn ты узнаешь, как устроены «закрытые» врачебные специальности, и научишься отличать доказательную медицину от мифов. Партнеры сезона — бренды La Roche-Posay и Vichy. Слушай на любой удобной платформе и подписывайся, чтобы не пропустить новые выпуски. Читать далее ... \n\n Закулисье медицинских специальностей: от трихологии до геронтологии \n\n BroDude.ru .",
-        "read": true,
-        "fetchedAt": "2026-05-04T11:31:07.360Z"
-      }
-    ]
-  }
+    "https://mobile-review.com/all/articles/birulki/biryulki-n901-padenie-mobilnogo-trafika-v-rossii-zakrytie-rozniczy/": {
+      "read": true,
+      "published_at": "2026-05-03T21:04:00.000Z",
+      "title": "Бирюльки №901. Падение мобильного трафика в России, закрытие розницы"
+    },
+    "https://mobile-review.com/all/articles/operator/tarify-dlya-detej-nashel-luchshij-detskij-tarif/": {
+      "read": true,
+      "published_at": "2026-05-03T21:03:00.000Z",
+      "title": "Тарифы для детей: нашел лучший детский тариф"
+    },
+    "https://mobile-review.com/all/articles/misc/rossiyane-skupayut-ps5-pochemu-sejchas/": {
+      "read": true,
+      "published_at": "2026-05-03T21:02:00.000Z",
+      "title": "Россияне скупают PS5. Почему сейчас?"
+    },
+    "https://mobile-review.com/all/articles/misc/edem-na-more-elektronika-na-plyazhe-i-otdyhe-vazhnye-sovety/": {
+      "read": true,
+      "published_at": "2026-05-03T21:01:00.000Z",
+      "title": "Едем на море. Электроника на пляже и отдыхе, важные советы"
+    },
+    "https://mobile-review.com/all/articles/misc/tehnologichnaya-pop-kultura-film-tridczat-pyatyj-vremya/": {
+      "read": true,
+      "published_at": "2026-05-02T21:02:00.000Z",
+      "title": "Технологичная поп-культура. Фильм тридцать пятый. «Время»"
+    },
+    "https://mobile-review.com/all/articles/misc/game-pass-zabyt-eksklyuzivy-na-xbox-populizm-ili-realnost/": {
+      "read": true,
+      "published_at": "2026-05-02T21:01:00.000Z",
+      "title": "Game Pass забыт? Эксклюзивы на Xbox — популизм или реальность"
+    },
+    "https://mobile-review.com/all/articles/saturday-coffee/subbotnij-kofe-n381/": {
+      "read": true,
+      "published_at": "2026-05-01T21:02:00.000Z",
+      "title": "Субботний кофе №381"
+    },
+    "https://mobile-review.com/all/articles/misc/prikladnoj-blender-urok-n34-rekursiya-iskusstvennosti-ili-eshhe-nemnogo-pro-optimizacziyu/": {
+      "read": false,
+      "published_at": "2026-05-01T21:01:00.000Z",
+      "title": "Прикладной Blender. Урок №34. Рекурсия искусственности или еще немного про оптимизацию"
+    },
+    "https://mobile-review.com/all/articles/misc/ugolok-izobretatelya-n126-sposob-kontrolya-dress-koda/": {
+      "read": false,
+      "published_at": "2026-04-30T21:02:00.000Z",
+      "title": "Уголок изобретателя №126. Способ контроля дресс-кода"
+    },
+    "https://mobile-review.com/all/articles/misc/chto-veroyatnee-cziklichnost-snizheniya-intellekta-ili-eto-nash-novyj-uroven/": {
+      "read": false,
+      "published_at": "2026-04-30T21:01:00.000Z",
+      "title": "Что вероятнее: цикличность снижения интеллекта или это наш новый уровень?"
+    },
+    "https://www.xda-developers.com/switched-linux-apps-windows-cancelled-subscriptions/": {
+      "read": true,
+      "published_at": "2026-05-04T13:00:21.000Z",
+      "title": "I switched to these 5 Linux apps on Windows and cancelled my subscriptions"
+    },
+    "https://www.xda-developers.com/building-local-llm-news-brief-taught-problem-apps/": {
+      "read": true,
+      "published_at": "2026-05-03T12:30:22.000Z",
+      "title": "Building a local LLM news brief taught me my real problem wasn't the sources, it was the apps"
+    },
+    "https://www.xda-developers.com/self-hosted-llms-are-way-more-powerful-than-a-chat-interface/": {
+      "read": true,
+      "published_at": "2026-05-02T14:30:21.000Z",
+      "title": "Self-hosted LLMs are way more powerful than a chat interface, here’s how I utilize it fully"
+    },
+    "https://www.xda-developers.com/underrated-jellyfin-features-i-wish-id-discovered-sooner/": {
+      "read": true,
+      "published_at": "2026-05-01T20:00:21.000Z",
+      "title": "5 underrated Jellyfin features I wish I'd discovered sooner"
+    },
+    "https://www.xda-developers.com/ditched-letterboxd-for-self-hosted-movie-tracker-never-looking-back/": {
+      "read": false,
+      "published_at": "2026-05-01T14:30:22.000Z",
+      "title": "I finally ditched Letterboxd for this self-hosted movie tracker and I am never looking back"
+    },
+    "https://www.xda-developers.com/caddy-handles-reverse-proxying-so-well-ditched-my-entire-toolchain/": {
+      "read": false,
+      "published_at": "2026-05-01T14:00:21.000Z",
+      "title": "Caddy handles reverse proxying so well that I ditched my entire toolchain"
+    },
+    "https://www.xda-developers.com/i-replaced-chatgpt-and-claude-with-this-local-llm/": {
+      "read": false,
+      "published_at": "2026-05-01T11:30:21.000Z",
+      "title": "I replaced ChatGPT and Claude with this powerful local LLM and saved over $20 a month while gaining full control"
+    },
+    "https://www.xda-developers.com/home-assistant-freed-smart-home-brand-wars-buy-whatever-works/": {
+      "read": false,
+      "published_at": "2026-04-30T17:30:28.000Z",
+      "title": "Home Assistant freed me from the smart home brand wars, and now I buy whatever works"
+    },
+    "https://www.xda-developers.com/home-labs-biggest-mistake-running-everything-lxcs/": {
+      "read": false,
+      "published_at": "2026-04-30T12:00:21.000Z",
+      "title": "Your home lab's biggest mistake might be running everything in LXCs"
+    },
+    "https://www.xda-developers.com/four-nvme-slots-changed-home-lab-storage-170-mini-pc-made-click/": {
+      "read": false,
+      "published_at": "2026-04-30T00:00:21.000Z",
+      "title": "Four NVMe slots changed how I think about home lab storage, and a $170 mini PC made it click"
+    },
+    "https://www.xda-developers.com/forget-gimp-krita-photopeafree-editor-closest-photoshop-replacement/": {
+      "read": true,
+      "published_at": "2026-05-02T19:00:21.000Z",
+      "title": "This free Photoshop alternative does what GIMP and Krita can't, and I stopped looking after trying it"
+    },
+    "https://www.xda-developers.com/best-productivity-apps-with-affordable-lifetime-license/": {
+      "read": true,
+      "published_at": "2026-05-01T17:01:21.000Z",
+      "title": "I stopped paying monthly for productivity tools after finding these alternatives with one-time purchases"
+    },
+    "https://www.xda-developers.com/powertoys-finally-has-launcher-thats-as-good-as-wox-or-flow/": {
+      "read": true,
+      "published_at": "2026-05-01T12:30:20.000Z",
+      "title": "PowerToys finally has a launcher that's just as good as Wox or Flow"
+    },
+    "https://www.xda-developers.com/connecting-obsidian-to-gemini-transformed-notes-from-archive-to-useful/": {
+      "read": true,
+      "published_at": "2026-04-30T14:30:22.000Z",
+      "title": "Connecting Obsidian to Gemini transformed my notes from archive to actually useful"
+    },
+    "https://www.xda-developers.com/used-obsidian-wrong-for-year-folder-setup-that-finally-clicks/": {
+      "read": true,
+      "published_at": "2026-04-29T12:30:19.000Z",
+      "title": "I used Obsidian wrong for a year, here's the folder setup that finally clicks"
+    },
+    "https://brodude.ru/9-veshhej-kotorye-delayut-tvoyu-zhizn-skuchnee-chem-ona-mogla-by-byt/": {
+      "read": true,
+      "published_at": "2026-04-30T07:00:53.000Z",
+      "title": "9 вещей, которые делают твою жизнь скучнее, чем она могла бы быть"
+    },
+    "https://brodude.ru/kak-goroda-stanovyatsya-mestami-prityazheniya/": {
+      "read": true,
+      "published_at": "2026-04-29T08:00:56.000Z",
+      "title": "Как города становятся «местами притяжения»"
+    },
+    "https://brodude.ru/7-tvoih-postupkov-osnovannyh-na-zavisti-kotorye-prichinyayut-tebe-vred/": {
+      "read": true,
+      "published_at": "2026-04-29T07:00:49.000Z",
+      "title": "7 твоих поступков, основанных на зависти, которые причиняют тебе вред"
+    }
+  },
+  "entryTitleFilters": [
+    "(?i)(самодельн|жиг(и|а|ул[ия])|волг(а|у)|гонк(а|и|е|ах)|заезд(ы)?|драг|drag|стрит|street|челлендж|challenge|битва|баттл|\\bvs\\b|против|розыгр(ыш|ива|ал(и)?|ыва(ем|ют)?)|разыгра(л(и)?|ем|ют)|give\\s*away|giveaway|гив(ы|эвей)?|конкурс(ы)?|приз(ы|овой)?|подар(ок|ки)|выигра(й|л|ли|ем|ют)|победител(ь|и)|участ(ие|вуй)|ключ\\s*-?\\s*на\\s*-?\\s*ключ|обмен(яю|яем|яют)?|бартер|swap|trade|угробил(и)?|разбил(и)?|авари(я|и)|дтп|хлам|приор(а|у)?|priora|нив(а|у)|стар(ый|ая|ую)|ваз|калин(а|у)|ках(а|i)|смотр(ит|ю|ят|им)|анар|lada|сабина\\s*лада|тусовк[а-я]*|блогер[а-я]*|бустер[а-я]*|угада[а-я]*|контейнер[а-я]*|забери\\s*-?\\s*тачк[ауыеиоя]*|девочк[а-я]*|угар[а-я]*|юра\\s*волков)"
+  ]
 }

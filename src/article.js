@@ -14,7 +14,7 @@ async function loadFullArticle(url) {
 
   const html = await response.text();
   const title = pickTitle(html);
-  const text = extractReadableText(html);
+  const text = extractReadableText(html, title);
 
   return {
     title,
@@ -23,16 +23,16 @@ async function loadFullArticle(url) {
   };
 }
 
-function extractReadableText(html) {
+function extractReadableText(html, title = '') {
   const source = String(html);
   const structured = articleBodyFromJsonLd(source);
-  if (structured) {
-    return htmlToText(structured);
+  if (structured && !sameText(structured, title)) {
+    return removeLeadingTitle(htmlToText(structured), title);
   }
 
   const clean = stripNoiseElements(source);
   const article = bestContentBlock(clean);
-  return htmlToText(article || clean);
+  return removeLeadingTitle(htmlToText(article || clean), title);
 }
 
 function bestContentBlock(html) {
@@ -300,6 +300,10 @@ function positiveAttributeScore(openTag) {
     score += 220;
   }
 
+  if (/\b(article[-_]?body|articlebody)\b/i.test(attrs)) {
+    score += 520;
+  }
+
   if (/\b(news|publication|single)\b/i.test(attrs)) {
     score += 80;
   }
@@ -337,6 +341,40 @@ function isNoiseLine(line) {
 
   return /^(advertisement|comments?|continue reading|more from|read also|recommended|related|share|sign up|subscribe|trending)$/i.test(normalized)
     || /^(комментари[ия]|поделиться|подписаться|реклама|рекомендуем|читайте также|ещ[её] по теме)$/i.test(normalized);
+}
+
+function removeLeadingTitle(text, title) {
+  const normalizedTitle = normalizeText(title);
+  if (!normalizedTitle) {
+    return String(text || '').trim();
+  }
+
+  const lines = String(text || '').replace(/\r/g, '').split('\n');
+  while (lines.length && !lines[0].trim()) {
+    lines.shift();
+  }
+
+  if (lines.length && normalizeText(lines[0]) === normalizedTitle) {
+    lines.shift();
+  }
+
+  while (lines.length && !lines[0].trim()) {
+    lines.shift();
+  }
+
+  return lines.join('\n').trim();
+}
+
+function sameText(left, right) {
+  return normalizeText(left) === normalizeText(right);
+}
+
+function normalizeText(value) {
+  return decodeHtml(String(value || ''))
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
 }
 
 function attributeText(openTag) {
@@ -412,14 +450,13 @@ const STRIP_TAGS = new Set([
 ]);
 
 const ATTRIBUTE_FILTER_TAGS = new Set([
-  'article',
   'div',
   'ol',
   'section',
   'ul'
 ]);
 
-const NOISE_ATTRIBUTE_PATTERN = /\b(ad|ads|advert|advertisement|banner|breadcrumb|comment|comments|cookie|modal|newsletter|outbrain|popup|popular|promo|recommend|recommended|recommendation|related|share|social|subscribe|taboola|tags|teaser|trending|widget|yandex|zen)\b/i;
+const NOISE_ATTRIBUTE_PATTERN = /\b(ad|ads|advert|advertisement|article-card|banner|breadcrumb|comment|comments|cookie|display-card|modal|newsletter|outbrain|popup|popular|promo|recommend|recommended|recommendation|related|share|social|subscribe|taboola|tags|teaser|trending|widget|yandex|zen)\b/i;
 
 module.exports = {
   extractReadableText,

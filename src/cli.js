@@ -2,12 +2,12 @@ const readline = require('node:readline');
 const { spawn } = require('node:child_process');
 const { stdin, stdout } = require('node:process');
 
-const { createSource, defaultConfigPath, loadConfig, saveConfig } = require('./config');
-const { fetchFeed, mergeArticles } = require('./feed');
+const { createSource, defaultConfigPath, loadConfig, normalizeArticleRecord, saveConfig } = require('./config');
+const { fetchFeed } = require('./feed');
 const { loadFullArticle } = require('./article');
 
-const DEFAULT_LIMIT = 50;
 const ARTICLE_SCROLL_STEP = 4;
+const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 
 async function main(argv) {
   const parsed = parseArgs(argv);
@@ -28,7 +28,7 @@ async function main(argv) {
     case 'refresh':
       return refresh(configPath, config, parsed.options);
     case 'articles':
-      return listArticles(config, args);
+      return listArticles(configPath, config, args);
     case 'read':
     case 'open':
       return readArticle(configPath, config, args);
@@ -63,7 +63,6 @@ async function addSource(configPath, config, args, options) {
   try {
     const feed = await fetchFeed(source);
     source.title = options.title || feed.title || source.title;
-    config.articles[source.id] = mergeArticles([], feed.items, Number(options.limit) || DEFAULT_LIMIT);
   } catch (error) {
     if (options.strict) {
       throw error;
@@ -82,8 +81,7 @@ function listSources(config) {
   }
 
   for (const [index, source] of config.sources.entries()) {
-    const count = (config.articles[source.id] || []).length;
-    console.log(`${index + 1}. ${source.title} (${count})`);
+    console.log(`${index + 1}. ${source.title}`);
     console.log(`   ${source.url}`);
   }
 }
@@ -100,63 +98,75 @@ function removeSource(configPath, config, args) {
   }
 
   const [removed] = config.sources.splice(index, 1);
-  delete config.articles[removed.id];
   saveConfig(configPath, config);
   console.log(`Удалено: ${removed.title}`);
 }
 
-async function refresh(configPath, config, options = {}) {
+async function refresh(configPath, config) {
   if (!config.sources.length) {
     console.log('Источников нет. Добавьте: rss add <url>');
     return;
   }
 
-  const limit = Number(options.limit) || DEFAULT_LIMIT;
   let total = 0;
+  let dirty = false;
+  const titleFilters = compileEntryTitleFilters(config.entryTitleFilters);
 
   for (const source of config.sources) {
     try {
       const feed = await fetchFeed(source);
+      const previousTitle = source.title;
       source.title = source.title || feed.title;
-      const existing = config.articles[source.id] || [];
-      config.articles[source.id] = mergeArticles(existing, feed.items, limit);
-      total += feed.items.length;
+      if (source.title !== previousTitle) {
+        dirty = true;
+      }
+      const fresh = ingestFeedArticles(config, feed.items, titleFilters, {
+        dirtyRef: () => { dirty = true; }
+      });
+      total += fresh.length;
       console.log(`${source.title}: ${feed.items.length}`);
     } catch (error) {
       console.error(`${source.title}: ${error.message}`);
     }
   }
 
-  saveConfig(configPath, config);
-  console.log(`Готово. Загружено: ${total}`);
+  if (dirty) {
+    saveConfig(configPath, config);
+  }
+  console.log(`Готово. В RSS сейчас: ${total}`);
 }
 
-function listArticles(config, args) {
+async function listArticles(configPath, config, args) {
   const source = args[0] ? findSource(config, args[0]) : null;
   if (args[0] && !source) {
     throw new Error('Источник не найден.');
   }
 
-  const articles = unreadArticles(config, source);
+  const articles = await loadUnreadArticles(configPath, config, source);
 
   if (!articles.length) {
-    console.log('Непрочитанных статей нет. Выполните: rss fetch');
+    console.log('Непрочитанных статей нет.');
     return;
   }
 
-  printArticles(articles, source ? '' : config);
+  printArticles(articles);
 }
 
 async function readArticle(configPath, config, args) {
-  const article = resolveArticle(config, args);
+  const article = await resolveArticle(configPath, config, args);
   if (!article) {
     throw new Error('Статья не найдена. Используйте: rss articles');
   }
 
   const full = await loadFullArticle(article.link);
-  article.read = true;
-  saveConfig(configPath, config);
-  printArticle(full.title || article.title, full.url, full.text);
+  if (setArticleRecord(config, article.link, {
+    read: true,
+    published_at: article.published || '',
+    title: article.title || ''
+  })) {
+    saveConfig(configPath, config);
+  }
+  printArticle(full.title || article.title, full.text);
 }
 
 async function browse(configPath, config) {
@@ -165,11 +175,11 @@ async function browse(configPath, config) {
     return;
   }
 
-  await refreshSilently(configPath, config);
-  await runBrowser(configPath, config);
+  const articles = await loadUnreadArticles(configPath, config, null, { silent: true });
+  await runBrowser(configPath, config, articles);
 }
 
-function runBrowser(configPath, config) {
+function runBrowser(configPath, config, initialArticles = []) {
   if (!stdin.isTTY || !stdout.isTTY) {
     throw new Error('Нужен интерактивный терминал.');
   }
@@ -181,6 +191,7 @@ function runBrowser(configPath, config) {
       articleOffset: 0,
       articleScroll: 0,
       article: null,
+      articles: initialArticles,
       status: '',
       loading: false,
       closed: false
@@ -343,7 +354,13 @@ async function markSelectedArticleRead(configPath, config, state, render) {
   }
 
   article.read = true;
-  saveConfig(configPath, config);
+  if (setArticleRecord(config, article.link, {
+    read: true,
+    published_at: article.published || '',
+    title: article.title || ''
+  })) {
+    saveConfig(configPath, config);
+  }
   clampBrowserState(config, state);
   state.status = 'Marked read';
   render();
@@ -379,7 +396,13 @@ async function openSelectedArticle(configPath, config, state, render) {
   try {
     const full = await loadFullArticle(article.link);
     article.read = true;
-    saveConfig(configPath, config);
+    if (setArticleRecord(config, article.link, {
+      read: true,
+      published_at: article.published || '',
+      title: article.title || ''
+    })) {
+      saveConfig(configPath, config);
+    }
     state.article = {
       title: full.title || article.title,
       url: full.url || article.link,
@@ -399,7 +422,8 @@ async function refreshBrowser(configPath, config, state, render) {
   state.loading = true;
   state.status = 'Reloading...';
   render();
-  await refreshSilently(configPath, config);
+  state.articles = await loadUnreadArticles(configPath, config, null, { silent: true });
+  saveConfig(configPath, config);
   clampBrowserState(config, state);
   state.status = 'Reloaded';
   state.loading = false;
@@ -462,7 +486,7 @@ function drawLines(lines, rows, width, footer) {
   const output = [];
 
   for (let index = 0; index < visibleRows; index += 1) {
-    output.push(truncateDisplay(lines[index] || '', width));
+    output.push(formatLine(lines[index] || '', width));
   }
 
   output.push(inverseLine(footer, width));
@@ -479,20 +503,14 @@ function buildArticleLines(article, width) {
   }
 
   const wrapWidth = Math.max(40, Math.min(width, 120));
-  const chunks = [
-    cleanDisplay(article.title),
-    cleanDisplay(article.url),
-    '',
-    cleanDisplay(article.text)
-  ];
+  const title = cleanDisplay(article.title);
+  const text = removeDuplicateTitle(cleanDisplay(article.text), title);
+  const titleLines = wrapText(title, wrapWidth)
+    .split('\n')
+    .map((line) => ({ text: line, style: 'bold' }));
+  const bodyLines = formatParagraphs(text, wrapWidth);
 
-  return chunks.flatMap((chunk) => {
-    if (!chunk) {
-      return [''];
-    }
-
-    return wrapText(chunk, wrapWidth).split('\n');
-  });
+  return [...titleLines, '', ...bodyLines];
 }
 
 function maxArticleScroll(state) {
@@ -506,8 +524,10 @@ function clampBrowserState(config, state) {
   state.articleIndex = clamp(state.articleIndex, 0, articles.length - 1);
 }
 
-function currentArticles(config) {
-  return unreadArticles(config);
+function currentArticles(config, state) {
+  return (state.articles || [])
+    .filter((article) => !isArticleRead(config, article.link))
+    .sort((a, b) => dateValue(b.published) - dateValue(a.published));
 }
 
 function moveArticleSelection(config, state, delta) {
@@ -602,6 +622,15 @@ function vimKey(value) {
   return RU_VIM_KEYS[value] || value;
 }
 
+function formatLine(line, width) {
+  if (line && typeof line === 'object') {
+    const text = truncateDisplay(line.text, width);
+    return line.style === 'bold' ? boldText(text) : text;
+  }
+
+  return truncateDisplay(line, width);
+}
+
 function truncateDisplay(value, width) {
   const text = cleanDisplay(value);
   if (width <= 0) {
@@ -624,10 +653,43 @@ function inverseLine(value, width) {
   return `\x1b[7m${text}\x1b[0m`;
 }
 
+function boldText(value) {
+  return `\x1b[1m${value}\x1b[0m`;
+}
+
 function cleanDisplay(value) {
   return String(value || '')
     .replace(/\x1b\[[0-?]*[ -/]*[@-~]/g, '')
     .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, ' ');
+}
+
+function removeDuplicateTitle(text, title) {
+  const normalizedTitle = normalizeDisplayLine(title);
+  if (!normalizedTitle) {
+    return String(text || '').trim();
+  }
+
+  const lines = String(text || '').split('\n');
+  while (lines.length && !lines[0].trim()) {
+    lines.shift();
+  }
+
+  if (lines.length && normalizeDisplayLine(lines[0]) === normalizedTitle) {
+    lines.shift();
+  }
+
+  while (lines.length && !lines[0].trim()) {
+    lines.shift();
+  }
+
+  return lines.join('\n').trim();
+}
+
+function normalizeDisplayLine(value) {
+  return cleanDisplay(value)
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
 }
 
 const RU_VIM_KEYS = {
@@ -655,41 +717,163 @@ const RU_VIM_KEYS = {
   И: 'B'
 };
 
-async function refreshSilently(configPath, config) {
-  for (const source of config.sources) {
-    try {
-      const feed = await fetchFeed(source);
-      config.articles[source.id] = mergeArticles(config.articles[source.id] || [], feed.items, DEFAULT_LIMIT);
-    } catch {
-    }
-  }
-
-  saveConfig(configPath, config);
-}
-
-function printArticles(articles, configOrPrefix = '') {
+function printArticles(articles) {
   for (const article of articles) {
     const marker = article.read ? ' ' : '*';
     console.log(`${marker} ${article.title}`);
   }
 }
 
-function printArticle(title, url, text) {
-  console.log(`\n${title}\n${url}\n`);
-  console.log(wrapText(text, process.stdout.columns || 100));
+function printArticle(title, text) {
+  const cleanTitle = cleanDisplay(title);
+  const cleanText = removeDuplicateTitle(cleanDisplay(text), cleanTitle);
+  console.log(`\n${boldText(cleanTitle)}\n`);
+  console.log(formatParagraphs(cleanText, process.stdout.columns || 100).join('\n'));
 }
 
-function allArticles(config) {
-  return config.sources
-    .flatMap((source) => config.articles[source.id] || [])
-    .sort((a, b) => dateValue(b.published) - dateValue(a.published));
-}
-
-function unreadArticles(config, source = null) {
-  const articles = source ? config.articles[source.id] || [] : allArticles(config);
+async function loadUnreadArticles(configPath, config, source = null, options = {}) {
+  const articles = await loadArticles(configPath, config, source, options);
   return articles
     .filter((article) => !article.read)
     .sort((a, b) => dateValue(b.published) - dateValue(a.published));
+}
+
+async function loadArticles(configPath, config, source = null, options = {}) {
+  const sources = source ? [source] : config.sources;
+  const articles = [];
+  let dirty = false;
+  const titleFilters = compileEntryTitleFilters(config.entryTitleFilters);
+
+  for (const item of sources) {
+    try {
+      const feed = await fetchFeed(item);
+      const previousTitle = item.title;
+      item.title = item.title || feed.title;
+      if (item.title !== previousTitle) {
+        dirty = true;
+      }
+      const fresh = ingestFeedArticles(config, feed.items, titleFilters, {
+        dirtyRef: () => {
+          dirty = true;
+        }
+      });
+      articles.push(...fresh);
+    } catch (error) {
+      if (source || !options.silent) {
+        console.error(`${item.title}: ${error.message}`);
+      }
+    }
+  }
+
+  if (dirty) {
+    saveConfig(configPath, config);
+  }
+
+  return articles.sort((a, b) => dateValue(b.published) - dateValue(a.published));
+}
+
+function ingestFeedArticles(config, feedItems, titleFilters, hooks = {}) {
+  const articles = [];
+  const cutoff = Date.now() - WEEK_MS;
+
+  for (const article of feedItems) {
+    if (matchesEntryTitle(article.title, titleFilters)) {
+      if (removeArticleRecord(config, article.link)) {
+        hooks.dirtyRef?.();
+      }
+      continue;
+    }
+
+    if (isStaleArticle(article.published, cutoff)) {
+      if (removeArticleRecord(config, article.link)) {
+        hooks.dirtyRef?.();
+      }
+      continue;
+    }
+
+    const current = getArticleRecord(config, article.link);
+    if (setArticleRecord(config, article.link, {
+      read: current.read,
+      published_at: article.published || current.published_at || '',
+      title: article.title || current.title || ''
+    })) {
+      hooks.dirtyRef?.();
+    }
+
+    articles.push({
+      ...article,
+      read: isArticleRead(config, article.link)
+    });
+  }
+
+  return articles;
+}
+
+function compileEntryTitleFilters(filters) {
+  return (Array.isArray(filters) ? filters : [])
+    .map((pattern) => compileEntryTitleFilter(pattern))
+    .filter(Boolean);
+}
+
+function compileEntryTitleFilter(pattern) {
+  const value = String(pattern || '').trim();
+  if (!value) {
+    return null;
+  }
+
+  const ignoreCase = value.startsWith('(?i)');
+  const source = ignoreCase ? value.slice(4) : value;
+
+  try {
+    return new RegExp(source, ignoreCase ? 'i' : '');
+  } catch {
+    return null;
+  }
+}
+
+function matchesEntryTitle(title, filters) {
+  if (!title || !filters.length) {
+    return false;
+  }
+
+  return filters.some((filter) => filter.test(title));
+}
+
+function isArticleRead(config, url) {
+  return getArticleRecord(config, url).read === true;
+}
+
+function getArticleRecord(config, url) {
+  return normalizeArticleRecord(config.articles[url]);
+}
+
+function setArticleRecord(config, url, patch) {
+  if (!url) {
+    return false;
+  }
+
+  const current = getArticleRecord(config, url);
+  const next = normalizeArticleRecord({
+    ...current,
+    ...patch
+  });
+  const changed = JSON.stringify(current) !== JSON.stringify(next);
+  config.articles[url] = next;
+  return changed;
+}
+
+function removeArticleRecord(config, url) {
+  if (!url || !config.articles[url]) {
+    return false;
+  }
+
+  delete config.articles[url];
+  return true;
+}
+
+function isStaleArticle(published, cutoff) {
+  const value = Date.parse(published);
+  return Number.isFinite(value) && value < cutoff;
 }
 
 function openUrl(url) {
@@ -705,13 +889,15 @@ function openUrl(url) {
   child.unref();
 }
 
-function resolveArticle(config, args) {
+async function resolveArticle(configPath, config, args) {
   if (args.length >= 2) {
     const source = findSource(config, args[0]);
-    return source ? unreadArticles(config, source)[toIndex(args[1])] : null;
+    const articles = source ? await loadUnreadArticles(configPath, config, source) : [];
+    return articles[toIndex(args[1])] || null;
   }
 
-  return unreadArticles(config)[toIndex(args[0] || '1')];
+  const articles = await loadUnreadArticles(configPath, config);
+  return articles[toIndex(args[0] || '1')] || null;
 }
 
 function findSource(config, query) {
@@ -796,6 +982,33 @@ function wrapText(text, width) {
     .join('\n');
 }
 
+function formatParagraphs(text, width) {
+  const safeWidth = Math.max(40, Math.min(width, 120));
+  const paragraphs = String(text || '')
+    .replace(/\r/g, '')
+    .split(/\n\s*\n+/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
+  const lines = [];
+
+  for (const paragraph of paragraphs) {
+    const wrapped = wrapText(
+      paragraph.replace(/\s*\n\s*/g, ' ').replace(/[ \t]+/g, ' ').trim(),
+      safeWidth
+    ).split('\n');
+    lines.push(...wrapped, '');
+  }
+
+  if (lines.length) {
+    while (lines.length && lines[lines.length - 1] === '') {
+      lines.pop();
+    }
+  }
+
+  return lines;
+}
+
 function wrapLine(line, width) {
   if (line.length <= width) {
     return line;
@@ -835,7 +1048,7 @@ function usage() {
     '  add <url> [--title <name>]   добавить источник',
     '  sources                      показать источники',
     '  remove <num|id|url>          удалить источник',
-    '  fetch [--limit <n>]          обновить статьи',
+    '  fetch                        проверить RSS',
     '  articles [source]            показать статьи',
     '  read [source] <num>          открыть статью с полным текстом',
     '  browse                       vim mode',
