@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "mobile-review-com-all-feed",
+      "title": "Mobile-review.com — Все о мобильной технике и технологиях",
+      "url": "https://mobile-review.com/all/feed/",
+      "addedAt": "2026-05-04T10:55:43.210Z"
+    }
+  ],
+  "articles": {
+    "mobile-review-com-all-feed": [
+      {
+        "id": "a2aab5d2dddaf6e7",
+        "sourceId": "mobile-review-com-all-feed",
+        "title": "Бирюльки №901. Падение мобильного трафика в России, закрытие розницы",
+        "link": "https://mobile-review.com/all/articles/birulki/biryulki-n901-padenie-mobilnogo-trafika-v-rossii-zakrytie-rozniczy/",
+        "published": "2026-05-03T21:04:00.000Z",
+        "summary": "Первые данные о глубине падения мобильного трафика, впервые в истории России; закрытие операторской розницы, марка «Аренда» набирает популярность; отчет «МВвидео» за год, убытки в три раза выше; как ChatGPT решает математические задачи, нужна ли нам такая «Алиса AI» и что с ИИ в России; чехол с Китом Харингом.",
+        "read": true,
+        "fetchedAt": "2026-05-04T10:55:44.861Z"
+      },
+      {
+        "id": "9fd70bfdf3f8c0c2",
+        "sourceId": "mobile-review-com-all-feed",
+        "title": "Тарифы для детей: нашел лучший детский тариф",
+        "link": "https://mobile-review.com/all/articles/operator/tarify-dlya-detej-nashel-luchshij-detskij-tarif/",
+        "published": "2026-05-03T21:03:00.000Z",
+        "summary": "Мобильная связь давно превратилась в неотъемлемую часть жизни.",
+        "read": false,
+        "fetchedAt": "2026-05-04T10:55:44.861Z"
+      },
+      {
+        "id": "9f0000ccd9b972a3",
+        "sourceId": "mobile-review-com-all-feed",
+        "title": "Россияне скупают PS5. Почему сейчас?",
+        "link": "https://mobile-review.com/all/articles/misc/rossiyane-skupayut-ps5-pochemu-sejchas/",
+        "published": "2026-05-03T21:02:00.000Z",
+        "summary": "Несмотря на официальную приостановку работы многих иностранных компаний в России, рынок…",
+        "read": false,
+        "fetchedAt": "2026-05-04T10:55:44.861Z"
+      },
+      {
+        "id": "dc1cf7c868e7978a",
+        "sourceId": "mobile-review-com-all-feed",
+        "title": "Едем на море. Электроника на пляже и отдыхе, важные советы",
+        "link": "https://mobile-review.com/all/articles/misc/edem-na-more-elektronika-na-plyazhe-i-otdyhe-vazhnye-sovety/",
+        "published": "2026-05-03T21:01:00.000Z",
+        "summary": "Соленая вода и смартфон - как не повредить устройство; про песок и его коварство; жара и охлаждение телефона; что стоит помнить на море и к чему быть готовым.",
+        "read": false,
+        "fetchedAt": "2026-05-04T10:55:44.862Z"
+      },
+      {
+        "id": "558154a70a99f7e6",
+        "sourceId": "mobile-review-com-all-feed",
+        "title": "Технологичная поп-культура. Фильм тридцать пятый. «Время»",
+        "link": "https://mobile-review.com/all/articles/misc/tehnologichnaya-pop-kultura-film-tridczat-pyatyj-vremya/",
+        "published": "2026-05-02T21:02:00.000Z",
+        "summary": "В нашем мире деньги являются настолько универсальным инструментом, что сложно себе представить, что что-то было бы способно его заменить. Поэтому всегда интересно посмотреть за теми, кто пытается.",
+        "read": false,
+        "fetchedAt": "2026-05-04T10:55:44.862Z"
+      },
+      {
+        "id": "1fcfb8375fdae8a6",
+        "sourceId": "mobile-review-com-all-feed",
+        "title": "Game Pass забыт? Эксклюзивы на Xbox — популизм или реальность",
+        "link": "https://mobile-review.com/all/articles/misc/game-pass-zabyt-eksklyuzivy-na-xbox-populizm-ili-realnost/",
+        "published": "2026-05-02T21:01:00.000Z",
+        "summary": "В стенах Microsoft идут активные обсуждения о возврате к эксклюзивным играм, утверждает инсайдер и журналист…",
+        "read": false,
+        "fetchedAt": "2026-05-04T10:55:44.862Z"
+      },
+      {
+        "id": "85fc924f37b3b872",
+        "sourceId": "mobile-review-com-all-feed",
+        "title": "Субботний кофе №381",
+        "link": "https://mobile-review.com/all/articles/saturday-coffee/subbotnij-kofe-n381/",
+        "published": "2026-05-01T21:02:00.000Z",
+        "summary": "Налейте чашку ароматного субботнего кофе и познакомьтесь с новостями недели. Tecno представила новые смартфоны, Trouver привезла к нам портативный пылесос, а я провел неделю с планшетом Redmi...",
+        "read": false,
+        "fetchedAt": "2026-05-04T10:55:44.862Z"
+      },
+      {
+        "id": "e48191b686787e92",
+        "sourceId": "mobile-review-com-all-feed",
+        "title": "Прикладной Blender. Урок №34. Рекурсия искусственности или еще немного про оптимизацию",
+        "link": "https://mobile-review.com/all/articles/misc/prikladnoj-blender-urok-n34-rekursiya-iskusstvennosti-ili-eshhe-nemnogo-pro-optimizacziyu/",
+        "published": "2026-05-01T21:01:00.000Z",
+        "summary": "Продолжаем изучать способы упрощать себе жизнь в процессе создания реалистичных объектов.",
+        "read": false,
+        "fetchedAt": "2026-05-04T10:55:44.862Z"
+      },
+      {
+        "id": "ddb758c7507edb3a",
+        "sourceId": "mobile-review-com-all-feed",
+        "title": "Уголок изобретателя №126. Способ контроля дресс-кода",
+        "link": "https://mobile-review.com/all/articles/misc/ugolok-izobretatelya-n126-sposob-kontrolya-dress-koda/",
+        "published": "2026-04-30T21:02:00.000Z",
+        "summary": "Внешний вид — это первый критерий оценки. И в определенных обстоятельствах он критически важен. Как приучить людей его соблюдать?",
+        "read": false,
+        "fetchedAt": "2026-05-04T10:55:44.862Z"
+      },
+      {
+        "id": "a1fb986ceaa282bd",
+        "sourceId": "mobile-review-com-all-feed",
+        "title": "Что вероятнее: цикличность снижения интеллекта или это наш новый уровень?",
+        "link": "https://mobile-review.com/all/articles/misc/chto-veroyatnee-cziklichnost-snizheniya-intellekta-ili-eto-nash-novyj-uroven/",
+        "published": "2026-04-30T21:01:00.000Z",
+        "summary": "Исследований умственного развития поколений сегодня хватает. А что можно сказать по итогам личных наблюдений?",
+        "read": false,
+        "fetchedAt": "2026-05-04T10:55:44.862Z"
+      }
+    ]
+  }
+}

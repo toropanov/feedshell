@@ -1,0 +1,16 @@
+{
+  "name": "rss-cli",
+  "version": "0.1.0",
+  "description": "Small RSS/Atom terminal reader",
+  "type": "commonjs",
+  "bin": {
+    "rss": "./bin/rss.js"
+  },
+  "scripts": {
+    "check": "node --check bin/rss.js && node --check src/cli.js && node --check src/config.js && node --check src/feed.js && node --check src/article.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
