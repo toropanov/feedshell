@@ -296,10 +296,10 @@ async function handleArticlesKey(configPath, config, state, value, key, render, 
     await refreshBrowser(configPath, config, state, render);
   } else if (isOpenKey(value, key)) {
     await openSelectedArticle(configPath, config, state, render);
-  } else if (isReadKey(value, key)) {
-    await markSelectedArticleRead(configPath, config, state, render);
   } else if (isOpenUrlKey(value, key)) {
-    await openSelectedArticleUrl(config, state);
+    await openSelectedArticleUrl(configPath, config, state, render);
+  } else if (isHideKey(value, key)) {
+    await hideSelectedArticle(configPath, config, state, render);
   } else if (isDownKey(value, key)) {
     state.articleIndex = clamp(state.articleIndex + 1, 0, articles.length - 1);
   } else if (isUpKey(value, key)) {
@@ -335,13 +335,15 @@ async function handleArticleKey(configPath, config, state, value, key, render) {
     state.articleScroll = 0;
   } else if (isBottomKey(value, key)) {
     state.articleScroll = maxScroll;
+  } else if (isRefreshKey(value, key)) {
+    await refreshBrowser(configPath, config, state, render);
   } else if (vimKey(value) === 'n') {
     await openSelectedArticle(configPath, config, state, render);
   } else if (vimKey(value) === 'p') {
     moveArticleSelection(config, state, -1);
     await openSelectedArticle(configPath, config, state, render);
   } else if (isOpenUrlKey(value, key)) {
-    await openSelectedArticleUrl(config, state);
+    await openSelectedArticleUrl(configPath, config, state, render);
   }
 }
 
@@ -357,7 +359,8 @@ async function markSelectedArticleRead(configPath, config, state, render) {
   if (setArticleRecord(config, article.link, {
     read: true,
     published_at: article.published || '',
-    title: article.title || ''
+    title: article.title || '',
+    hidden: article.hidden === true
   })) {
     saveConfig(configPath, config);
   }
@@ -366,9 +369,31 @@ async function markSelectedArticleRead(configPath, config, state, render) {
   render();
 }
 
-async function openSelectedArticleUrl(config, state) {
+async function hideSelectedArticle(configPath, config, state, render) {
+  const articles = currentArticles(config, state);
+  const article = articles[state.articleIndex];
+  if (!article) {
+    state.status = 'No article';
+    return;
+  }
+
+  article.hidden = true;
+  if (setArticleRecord(config, article.link, {
+    hidden: true,
+    read: article.read === true,
+    published_at: article.published || '',
+    title: article.title || ''
+  })) {
+    saveConfig(configPath, config);
+  }
+  clampBrowserState(config, state);
+  state.status = 'Hidden';
+  render();
+}
+
+async function openSelectedArticleUrl(configPath, config, state, render) {
   const article = state.view === 'article' && state.article
-    ? { link: state.article.url }
+    ? { link: state.article.link || state.article.url, title: state.article.title || '', published: '' }
     : currentArticles(config, state)[state.articleIndex];
 
   if (!article) {
@@ -378,7 +403,16 @@ async function openSelectedArticleUrl(config, state) {
 
   const url = article.link || article.url;
   openUrl(url);
-  state.status = 'Opened in browser';
+  if (setArticleRecord(config, article.link || article.url, {
+    read: true,
+    published_at: article.published || '',
+    title: article.title || ''
+  })) {
+    saveConfig(configPath, config);
+  }
+  clampBrowserState(config, state);
+  state.status = 'Opened and marked read';
+  render();
 }
 
 async function openSelectedArticle(configPath, config, state, render) {
@@ -406,6 +440,7 @@ async function openSelectedArticle(configPath, config, state, render) {
     state.article = {
       title: full.title || article.title,
       url: full.url || article.link,
+      link: article.link,
       text: full.text || ''
     };
     state.articleScroll = 0;
@@ -469,7 +504,7 @@ function renderArticles(config, state, rows, width) {
     }
   }
 
-  drawLines(lines, rows, width, footerText(state, 'j/k  C-d/C-u  gg/G  Enter/l  r  R  o  q'));
+  drawLines(lines, rows, width, footerText(state, 'j/k  C-d/C-u  gg/G  Enter/l  o  r  h  q'));
 }
 
 function renderArticle(state, rows, width) {
@@ -477,7 +512,7 @@ function renderArticle(state, rows, width) {
   const viewRows = Math.max(1, rows - 1);
   state.articleScroll = clamp(state.articleScroll, 0, Math.max(0, lines.length - viewRows));
   const visible = lines.slice(state.articleScroll, state.articleScroll + viewRows);
-  const footer = footerText(state, 'j/k  C-d/C-u  gg/G  n/p  o  q/h');
+  const footer = footerText(state, 'j/k  C-d/C-u  gg/G  n/p  o  r  q/h');
   drawLines(visible, rows, width, footer);
 }
 
@@ -526,7 +561,7 @@ function clampBrowserState(config, state) {
 
 function currentArticles(config, state) {
   return (state.articles || [])
-    .filter((article) => !isArticleRead(config, article.link))
+    .filter((article) => !isArticleRead(config, article.link) && !isArticleHidden(config, article.link))
     .sort((a, b) => dateValue(b.published) - dateValue(a.published));
 }
 
@@ -583,15 +618,15 @@ function isQuitKey(value, key) {
 }
 
 function isRefreshKey(value, key) {
-  return value === 'R' || (key.name === 'r' && key.shift) || key.name === 'R';
-}
-
-function isReadKey(value, key) {
-  return vimKey(value) === 'r' || key.name === 'r';
+  return vimKey(value) === 'r' || key.name === 'r' || value === 'R' || key.name === 'R';
 }
 
 function isOpenUrlKey(value, key) {
   return vimKey(value) === 'o' || key.name === 'o';
+}
+
+function isHideKey(value, key) {
+  return vimKey(value) === 'h' || key.name === 'h';
 }
 
 function isDownKey(value, key) {
@@ -734,7 +769,7 @@ function printArticle(title, text) {
 async function loadUnreadArticles(configPath, config, source = null, options = {}) {
   const articles = await loadArticles(configPath, config, source, options);
   return articles
-    .filter((article) => !article.read)
+    .filter((article) => !article.read && !article.hidden)
     .sort((a, b) => dateValue(b.published) - dateValue(a.published));
 }
 
@@ -802,7 +837,8 @@ function ingestFeedArticles(config, feedItems, titleFilters, hooks = {}) {
 
     articles.push({
       ...article,
-      read: isArticleRead(config, article.link)
+      read: isArticleRead(config, article.link),
+      hidden: isArticleHidden(config, article.link)
     });
   }
 
@@ -841,6 +877,10 @@ function matchesEntryTitle(title, filters) {
 
 function isArticleRead(config, url) {
   return getArticleRecord(config, url).read === true;
+}
+
+function isArticleHidden(config, url) {
+  return getArticleRecord(config, url).hidden === true;
 }
 
 function getArticleRecord(config, url) {

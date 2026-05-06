@@ -84,7 +84,8 @@ function normalizeArticleState(articles) {
         state[url] = normalizeArticleRecord({
           read: true,
           published_at: article.published || article.published_at || '',
-          title: article.title || ''
+          title: article.title || '',
+          hidden: article.hidden === true
         });
       }
     }
@@ -98,7 +99,8 @@ function normalizeArticleRecord(value) {
     return {
       read: value,
       published_at: '',
-      title: ''
+      title: '',
+      hidden: false
     };
   }
 
@@ -106,7 +108,8 @@ function normalizeArticleRecord(value) {
     return {
       read: true,
       published_at: value,
-      title: ''
+      title: '',
+      hidden: false
     };
   }
 
@@ -114,14 +117,16 @@ function normalizeArticleRecord(value) {
     return {
       read: false,
       published_at: '',
-      title: ''
+      title: '',
+      hidden: false
     };
   }
 
   return {
     read: value.read === true,
     published_at: String(value.published_at || value.publishedAt || value.published || ''),
-    title: String(value.title || '')
+    title: String(value.title || ''),
+    hidden: value.hidden === true
   };
 }
 
