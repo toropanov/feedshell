@@ -1527,156 +1527,150 @@
     "read": false,
     "published_at": "2026-06-23T07:06:55.000Z",
     "title": "«Мучаем кубик»: параметрическое проектирование и анализ нагруженности 3D модели (для FDM 3D печати) во FreeCAD",
-    "hidden": false
-  },
-  "https://habr.com/ru/posts/1050764/?utm_campaign=1050764&utm_source=habrahabr&utm_medium=rss": {
-    "read": false,
-    "published_at": "2026-06-23T06:34:17.000Z",
-    "title": "Пост @AIguide — Искусственный интеллект — 23.06.2026 09:34",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/posts/1050090/?utm_campaign=1050090&utm_source=habrahabr&utm_medium=rss": {
-    "read": false,
+    "read": true,
     "published_at": "2026-06-22T16:00:56.000Z",
-    "title": "Пост @myshkin_does_it — Python (+2) — N/P",
+    "title": "Язык, с которым у ИИ плохо",
     "hidden": false
   },
   "https://habr.com/ru/posts/1050630/?utm_campaign=1050630&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-22T15:14:15.000Z",
-    "title": "Пост @ivanishchev — Искусственный интеллект — 22.06.2026 18:14",
+    "title": "Perplexity заходит в юридический сегмент",
     "hidden": false
   },
   "https://habr.com/ru/posts/1050422/?utm_campaign=1050422&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-22T10:59:19.000Z",
-    "title": "Пост @denis-19 — Open source (+4) — 22.06.2026 13:59",
+    "title": "Представлена мощную опция автоматизацию для Codex от президента OpenAI Грега Брокмана",
     "hidden": false
   },
   "https://habr.com/ru/posts/1050318/?utm_campaign=1050318&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-22T09:10:56.000Z",
-    "title": "Пост @sunm8 — Искусственный интеллект (+4) — 22.06.2026 12:10",
+    "title": "Неделю назад здесь пробегала новость про \"белый VPN\" от Билайна - мол, запустили легальный доступ к Spotify, Netflix и паре других сервисов через подписку",
     "hidden": false
   },
   "https://habr.com/ru/posts/1050152/?utm_campaign=1050152&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-21T16:31:39.000Z",
-    "title": "Пост @denis-19 — Обработка изображений (+4) — 21.06.2026 19:31",
+    "title": "Представлен открытый проект SnapOtter",
     "hidden": false
   },
   "https://habr.com/ru/posts/1050062/?utm_campaign=1050062&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-21T07:30:59.000Z",
-    "title": "Пост @denis-19 — Искусственный интеллект (+4) — 21.06.2026 10:30",
+    "title": "Энтузиаст решил возродить легендарную World of Warcraft и создал сервер, на котором играют 1800 ИИ‑ботов с DeepSeek",
     "hidden": false
   },
   "https://habr.com/ru/posts/1050016/?utm_campaign=1050016&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-20T21:12:18.000Z",
-    "title": "Пост @denis-19 — Искусственный интеллект (+2) — 21.06.2026 00:12",
+    "title": "Извлекаем любые данные из документов - представлен открытый сервис Datalab ( Hugging Face ), который помогает «общаться» со всевозможными файлами и работает на уровне Gemini 3",
     "hidden": false
   },
   "https://habr.com/ru/companies/alfa/posts/1049662/?utm_campaign=1049662&utm_source=habrahabr&utm_medium=rss": {
-    "read": false,
+    "read": true,
     "published_at": "2026-06-19T13:19:09.000Z",
-    "title": "Пост @AlfaTeam — Блог компании Альфа-Банк (+2) — 19.06.2026 16:19",
+    "title": "Как посчитать, приносит ИИ пользу или нет?",
     "hidden": false
   },
   "https://habr.com/ru/companies/ibs/posts/1049622/?utm_campaign=1049622&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-19T12:23:23.000Z",
-    "title": "Пост @IBS_habrablog — Блог компании IBS (+2) — 19.06.2026 15:23",
+    "title": "Уволили сотрудника, заменив на ИИ? Затраты на подписку и токены превысили сэкономленную зарплату",
     "hidden": false
   },
   "https://habr.com/ru/companies/runity/posts/1049436/?utm_campaign=1049436&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-19T07:42:53.000Z",
-    "title": "Пост @runity — Блог компании Рунити (+2) — 19.06.2026 10:42",
+    "title": "Как создать свою нейросеть: от теории к практике",
     "hidden": false
   },
   "https://habr.com/ru/posts/1049332/?utm_campaign=1049332&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T22:09:17.000Z",
-    "title": "Пост @Dreams_and_magic — Искусственный интеллект — 19.06.2026 01:09",
+    "title": "Kimi запускает AI-кредитку: кэшбэк теперь возвращается токенами",
     "hidden": false
   },
   "https://habr.com/ru/companies/ibs/posts/1049156/?utm_campaign=1049156&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T12:55:46.000Z",
-    "title": "Пост @IBS_habrablog — Блог компании IBS (+2) — 18.06.2026 15:55",
+    "title": "Архитектор тратит время на задачи, которые мог бы взять на себя ИИ: поиск антипаттернов, первая версия NFR, сравнение технологий, наброски диаграмм и модели данных",
     "hidden": false
   },
   "https://habr.com/ru/companies/ruvds/posts/1049064/?utm_campaign=1049064&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T11:16:20.000Z",
-    "title": "Пост @ru_vds — Блог компании RUVDS.com (+4) — 18.06.2026 14:16",
+    "title": "Оружие или зависть? Правительство США заставило Anthropic отключить доступ к новым ИИ-моделям",
     "hidden": false
   },
   "https://habr.com/ru/companies/X5Tech/posts/1049024/?utm_campaign=1049024&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T09:41:21.000Z",
-    "title": "Пост @Rombneromb — Блог компании X5 Tech (+4) — 18.06.2026 12:41",
+    "title": "Где заканчивается vibe и начинается инженерия",
     "hidden": false
   },
   "https://habr.com/ru/posts/1049010/?utm_campaign=1049010&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T09:13:43.000Z",
-    "title": "Пост @denis-19 — Искусственный интеллект (+4) — 18.06.2026 12:13",
+    "title": "Шпаргалка из 92 нейросетей для всех задач — список сервисов",
     "hidden": false
   },
   "https://habr.com/ru/posts/1048954/?utm_campaign=1048954&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T07:50:48.000Z",
-    "title": "Пост @Amabi — Искусственный интеллект (+3) — 18.06.2026 10:50",
+    "title": "Страшно не то, что ИИ отнимает работу",
     "hidden": false
   },
   "https://habr.com/ru/companies/ruvds/posts/1048636/?utm_campaign=1048636&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T11:10:23.000Z",
-    "title": "Пост @ru_vds — Блог компании RUVDS.com (+4) — 17.06.2026 14:10",
+    "title": "Фото: Яндекс А за беспилотные авто в России ответит пользователь",
     "hidden": false
   },
   "https://habr.com/ru/companies/otus/posts/1047968/?utm_campaign=1047968&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T07:06:32.000Z",
-    "title": "Пост @MaxRokatansky — Блог компании OTUS (+3) — N/P",
+    "title": "1С в 2026 году: разработка, архитектура и работа с требованиями",
     "hidden": false
   },
   "https://habr.com/ru/posts/1048402/?utm_campaign=1048402&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T04:37:38.000Z",
-    "title": "Пост @lya_ocean — Искусственный интеллект (+4) — N/P",
+    "title": "GLM 5",
     "hidden": false
   },
   "https://habr.com/ru/posts/1048274/?utm_campaign=1048274&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T14:38:38.000Z",
-    "title": "Пост @izard — Искусственный интеллект (+1) — 16.06.2026 17:38",
+    "title": "Anthropic Fable 5/Mythos закрыли из-за jailbreak, которым потенциально могут воспользоваться неграждане США",
     "hidden": false
   },
   "https://habr.com/ru/companies/naumen/posts/1048156/?utm_campaign=1048156&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T14:33:23.000Z",
-    "title": "Пост @blognaumen — Блог компании NAUMEN — N/P",
+    "title": "Как посмотреть на задачу глазами исполнителя",
     "hidden": false
   },
   "https://habr.com/ru/posts/1048182/?utm_campaign=1048182&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T11:57:53.000Z",
-    "title": "Пост @elpodium_agency — Искусственный интеллект (+2) — 16.06.2026 14:57",
+    "title": "Клиент написал стратегию в ChatGPT сам",
     "hidden": false
   },
   "https://habr.com/ru/posts/1048098/?utm_campaign=1048098&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T10:21:04.000Z",
-    "title": "Пост @denis-19 — Open source (+4) — 16.06.2026 13:21",
+    "title": "Представлен открытый проект HTML skills for pragmatic visual artifacts для генерации HTML‑файлов за один клик, включая диаграммы, презентации, резюме, отчёты, планы и прочее:",
     "hidden": false
   },
   "https://habr.com/ru/posts/1048070/?utm_campaign=1048070&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T09:39:00.000Z",
-    "title": "Пост @ITFB_Group — Искусственный интеллект (+3) — 16.06.2026 12:39",
+    "title": "Вайб-кодинг на корпоративном контроле: как превращать хаос генерации в инженерную дисциплину",
     "hidden": false
   },
   "https://habr.com/ru/articles/1050748/?utm_campaign=1050748&utm_source=habrahabr&utm_medium=rss": {
@@ -1710,7 +1704,7 @@
     "hidden": false
   },
   "https://habr.com/ru/articles/1050316/?utm_campaign=1050316&utm_source=habrahabr&utm_medium=rss": {
-    "read": false,
+    "read": true,
     "published_at": "2026-06-22T09:05:50.000Z",
     "title": "Бесплатное lo-fi радио + живые обои на рабочий стол: собрал десктоп-приложение на Tauri 2 (форк lofi-engine)",
     "hidden": false

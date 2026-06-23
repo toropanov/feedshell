@@ -48,7 +48,8 @@ function parseItem(node, sourceId) {
     || textFromTag(node, 'summary')
     || textFromTag(node, 'content')
     || '');
-  const title = textFromTag(node, 'title') || titleFromArticle(summary);
+  const feedTitle = textFromTag(node, 'title');
+  const title = isGenericHabrPostTitle(feedTitle) ? titleFromArticle(summary) : feedTitle || titleFromArticle(summary);
   const guid = textFromTag(node, 'guid') || link || `${sourceId}:${title}:${published}`;
 
   return {
@@ -61,6 +62,10 @@ function parseItem(node, sourceId) {
     read: false,
     fetchedAt: new Date().toISOString()
   };
+}
+
+function isGenericHabrPostTitle(title) {
+  return /^Пост @.+ — .+ — (?:\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}|N\/P)$/u.test(String(title).trim());
 }
 
 function titleFromArticle(text) {
