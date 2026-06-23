@@ -1401,7 +1401,7 @@
     "read": false,
     "published_at": "2026-06-22T14:30:23.000Z",
     "title": "I used Meta Llama 4, Qwen 3-Coder and Gemma 4 to develop a Python app, and only one model is worth keeping for developers",
-    "hidden": false
+    "hidden": true
   },
   "https://www.xda-developers.com/ditched-my-old-home-lab-interface-for-wolfstack-and-the-difference-is-immediately-obvious/": {
     "read": false,
@@ -1569,7 +1569,7 @@
     "read": false,
     "published_at": "2026-06-20T21:12:18.000Z",
     "title": "Извлекаем любые данные из документов - представлен открытый сервис Datalab ( Hugging Face ), который помогает «общаться» со всевозможными файлами и работает на уровне Gemini 3",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/alfa/posts/1049662/?utm_campaign=1049662&utm_source=habrahabr&utm_medium=rss": {
     "read": true,
@@ -1581,40 +1581,40 @@
     "read": false,
     "published_at": "2026-06-19T12:23:23.000Z",
     "title": "Уволили сотрудника, заменив на ИИ? Затраты на подписку и токены превысили сэкономленную зарплату",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/runity/posts/1049436/?utm_campaign=1049436&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-19T07:42:53.000Z",
     "title": "Как создать свою нейросеть: от теории к практике",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/posts/1049332/?utm_campaign=1049332&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T22:09:17.000Z",
     "title": "Kimi запускает AI-кредитку: кэшбэк теперь возвращается токенами",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/ibs/posts/1049156/?utm_campaign=1049156&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T12:55:46.000Z",
     "title": "Архитектор тратит время на задачи, которые мог бы взять на себя ИИ: поиск антипаттернов, первая версия NFR, сравнение технологий, наброски диаграмм и модели данных",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/ruvds/posts/1049064/?utm_campaign=1049064&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T11:16:20.000Z",
     "title": "Оружие или зависть? Правительство США заставило Anthropic отключить доступ к новым ИИ-моделям",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/X5Tech/posts/1049024/?utm_campaign=1049024&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T09:41:21.000Z",
     "title": "Где заканчивается vibe и начинается инженерия",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/posts/1049010/?utm_campaign=1049010&utm_source=habrahabr&utm_medium=rss": {
-    "read": false,
+    "read": true,
     "published_at": "2026-06-18T09:13:43.000Z",
     "title": "Шпаргалка из 92 нейросетей для всех задач — список сервисов",
     "hidden": false
@@ -1623,22 +1623,22 @@
     "read": false,
     "published_at": "2026-06-18T07:50:48.000Z",
     "title": "Страшно не то, что ИИ отнимает работу",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/ruvds/posts/1048636/?utm_campaign=1048636&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T11:10:23.000Z",
     "title": "Фото: Яндекс А за беспилотные авто в России ответит пользователь",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/otus/posts/1047968/?utm_campaign=1047968&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T07:06:32.000Z",
     "title": "1С в 2026 году: разработка, архитектура и работа с требованиями",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/posts/1048402/?utm_campaign=1048402&utm_source=habrahabr&utm_medium=rss": {
-    "read": false,
+    "read": true,
     "published_at": "2026-06-17T04:37:38.000Z",
     "title": "GLM 5",
     "hidden": false
@@ -1647,31 +1647,31 @@
     "read": false,
     "published_at": "2026-06-16T14:38:38.000Z",
     "title": "Anthropic Fable 5/Mythos закрыли из-за jailbreak, которым потенциально могут воспользоваться неграждане США",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/naumen/posts/1048156/?utm_campaign=1048156&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T14:33:23.000Z",
     "title": "Как посмотреть на задачу глазами исполнителя",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/posts/1048182/?utm_campaign=1048182&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T11:57:53.000Z",
     "title": "Клиент написал стратегию в ChatGPT сам",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/posts/1048098/?utm_campaign=1048098&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T10:21:04.000Z",
     "title": "Представлен открытый проект HTML skills for pragmatic visual artifacts для генерации HTML‑файлов за один клик, включая диаграммы, презентации, резюме, отчёты, планы и прочее:",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/posts/1048070/?utm_campaign=1048070&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T09:39:00.000Z",
     "title": "Вайб-кодинг на корпоративном контроле: как превращать хаос генерации в инженерную дисциплину",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1050748/?utm_campaign=1050748&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
@@ -1680,7 +1680,7 @@
     "hidden": true
   },
   "https://habr.com/ru/articles/1050650/?utm_campaign=1050650&utm_source=habrahabr&utm_medium=rss": {
-    "read": false,
+    "read": true,
     "published_at": "2026-06-22T16:17:24.000Z",
     "title": "Как я собрал новостной агрегатор HypeNet на Cloudflare Workers + Supabase и что пошло не так",
     "hidden": false
@@ -1695,13 +1695,13 @@
     "read": false,
     "published_at": "2026-06-22T10:50:11.000Z",
     "title": "Я собрал линтер для юридического соответствия сайтов. Сложнее всего было отличить Google Analytics от CSS‑переменной",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/sberbank/articles/1045380/?utm_campaign=1045380&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-22T09:26:38.000Z",
     "title": "GenUI: первый взгляд на json-render и MCP Apps",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1050316/?utm_campaign=1050316&utm_source=habrahabr&utm_medium=rss": {
     "read": true,
@@ -1713,73 +1713,73 @@
     "read": false,
     "published_at": "2026-06-20T10:23:58.000Z",
     "title": "Как отладить подключение бота к бирже за час, а не за трое суток",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1049274/?utm_campaign=1049274&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T18:23:07.000Z",
     "title": "[Перевод] Представляем MDN MCP-сервер",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1049048/?utm_campaign=1049048&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T10:16:57.000Z",
     "title": "Мессенджер в одном HTML-файле: Git как storage, browser как runtime",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/centicore_group/articles/1048598/?utm_campaign=1048598&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-18T07:46:04.000Z",
     "title": "Как я перешёл с React на Angular и не пожалел",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1048872/?utm_campaign=1048872&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T21:28:05.000Z",
     "title": "Clean Architecture и AI: как я перестроил проект на 200К строк, чтобы агенты не ломали код",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1048798/?utm_campaign=1048798&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T16:31:41.000Z",
     "title": "Я мог бы сказать, что это убийца notion, obsidian, slack и вашей ide. Но я скажу, что ем собачий корм",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1048656/?utm_campaign=1048656&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T11:34:51.000Z",
     "title": "Как мы считаем недельное меню в Pikni Food: пачки, остатки и solver вместо списка рецептов",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1048416/?utm_campaign=1048416&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T11:00:41.000Z",
     "title": "Мультиверсионный UI-кит с RWC: один JS-API для разных веб-компонентов",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1048438/?utm_campaign=1048438&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T10:30:33.000Z",
     "title": "Тестирование интеграций через Kafka: проверка сценариев с разными типами данных",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1029170/?utm_campaign=1029170&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-17T08:00:12.000Z",
     "title": "Код в эпоху AI: как перестать бороться за качество и начать контролировать деградацию",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/ruvds/articles/1047434/?utm_campaign=1047434&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T13:01:19.000Z",
     "title": "Как я написал «Обратную змейку» на чистом Canvas",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/companies/dalee_group/articles/1044744/?utm_campaign=1044744&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
     "published_at": "2026-06-16T09:03:06.000Z",
     "title": "Декларативное RPC вместо REST-ручек — победили сетевой бойлерплейт и вычистили код с помощью фреймворка Chord",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1047986/?utm_campaign=1047986&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
