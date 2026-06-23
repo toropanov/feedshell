@@ -2,7 +2,7 @@ const readline = require('node:readline');
 const { spawn } = require('node:child_process');
 const { stdin, stdout } = require('node:process');
 
-const { createSource, defaultConfigPath, loadConfig, normalizeArticleRecord, saveConfig } = require('./config');
+const { createSource, defaultConfigPath, loadConfig, normalizeArticleRecord, reloadConfig, saveConfig } = require('./config');
 const { fetchFeed } = require('./feed');
 const { loadFullArticle } = require('./article');
 
@@ -59,15 +59,8 @@ async function addSource(configPath, config, args, options) {
   }
 
   const source = createSource(url, options.title);
-
-  try {
-    const feed = await fetchFeed(source);
-    source.title = options.title || feed.title || source.title;
-  } catch (error) {
-    if (options.strict) {
-      throw error;
-    }
-  }
+  const feed = await fetchFeed(source);
+  source.title = options.title || feed.title || source.title;
 
   config.sources.push(source);
   saveConfig(configPath, config, { replaceSources: true });
@@ -103,6 +96,8 @@ function removeSource(configPath, config, args) {
 }
 
 async function refresh(configPath, config) {
+  reloadConfig(configPath, config);
+
   if (!config.sources.length) {
     console.log('Источников нет. Добавьте: rss add <url>');
     return;
@@ -774,6 +769,10 @@ async function loadUnreadArticles(configPath, config, source = null, options = {
 }
 
 async function loadArticles(configPath, config, source = null, options = {}) {
+  if (!source) {
+    reloadConfig(configPath, config);
+  }
+
   const sources = source ? [source] : config.sources;
   const articles = [];
   let dirty = false;
@@ -994,8 +993,6 @@ function parseArgs(argv) {
       options.limit = argv[++index];
     } else if (value.startsWith('--limit=')) {
       options.limit = value.slice('--limit='.length);
-    } else if (value === '--strict') {
-      options.strict = true;
     } else {
       args.push(value);
     }

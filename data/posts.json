@@ -1407,7 +1407,7 @@
     "read": false,
     "published_at": "2026-06-22T11:00:23.000Z",
     "title": "I ditched my old home lab interface for WolfStack, and the difference is immediately obvious",
-    "hidden": false
+    "hidden": true
   },
   "https://mobile-review.com/all/reviews/auto/vasha-volga-podana/": {
     "read": true,
@@ -1515,7 +1515,7 @@
     "read": false,
     "published_at": "2026-06-23T07:00:00.000Z",
     "title": "HUAWEI nova будущего: лучшие идеи молодых дизайнеров и фотографов",
-    "hidden": false
+    "hidden": true
   },
   "https://brodude.ru/11-kachestv-kotoryh-tebe-ne-hvataet-dlya-vnutrennej-ustojchivosti/": {
     "read": false,
@@ -1539,7 +1539,7 @@
     "read": false,
     "published_at": "2026-06-22T15:14:15.000Z",
     "title": "Perplexity заходит в юридический сегмент",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/posts/1050422/?utm_campaign=1050422&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
@@ -1551,7 +1551,7 @@
     "read": false,
     "published_at": "2026-06-22T09:10:56.000Z",
     "title": "Неделю назад здесь пробегала новость про \"белый VPN\" от Билайна - мол, запустили легальный доступ к Spotify, Netflix и паре других сервисов через подписку",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/posts/1050152/?utm_campaign=1050152&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
@@ -1563,7 +1563,7 @@
     "read": false,
     "published_at": "2026-06-21T07:30:59.000Z",
     "title": "Энтузиаст решил возродить легендарную World of Warcraft и создал сервер, на котором играют 1800 ИИ‑ботов с DeepSeek",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/posts/1050016/?utm_campaign=1050016&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
@@ -1677,7 +1677,7 @@
     "read": false,
     "published_at": "2026-06-23T05:50:10.000Z",
     "title": "Браузер как платформа — офисные инструменты и IT-утилиты без сервера, без установки, без регистрации",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1050650/?utm_campaign=1050650&utm_source=habrahabr&utm_medium=rss": {
     "read": false,
@@ -1689,7 +1689,7 @@
     "read": false,
     "published_at": "2026-06-22T12:16:50.000Z",
     "title": "Устал загружать конфиденциальные данные в онлайн-сервисы, поэтому сделал PrivacyKit",
-    "hidden": false
+    "hidden": true
   },
   "https://habr.com/ru/articles/1050412/?utm_campaign=1050412&utm_source=habrahabr&utm_medium=rss": {
     "read": false,

@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
+const configSnapshots = new WeakMap();
 
 function defaultConfigPath() {
   if (process.env.RSS_CONFIG) {
@@ -39,6 +40,7 @@ function loadConfig(filePath) {
     const data = emptyConfig();
     data.sources = readJsonFile(sourcesPath, []);
     data.articles = normalizeArticleState(readJsonFile(postsPath, {}));
+    rememberConfig(data);
     return { path: resolvedPath, data };
   }
 
@@ -47,6 +49,7 @@ function loadConfig(filePath) {
   const normalized = normalizeConfig(data);
   normalized.sources = readJsonFile(sourcesPath, normalized.sources);
   normalized.articles = normalizeArticleState(readJsonFile(postsPath, normalized.articles));
+  rememberConfig(normalized);
 
   return {
     path: resolvedPath,
@@ -55,7 +58,17 @@ function loadConfig(filePath) {
 }
 
 function saveConfig(configPath, data, options = {}) {
-  const normalized = normalizeConfig(data);
+  const incoming = normalizeConfig(data);
+  const baseline = configSnapshots.get(data) || emptyConfig();
+  const current = loadConfig(configPath).data;
+  const normalized = {
+    version: incoming.version,
+    sources: mergeSources(current.sources, baseline.sources, incoming.sources),
+    articles: mergeRecords(current.articles, baseline.articles, incoming.articles),
+    entryTitleFilters: sameValue(incoming.entryTitleFilters, baseline.entryTitleFilters)
+      ? current.entryTitleFilters
+      : incoming.entryTitleFilters
+  };
   const { sourcesPath, postsPath } = dataPaths(configPath);
 
   fs.mkdirSync(path.dirname(configPath), { recursive: true });
@@ -65,11 +78,81 @@ function saveConfig(configPath, data, options = {}) {
     entryTitleFilters: normalized.entryTitleFilters
   }, null, 2)}\n`);
 
-  if (options.replaceSources || !fs.existsSync(sourcesPath)) {
-    fs.writeFileSync(sourcesPath, `${JSON.stringify(normalized.sources, null, 2)}\n`);
+  fs.writeFileSync(sourcesPath, `${JSON.stringify(normalized.sources, null, 2)}\n`);
+  fs.writeFileSync(postsPath, `${JSON.stringify(normalized.articles, null, 2)}\n`);
+  data.sources = normalized.sources;
+  data.articles = normalized.articles;
+  data.entryTitleFilters = normalized.entryTitleFilters;
+  rememberConfig(data);
+}
+
+function reloadConfig(configPath, data) {
+  const current = loadConfig(configPath).data;
+  data.sources = current.sources;
+  data.articles = current.articles;
+  data.entryTitleFilters = current.entryTitleFilters;
+  rememberConfig(data);
+  return data;
+}
+
+function mergeSources(current, baseline, incoming) {
+  const baselineByUrl = new Map(baseline.map((source) => [source.url, source]));
+  const incomingByUrl = new Map(incoming.map((source) => [source.url, source]));
+  const result = current
+    .filter((source) => baselineByUrl.has(source.url) ? incomingByUrl.has(source.url) : true)
+    .map((source) => {
+      const previous = baselineByUrl.get(source.url);
+      const next = incomingByUrl.get(source.url);
+      return previous && next && !sameValue(previous, next) ? next : source;
+    });
+  const urls = new Set(result.map((source) => source.url));
+
+  for (const source of incoming) {
+    if (!baselineByUrl.has(source.url) && !urls.has(source.url)) {
+      result.push(source);
+    }
   }
 
-  fs.writeFileSync(postsPath, `${JSON.stringify(normalized.articles, null, 2)}\n`);
+  return result;
+}
+
+function mergeRecords(current, baseline, incoming) {
+  const result = { ...current };
+  const keys = new Set([...Object.keys(baseline), ...Object.keys(incoming)]);
+
+  for (const key of keys) {
+    if (sameValue(baseline[key], incoming[key])) {
+      continue;
+    }
+
+    if (Object.hasOwn(incoming, key)) {
+      result[key] = mergeRecord(current[key], baseline[key], incoming[key]);
+    } else {
+      delete result[key];
+    }
+  }
+
+  return result;
+}
+
+function mergeRecord(current = {}, baseline = {}, incoming = {}) {
+  const result = { ...current };
+
+  for (const key of new Set([...Object.keys(baseline), ...Object.keys(incoming)])) {
+    if (!sameValue(baseline[key], incoming[key])) {
+      result[key] = incoming[key];
+    }
+  }
+
+  return result;
+}
+
+function rememberConfig(data) {
+  configSnapshots.set(data, JSON.parse(JSON.stringify(normalizeConfig(data))));
+}
+
+function sameValue(left, right) {
+  return JSON.stringify(left) === JSON.stringify(right);
 }
 
 function dataPaths(configPath) {
@@ -217,6 +300,7 @@ module.exports = {
   defaultConfigPath,
   loadConfig,
   normalizeArticleRecord,
+  reloadConfig,
   resolvePath,
   saveConfig
 };
