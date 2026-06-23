@@ -70,7 +70,7 @@ async function addSource(configPath, config, args, options) {
   }
 
   config.sources.push(source);
-  saveConfig(configPath, config);
+  saveConfig(configPath, config, { replaceSources: true });
   console.log(`Добавлено: ${source.title}`);
 }
 
@@ -98,7 +98,7 @@ function removeSource(configPath, config, args) {
   }
 
   const [removed] = config.sources.splice(index, 1);
-  saveConfig(configPath, config);
+  saveConfig(configPath, config, { replaceSources: true });
   console.log(`Удалено: ${removed.title}`);
 }
 
@@ -923,7 +923,11 @@ function openUrl(url) {
 
   const platform = process.platform;
   const command = platform === 'darwin' ? 'open' : platform === 'win32' ? 'cmd' : 'xdg-open';
-  const args = platform === 'win32' ? ['/c', 'start', '', url] : [url];
+  const args = platform === 'win32'
+    ? ['/c', 'start', '', url]
+    : platform === 'darwin'
+      ? ['-g', url]
+      : [url];
   const child = spawn(command, args, { detached: true, stdio: 'ignore' });
   child.on('error', () => {});
   child.unref();

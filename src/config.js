@@ -33,23 +33,65 @@ function emptyConfig() {
 
 function loadConfig(filePath) {
   const resolvedPath = resolvePath(filePath);
+  const { sourcesPath, postsPath } = dataPaths(resolvedPath);
 
   if (!fs.existsSync(resolvedPath)) {
-    return { path: resolvedPath, data: emptyConfig() };
+    const data = emptyConfig();
+    data.sources = readJsonFile(sourcesPath, []);
+    data.articles = normalizeArticleState(readJsonFile(postsPath, {}));
+    return { path: resolvedPath, data };
   }
 
   const raw = fs.readFileSync(resolvedPath, 'utf8').trim();
   const data = raw ? JSON.parse(raw) : emptyConfig();
+  const normalized = normalizeConfig(data);
+  normalized.sources = readJsonFile(sourcesPath, normalized.sources);
+  normalized.articles = normalizeArticleState(readJsonFile(postsPath, normalized.articles));
 
   return {
     path: resolvedPath,
-    data: normalizeConfig(data)
+    data: normalized
   };
 }
 
-function saveConfig(configPath, data) {
+function saveConfig(configPath, data, options = {}) {
+  const normalized = normalizeConfig(data);
+  const { sourcesPath, postsPath } = dataPaths(configPath);
+
   fs.mkdirSync(path.dirname(configPath), { recursive: true });
-  fs.writeFileSync(configPath, `${JSON.stringify(normalizeConfig(data), null, 2)}\n`);
+  fs.mkdirSync(path.dirname(sourcesPath), { recursive: true });
+  fs.writeFileSync(configPath, `${JSON.stringify({
+    version: normalized.version,
+    entryTitleFilters: normalized.entryTitleFilters
+  }, null, 2)}\n`);
+
+  if (options.replaceSources || !fs.existsSync(sourcesPath)) {
+    fs.writeFileSync(sourcesPath, `${JSON.stringify(normalized.sources, null, 2)}\n`);
+  }
+
+  fs.writeFileSync(postsPath, `${JSON.stringify(normalized.articles, null, 2)}\n`);
+}
+
+function dataPaths(configPath) {
+  const directory = path.dirname(configPath);
+  const extension = path.extname(configPath);
+  const basename = path.basename(configPath, extension);
+  const prefix = basename === 'config' ? '' : `${basename}.`;
+  const dataDirectory = path.join(directory, 'data');
+
+  return {
+    sourcesPath: path.join(dataDirectory, `${prefix}sources.json`),
+    postsPath: path.join(dataDirectory, `${prefix}posts.json`)
+  };
+}
+
+function readJsonFile(filePath, fallback) {
+  if (!fs.existsSync(filePath)) {
+    return fallback;
+  }
+
+  const raw = fs.readFileSync(filePath, 'utf8').trim();
+  return raw ? JSON.parse(raw) : fallback;
 }
 
 function normalizeConfig(data) {

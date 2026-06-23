@@ -15,7 +15,12 @@ async function fetchFeed(source) {
   }
 
   const xml = await response.text();
-  return parseFeed(xml, source);
+  const feed = parseFeed(xml, source);
+  if (!feed.items.length && !/<(?:rss|feed)\b/i.test(xml)) {
+    throw new Error(`${source.title}: URL не является RSS/Atom-лентой`);
+  }
+
+  return feed;
 }
 
 function parseFeed(xml, source) {
@@ -32,7 +37,6 @@ function parseFeed(xml, source) {
 }
 
 function parseItem(node, sourceId) {
-  const title = textFromTag(node, 'title');
   const link = findLink(node);
   const published = textFromTag(node, 'pubDate')
     || textFromTag(node, 'published')
@@ -44,6 +48,7 @@ function parseItem(node, sourceId) {
     || textFromTag(node, 'summary')
     || textFromTag(node, 'content')
     || '');
+  const title = textFromTag(node, 'title') || titleFromArticle(summary);
   const guid = textFromTag(node, 'guid') || link || `${sourceId}:${title}:${published}`;
 
   return {
@@ -56,6 +61,16 @@ function parseItem(node, sourceId) {
     read: false,
     fetchedAt: new Date().toISOString()
   };
+}
+
+function titleFromArticle(text) {
+  const firstLine = String(text)
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .find(Boolean) || '';
+  const periodIndex = firstLine.indexOf('.');
+
+  return (periodIndex === -1 ? firstLine : firstLine.slice(0, periodIndex)).trim();
 }
 
 function mergeArticles(existing, incoming, limit) {
