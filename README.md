@@ -8,7 +8,7 @@ A terminal RSS and Atom reader for Node.js 18+. Manage feeds, browse unread arti
 
 ```bash
 npm link
-cp config.example.json config.json
+cp config.sample.json config.json
 ```
 
 The `rss` command becomes available after installation.

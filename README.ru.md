@@ -6,7 +6,7 @@
 
 ```bash
 npm link
-cp config.example.json config.json
+cp config.sample.json config.json
 ```
 
 После установки доступна команда `rss`.
