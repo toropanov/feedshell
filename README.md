@@ -1,84 +1,99 @@
-# rss-cli
+# feedshell
 
-A terminal RSS and Atom reader for Node.js 18+. Manage feeds, browse unread articles with Vim-style keyboard shortcuts, and read extracted article text without leaving the terminal. You can also open the original page in your browser, use command aliases for common actions, and filter unwanted articles by title using words or regular expressions in `entryTitleFilters`.
+[![CI](https://github.com/toropanov/feedshell/actions/workflows/ci.yml/badge.svg)](https://github.com/toropanov/feedshell/actions/workflows/ci.yml)
+[![Homebrew Formula CI](https://github.com/toropanov/homebrew-tap/actions/workflows/ci.yml/badge.svg)](https://github.com/toropanov/homebrew-tap/actions/workflows/ci.yml)
+[![Latest release](https://img.shields.io/github/v/release/toropanov/feedshell?display_name=tag&sort=semver)](https://github.com/toropanov/feedshell/releases)
+[![License](https://img.shields.io/github/license/toropanov/feedshell)](https://github.com/toropanov/feedshell/blob/master/LICENSE)
+[![Homebrew](https://img.shields.io/badge/Homebrew-toropanov%2Ftap-FBB040?logo=homebrew&logoColor=white)](https://github.com/toropanov/homebrew-tap)
 
-[Русская версия](README.ru.md)
+**Feedshell** is a terminal RSS and Atom reader. Manage feeds, browse unread articles with Vim-style navigation, read extracted article text without leaving the terminal, and open the original page when needed.
 
-## Installation
+## Install
 
-```bash
+```sh
+brew install toropanov/tap/feedshell
+```
+
+Homebrew 6 may ask you to trust the third-party formula explicitly:
+
+```sh
+brew trust --formula toropanov/tap/feedshell
+```
+
+To run the project from a checkout instead:
+
+```sh
 npm link
-cp config.sample.json config.json
 ```
 
-The `rss` command becomes available after installation.
+## Quick start
 
-## Sources
+```sh
+# Add a feed; its title is detected automatically.
+feedshell add https://example.com/feed.xml
 
-```bash
-# Add a source; its title will be taken from the feed
-rss add https://example.com/feed.xml
+# Open the interactive reader.
+feedshell
 
-# Add a source with a custom title
-rss add https://example.com/feed.xml --title "Example"
-
-# List sources
-rss sources
-
-# Remove a source by number, ID, or URL
-rss remove 1
-rss remove source-id
-rss remove https://example.com/feed.xml
+# Refresh feeds and list unread articles.
+feedshell fetch
+feedshell articles
 ```
 
-Command aliases: `list` → `sources`, `rm` → `remove`.
+## Commands
 
-## Reading
+| Command | Description |
+| --- | --- |
+| `feedshell add <url> [--title <name>]` | Add a feed. |
+| `feedshell sources` | List feeds. Alias: `list`. |
+| `feedshell remove <num\|id\|url>` | Remove a feed. Alias: `rm`. |
+| `feedshell fetch` | Refresh RSS and Atom feeds. Alias: `refresh`. |
+| `feedshell articles [source]` | List unread articles. |
+| `feedshell read [source] <num>` | Read an article's extracted text. Alias: `open`. |
+| `feedshell browse` | Open the interactive reader. This is the default command. |
+| `feedshell config` | Print the active config path. |
 
-```bash
-# Open interactive mode; this is the default command
-rss
-rss browse
-
-# Refresh all feeds
-rss fetch
-
-# List unread articles from all sources
-rss articles
-
-# List articles from a source by number, ID, title, or URL
-rss articles 1
-
-# Read an article by number from the combined list
-rss read 1
-
-# Read an article from a specific source
-rss read 1 2
-```
-
-Command aliases: `refresh` → `fetch`, `open` → `read`.
-
-## Interactive mode shortcuts
+## Keyboard shortcuts
 
 | Keys | Action |
-|---|---|
-| `j` / `↓`, `k` / `↑` | Move down or up |
-| `Ctrl+d` / `Space` / `Page Down` | Move one page down |
-| `Ctrl+u` / `b` / `Page Up` | Move one page up |
-| `g` / `Home`, `G` / `End` | Jump to the beginning or end |
-| `Enter` / `l` / `→` | Open an article |
-| `h` / `←` / `Esc` | Go back; hide the article when in the list |
-| `o` | Open in a browser and mark as read |
-| `r` | Refresh feeds |
-| `n`, `p` | Open the next or previous article |
-| `q` / `Ctrl+c` | Go back or quit |
+| --- | --- |
+| `j` / `↓`, `k` / `↑` | Move down or up. |
+| `Ctrl+d` / `Space`, `Ctrl+u` / `b` | Move one page down or up. |
+| `g` / `Home`, `G` / `End` | Jump to the beginning or end. |
+| `Enter` / `l` / `→` | Open an article. |
+| `h` / `←` / `Esc` | Go back. |
+| `o` | Open the original page in a browser and mark it read. |
+| `r` | Refresh feeds. |
+| `n`, `p` | Open the next or previous article. |
+| `q` / `Ctrl+c` | Go back or quit. |
 
-Vim keys also work with the Russian keyboard layout.
+Vim-style keys work with a Russian keyboard layout too.
 
-## Custom configuration
+## Configuration and data
 
-```bash
-rss --config /path/to/config.json browse
-RSS_CONFIG=/path/to/config.json rss
-rss config
+Feedshell keeps user data outside the application directory:
+
+- `$XDG_CONFIG_HOME/feedshell/config.json`, when `XDG_CONFIG_HOME` is set;
+- `~/.config/feedshell/config.json` otherwise.
+
+Use a separate config file when needed:
+
+```sh
+feedshell --config /path/to/config.json browse
+FEEDSHELL_CONFIG=/path/to/config.json feedshell
 ```
+
+Use `entryTitleFilters` in the config to exclude unwanted articles by a word or regular expression.
+
+## Development
+
+Requires Node.js 18 or later.
+
+```sh
+npm run check
+npm test
+```
+
+## License
+
+[MIT](LICENSE)
