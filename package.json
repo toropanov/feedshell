@@ -1,13 +1,13 @@
 {
   "name": "feedshell",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A terminal RSS and Atom reader",
   "type": "commonjs",
   "bin": {
-    "feedshell": "./bin/feedshell.js"
+    "feedshell": "./bin/feedshell"
   },
   "scripts": {
-    "check": "node --check bin/feedshell.js && node --check src/cli.js && node --check src/config.js && node --check src/feed.js && node --check src/article.js",
+    "check": "node --check bin/feedshell && node --check src/cli.js && node --check src/config.js && node --check src/feed.js && node --check src/article.js",
     "test": "node --test"
   },
   "engines": {
