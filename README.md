@@ -1,4 +1,4 @@
-# feedshell
+# FeedShell
 
 [![CI](https://github.com/toropanov/feedshell/actions/workflows/ci.yml/badge.svg)](https://github.com/toropanov/feedshell/actions/workflows/ci.yml)
 [![Homebrew Formula CI](https://github.com/toropanov/homebrew-tap/actions/workflows/ci.yml/badge.svg)](https://github.com/toropanov/homebrew-tap/actions/workflows/ci.yml)
@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/github/license/toropanov/feedshell)](https://github.com/toropanov/feedshell/blob/master/LICENSE)
 [![Homebrew](https://img.shields.io/badge/Homebrew-toropanov%2Ftap-FBB040?logo=homebrew&logoColor=white)](https://github.com/toropanov/homebrew-tap)
 
-**Feedshell** is a terminal RSS and Atom reader. Manage feeds, browse unread articles with Vim-style navigation, read extracted article text without leaving the terminal, and open the original page when needed.
+**FeedShell** is a terminal RSS and Atom reader. Manage feeds, browse unread articles with Vim-style navigation, read extracted article text without leaving the terminal, and open the original page when needed.
 
 ## Install
 
