@@ -5,6 +5,7 @@ const { stdin, stdout } = require('node:process');
 const { createSource, defaultConfigPath, loadConfig, normalizeArticleRecord, reloadConfig, saveConfig } = require('./config');
 const { fetchFeed } = require('./feed');
 const { loadFullArticle } = require('./article');
+const { version } = require('../package.json');
 
 const ARTICLE_SCROLL_STEP = 4;
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
@@ -36,6 +37,11 @@ async function main(argv) {
       return browse(configPath, config);
     case 'config':
       console.log(configPath || defaultConfigPath());
+      return;
+    case '--version':
+    case '-v':
+    case 'version':
+      console.log(version);
       return;
     case 'help':
     case '--help':
@@ -69,7 +75,7 @@ async function addSource(configPath, config, args, options) {
 
 function listSources(config) {
   if (!config.sources.length) {
-    console.log('Источников нет. Добавьте: rss add <url>');
+    console.log('Источников нет. Добавьте: feedshell add <url>');
     return;
   }
 
@@ -99,7 +105,7 @@ async function refresh(configPath, config) {
   reloadConfig(configPath, config);
 
   if (!config.sources.length) {
-    console.log('Источников нет. Добавьте: rss add <url>');
+    console.log('Источников нет. Добавьте: feedshell add <url>');
     return;
   }
 
@@ -150,7 +156,7 @@ async function listArticles(configPath, config, args) {
 async function readArticle(configPath, config, args) {
   const article = await resolveArticle(configPath, config, args);
   if (!article) {
-    throw new Error('Статья не найдена. Используйте: rss articles');
+    throw new Error('Статья не найдена. Используйте: feedshell articles');
   }
 
   const full = await loadFullArticle(article.link);
@@ -166,7 +172,7 @@ async function readArticle(configPath, config, args) {
 
 async function browse(configPath, config) {
   if (!config.sources.length) {
-    console.log('Источников нет. Добавьте: rss add <url>');
+    console.log('Источников нет. Добавьте: feedshell add <url>');
     return;
   }
 
@@ -1083,17 +1089,19 @@ function help() {
 
 function usage() {
   return [
-    'rss [--config <file>] <command>',
+    'feedshell [--config <file>] <command>',
     '',
     'Команды:',
     '  add <url> [--title <name>]   добавить источник',
     '  sources                      показать источники',
     '  remove <num|id|url>          удалить источник',
-    '  fetch                        проверить RSS',
+    '  fetch                        обновить RSS/Atom-ленты',
     '  articles [source]            показать статьи',
     '  read [source] <num>          открыть статью с полным текстом',
     '  browse                       vim mode',
-    '  config                       показать путь конфига'
+    '  config                       показать путь конфига',
+    '  --help, -h                   показать эту справку',
+    '  --version, -v                показать версию'
   ].join('\n');
 }
 

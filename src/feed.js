@@ -6,7 +6,7 @@ async function fetchFeed(source) {
   const response = await fetch(source.url, {
     headers: {
       accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.8',
-      'user-agent': 'rss-cli/0.1'
+      'user-agent': 'feedshell/0.1.0'
     }
   });
 
