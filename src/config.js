@@ -4,11 +4,12 @@ const path = require('node:path');
 const configSnapshots = new WeakMap();
 
 function defaultConfigPath() {
-  if (process.env.RSS_CONFIG) {
-    return resolvePath(process.env.RSS_CONFIG);
+  if (process.env.FEEDSHELL_CONFIG || process.env.RSS_CONFIG) {
+    return resolvePath(process.env.FEEDSHELL_CONFIG || process.env.RSS_CONFIG);
   }
 
-  return path.join(__dirname, '..', 'config.json');
+  const configHome = process.env.XDG_CONFIG_HOME || path.join(os.homedir(), '.config');
+  return path.join(configHome, 'feedshell', 'config.json');
 }
 
 function resolvePath(filePath) {
