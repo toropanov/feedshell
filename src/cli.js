@@ -103,7 +103,7 @@ async function refresh(configPath, config) {
     return;
   }
 
-  let total = 0;
+  const articles = [];
   let dirty = false;
   const titleFilters = compileEntryTitleFilters(config.entryTitleFilters);
 
@@ -118,7 +118,7 @@ async function refresh(configPath, config) {
       const fresh = ingestFeedArticles(config, feed.items, titleFilters, {
         dirtyRef: () => { dirty = true; }
       });
-      total += fresh.length;
+      articles.push(...fresh);
       console.log(`${source.title}: ${feed.items.length}`);
     } catch (error) {
       console.error(`${source.title}: ${error.message}`);
@@ -128,7 +128,7 @@ async function refresh(configPath, config) {
   if (dirty) {
     saveConfig(configPath, config);
   }
-  console.log(`Готово. В RSS сейчас: ${total}`);
+  console.log(`Готово. В RSS сейчас: ${deduplicateArticles(articles).length}`);
 }
 
 async function listArticles(configPath, config, args) {
@@ -197,7 +197,8 @@ function runBrowser(configPath, config, initialArticles = []) {
     const keyQueue = [];
     const wasRaw = Boolean(stdin.isRaw);
 
-    const render = () => renderBrowser(config, state);
+    const renderer = createBrowserRenderer();
+    const render = () => renderBrowser(config, state, renderer);
 
     const close = () => {
       if (closed) {
@@ -459,19 +460,17 @@ async function refreshBrowser(configPath, config, state, render) {
   state.loading = false;
 }
 
-function renderBrowser(config, state) {
+function renderBrowser(config, state, renderer) {
   const { rows, columns } = terminalSize();
-  readline.cursorTo(stdout, 0, 0);
-  readline.clearScreenDown(stdout);
 
   if (state.view === 'article') {
-    renderArticle(state, rows, columns);
+    renderArticle(state, rows, columns, renderer);
   } else {
-    renderArticles(config, state, rows, columns);
+    renderArticles(config, state, rows, columns, renderer);
   }
 }
 
-function renderArticles(config, state, rows, width) {
+function renderArticles(config, state, rows, width, renderer) {
   clampBrowserState(config, state);
   const articles = currentArticles(config, state);
   const listRows = Math.max(1, rows - 3);
@@ -499,28 +498,55 @@ function renderArticles(config, state, rows, width) {
     }
   }
 
-  drawLines(lines, rows, width, footerText(state, 'j/k  C-d/C-u  gg/G  Enter/l  o  r  h  q'));
+  drawLines(lines, rows, width, footerText(state, 'j/k  C-d/C-u  gg/G  Enter/l  o  r  h  q'), renderer);
 }
 
-function renderArticle(state, rows, width) {
+function renderArticle(state, rows, width, renderer) {
   const lines = buildArticleLines(state.article, width);
   const viewRows = Math.max(1, rows - 1);
   state.articleScroll = clamp(state.articleScroll, 0, Math.max(0, lines.length - viewRows));
   const visible = lines.slice(state.articleScroll, state.articleScroll + viewRows);
   const footer = footerText(state, 'j/k  C-d/C-u  gg/G  n/p  o  r  q/h');
-  drawLines(visible, rows, width, footer);
+  drawLines(visible, rows, width, footer, renderer);
 }
 
-function drawLines(lines, rows, width, footer) {
+function drawLines(lines, rows, width, footer, renderer) {
   const visibleRows = Math.max(0, rows - 1);
-  const output = [];
+  const frame = [];
 
   for (let index = 0; index < visibleRows; index += 1) {
-    output.push(formatLine(lines[index] || '', width));
+    frame.push(formatLine(lines[index] || '', width));
   }
 
-  output.push(inverseLine(footer, width));
-  stdout.write(output.join('\n'));
+  frame.push(inverseLine(footer, width));
+  renderer.draw(frame);
+}
+
+function createBrowserRenderer() {
+  let previousFrame = [];
+
+  return {
+    draw(frame) {
+      const output = [];
+      const lineCount = Math.max(previousFrame.length, frame.length);
+
+      for (let index = 0; index < lineCount; index += 1) {
+        const nextLine = frame[index] || '';
+        if (previousFrame[index] === nextLine) {
+          continue;
+        }
+
+        // Position and clear a single line before replacing it. This avoids the
+        // full-screen erase that makes the list visibly flash while navigating.
+        output.push(`\x1b[${index + 1};1H\x1b[2K${nextLine}\x1b[0m`);
+      }
+
+      if (output.length) {
+        stdout.write(output.join(''));
+      }
+      previousFrame = frame;
+    }
+  };
 }
 
 function footerText(state, fallback) {
@@ -803,7 +829,28 @@ async function loadArticles(configPath, config, source = null, options = {}) {
     saveConfig(configPath, config);
   }
 
-  return articles.sort((a, b) => dateValue(b.published) - dateValue(a.published));
+  return deduplicateArticles(
+    articles.sort((a, b) => dateValue(b.published) - dateValue(a.published))
+  );
+}
+
+function deduplicateArticles(articles) {
+  const seen = new Set();
+
+  return articles.filter((article) => {
+    const key = String(article.title || '')
+      .normalize('NFKC')
+      .replace(/\s+/gu, ' ')
+      .trim()
+      .toLocaleLowerCase();
+
+    if (!key || seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
 }
 
 function ingestFeedArticles(config, feedItems, titleFilters, hooks = {}) {

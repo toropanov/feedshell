@@ -24,6 +24,11 @@ async function fetchFeed(source) {
 }
 
 function parseFeed(xml, source) {
+  const vcFeed = parseVcCommunityFeed(xml, source);
+  if (vcFeed) {
+    return vcFeed;
+  }
+
   const channel = firstMatch(xml, /<channel\b[^>]*>([\s\S]*?)<\/channel>/i) || xml;
   const feedTitle = textFromTag(channel, 'title') || source.title || source.url;
   const rssItems = blocks(xml, 'item');
@@ -33,6 +38,76 @@ function parseFeed(xml, source) {
   return {
     title: feedTitle,
     items: nodes.map((node) => parseItem(node, source.id)).filter((item) => item.title && item.link)
+  };
+}
+
+function parseVcCommunityFeed(html, source) {
+  if (!isVcCommunityUrl(source.url)) {
+    return null;
+  }
+
+  const state = vcInitialState(html);
+  const entries = state && state['feed@subsite'] && state['feed@subsite'].items;
+  if (!Array.isArray(entries)) {
+    return null;
+  }
+
+  const pathname = new URL(source.url).pathname.replace(/^\/+|\/+$/g, '');
+  const community = state[`subsite@${pathname}`];
+
+  return {
+    title: community && community.name || source.title || source.url,
+    items: entries
+      .filter((entry) => entry && entry.type === 'entry' && entry.data)
+      .map((entry) => vcEntry(entry.data, source.id))
+      .filter((item) => item.title && item.link)
+  };
+}
+
+function isVcCommunityUrl(value) {
+  try {
+    const url = new URL(value);
+    return (url.hostname === 'vc.ru' || url.hostname.endsWith('.vc.ru'))
+      && /^\/[^/]+\/?$/.test(url.pathname);
+  } catch {
+    return false;
+  }
+}
+
+function vcInitialState(html) {
+  const marker = 'window.__INITIAL_STATE__ = ';
+  const start = html.indexOf(marker);
+  if (start === -1) {
+    return null;
+  }
+
+  const end = html.indexOf(';</script>', start);
+  if (end === -1) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(html.slice(start + marker.length, end));
+  } catch {
+    return null;
+  }
+}
+
+function vcEntry(entry, sourceId) {
+  const published = Number.isFinite(entry.date)
+    ? new Date(entry.date * 1000).toISOString()
+    : '';
+  const link = String(entry.url || '');
+
+  return {
+    id: stableId(`${sourceId}:${entry.id || link}`),
+    sourceId,
+    title: cleanText(entry.title || ''),
+    link,
+    published,
+    summary: cleanText(entry.ogDescription || ''),
+    read: false,
+    fetchedAt: new Date().toISOString()
   };
 }
 
