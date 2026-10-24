@@ -4,10 +4,11 @@
   "description": "A terminal RSS and Atom reader",
   "type": "commonjs",
   "bin": {
-    "feedshell": "./bin/feedshell"
+    "feedshell": "./bin/feedshell",
+    "rss": "./bin/feedshell"
   },
   "scripts": {
-    "check": "node --check bin/feedshell && node --check src/cli.js && node --check src/config.js && node --check src/feed.js && node --check src/article.js",
+    "check": "node --check bin/feedshell && node --check bin/rss.js && node --check src/cli.js && node --check src/config.js && node --check src/feed.js && node --check src/article.js && node --check src/offline.js",
     "test": "node --test"
   },
   "engines": {

@@ -55,17 +55,25 @@ feedshell articles
 
 ## Keyboard shortcuts
 
+The list screen has two columns: unread articles on the left and the selected article's RSS preview on the right. The preview comes from the feed, so moving through the list does not wait for full pages to load.
+
 | Keys | Action |
 | --- | --- |
-| `j` / `↓`, `k` / `↑` | Move down or up. |
-| `Ctrl+d` / `Space`, `Ctrl+u` / `b` | Move one page down or up. |
-| `g` / `Home`, `G` / `End` | Jump to the beginning or end. |
-| `Enter` / `l` / `→` | Open an article. |
-| `h` / `←` / `Esc` | Go back. |
-| `o` | Open the original page in a browser and mark it read. |
+| In the list: `j` / `↓`, `k` / `↑` | Select the next or previous article. |
+| In the list: `→` | Move focus directly to “Read full article” in the preview. |
+| In the preview: `j` / `↓`, `k` / `↑` | Scroll the preview text; `↑` moves focus from the action back to the text. |
+| In the preview: `←` / `h` / `Esc` / `q` | Return to the article list. |
+| `Ctrl+d` / `Space`, `Ctrl+u` / `b` | Move one page in the active column or article. |
+| `g` / `Home`, `G` / `End` | Jump to the beginning or end of the active column or article. |
+| `Enter` / `l` in the list | Open the full article in its own screen. |
+| `Enter` / `l` on the selected preview action | Activate “Read full article” to load and expand it in the right column. |
+| `h` in the list | Hide the selected article. |
+| `o` | Prepare a local copy and open it in Firefox in the background, keeping the terminal focused. |
 | `r` | Refresh feeds. |
 | `n`, `p` | Open the next or previous article. |
 | `q` / `Ctrl+c` | Go back or quit. |
+
+Square brackets highlight the active column header; the `>` cursor in the list always remains on the selected article.
 
 Vim-style keys work with a Russian keyboard layout too.
 

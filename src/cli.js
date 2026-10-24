@@ -5,9 +5,11 @@ const { stdin, stdout } = require('node:process');
 const { createSource, defaultConfigPath, loadConfig, normalizeArticleRecord, reloadConfig, saveConfig } = require('./config');
 const { fetchFeed } = require('./feed');
 const { loadFullArticle } = require('./article');
+const { archiveArticle } = require('./offline');
 const { version } = require('../package.json');
 
 const ARTICLE_SCROLL_STEP = 4;
+const PREVIEW_SCROLL_STEP = 3;
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 
 async function main(argv) {
@@ -188,13 +190,18 @@ function runBrowser(configPath, config, initialArticles = []) {
   return new Promise((resolve) => {
     const state = {
       view: 'articles',
+      pane: 'articles',
       articleIndex: 0,
       articleOffset: 0,
       articleScroll: 0,
+      previewScroll: 0,
+      previewActionSelected: false,
+      previewContent: Object.create(null),
       article: null,
       articles: initialArticles,
       status: '',
       loading: false,
+      archiving: false,
       closed: false
     };
 
@@ -292,28 +299,86 @@ async function handleArticlesKey(configPath, config, state, value, key, render, 
   const articles = currentArticles(config, state);
   const pageSize = browserPageSize();
 
+  if (state.pane === 'preview') {
+    await handlePreviewKey(configPath, config, state, value, key, render);
+    return;
+  }
+
   if (isQuitKey(value, key)) {
     close();
   } else if (isRefreshKey(value, key)) {
     await refreshBrowser(configPath, config, state, render);
+  } else if (isPreviewKey(value, key)) {
+    state.pane = 'preview';
+    focusPreviewAction(config, state);
   } else if (isOpenKey(value, key)) {
     await openSelectedArticle(configPath, config, state, render);
   } else if (isOpenUrlKey(value, key)) {
-    await openSelectedArticleUrl(configPath, config, state, render);
+    openSelectedArticleUrl(configPath, config, state, render);
   } else if (isHideKey(value, key)) {
     await hideSelectedArticle(configPath, config, state, render);
   } else if (isDownKey(value, key)) {
-    state.articleIndex = clamp(state.articleIndex + 1, 0, articles.length - 1);
+    setArticleSelection(config, state, state.articleIndex + 1);
   } else if (isUpKey(value, key)) {
-    state.articleIndex = clamp(state.articleIndex - 1, 0, articles.length - 1);
+    setArticleSelection(config, state, state.articleIndex - 1);
   } else if (isPageDownKey(value, key)) {
-    state.articleIndex = clamp(state.articleIndex + pageSize, 0, articles.length - 1);
+    setArticleSelection(config, state, state.articleIndex + pageSize);
   } else if (isPageUpKey(value, key)) {
-    state.articleIndex = clamp(state.articleIndex - pageSize, 0, articles.length - 1);
+    setArticleSelection(config, state, state.articleIndex - pageSize);
   } else if (isTopKey(value, key)) {
-    state.articleIndex = 0;
+    setArticleSelection(config, state, 0);
   } else if (isBottomKey(value, key)) {
-    state.articleIndex = Math.max(0, articles.length - 1);
+    setArticleSelection(config, state, Math.max(0, articles.length - 1));
+  }
+}
+
+async function handlePreviewKey(configPath, config, state, value, key, render) {
+  const { rows, columns } = terminalSize();
+  const layout = articleColumnsLayout(columns);
+  const article = currentArticles(config, state)[state.articleIndex];
+  const viewRows = previewViewRows(rows);
+  const preview = selectedPreviewContent(state, article);
+  const maxScroll = maxPreviewScroll(article, layout.previewWidth, viewRows, preview);
+  const canActivatePreviewAction = previewHasAction(preview);
+
+  if (isPreviewBackKey(value, key)) {
+    state.pane = 'articles';
+    state.previewActionSelected = false;
+  } else if (isRefreshKey(value, key)) {
+    await refreshBrowser(configPath, config, state, render);
+  } else if (isPreviewKey(value, key)) {
+    // The right arrow only changes focus from the list into the preview.
+    // Keeping it inert here makes arrow navigation predictable.
+  } else if (isOpenKey(value, key)) {
+    if (state.previewActionSelected && canActivatePreviewAction) {
+      loadSelectedPreview(config, state, render);
+    } else if (canActivatePreviewAction) {
+      state.status = 'Press ↓ at the end of the preview to select Read full article';
+    }
+  } else if (isOpenUrlKey(value, key)) {
+    openSelectedArticleUrl(configPath, config, state, render);
+  } else if (isDownKey(value, key)) {
+    if (state.previewScroll < maxScroll) {
+      state.previewScroll = clamp(state.previewScroll + PREVIEW_SCROLL_STEP, 0, maxScroll);
+    } else if (canActivatePreviewAction) {
+      state.previewActionSelected = true;
+    }
+  } else if (isUpKey(value, key)) {
+    if (state.previewActionSelected) {
+      state.previewActionSelected = false;
+    } else {
+      state.previewScroll = clamp(state.previewScroll - PREVIEW_SCROLL_STEP, 0, maxScroll);
+    }
+  } else if (isPageDownKey(value, key)) {
+    state.previewScroll = clamp(state.previewScroll + viewRows, 0, maxScroll);
+  } else if (isPageUpKey(value, key)) {
+    state.previewScroll = clamp(state.previewScroll - viewRows, 0, maxScroll);
+  } else if (isTopKey(value, key)) {
+    state.previewScroll = 0;
+    state.previewActionSelected = false;
+  } else if (isBottomKey(value, key)) {
+    state.previewScroll = maxScroll;
+    state.previewActionSelected = false;
   }
 }
 
@@ -345,7 +410,7 @@ async function handleArticleKey(configPath, config, state, value, key, render) {
     moveArticleSelection(config, state, -1);
     await openSelectedArticle(configPath, config, state, render);
   } else if (isOpenUrlKey(value, key)) {
-    await openSelectedArticleUrl(configPath, config, state, render);
+    openSelectedArticleUrl(configPath, config, state, render);
   }
 }
 
@@ -393,7 +458,7 @@ async function hideSelectedArticle(configPath, config, state, render) {
   render();
 }
 
-async function openSelectedArticleUrl(configPath, config, state, render) {
+function openSelectedArticleUrl(configPath, config, state, render) {
   const article = state.view === 'article' && state.article
     ? { link: state.article.link || state.article.url, title: state.article.title || '', published: '' }
     : currentArticles(config, state)[state.articleIndex];
@@ -403,18 +468,39 @@ async function openSelectedArticleUrl(configPath, config, state, render) {
     return;
   }
 
-  const url = article.link || article.url;
-  openUrl(url);
-  if (setArticleRecord(config, article.link || article.url, {
-    read: true,
-    published_at: article.published || '',
-    title: article.title || ''
-  })) {
-    saveConfig(configPath, config);
+  if (state.archiving) {
+    state.status = 'A local copy is already being prepared';
+    return;
   }
-  clampBrowserState(config, state);
-  state.status = 'Opened and marked read';
+
+  const savedArticle = { ...article };
+  state.archiving = true;
+  state.status = 'Saving local copy...';
   render();
+
+  void archiveArticle(savedArticle, configPath)
+    .then((archived) => {
+      openInFirefox(archived.filePath);
+      if (setArticleRecord(config, article.link || article.url, {
+        read: true,
+        published_at: article.published || '',
+        title: article.title || ''
+      })) {
+        saveConfig(configPath, config);
+      }
+      clampBrowserState(config, state);
+      state.previewScroll = 0;
+      state.status = 'Opened local copy in Firefox';
+    })
+    .catch((error) => {
+      state.status = error.message || String(error);
+    })
+    .finally(() => {
+      state.archiving = false;
+      if (!state.closed) {
+        render();
+      }
+    });
 }
 
 async function openSelectedArticle(configPath, config, state, render) {
@@ -479,32 +565,38 @@ function renderBrowser(config, state, renderer) {
 function renderArticles(config, state, rows, width, renderer) {
   clampBrowserState(config, state);
   const articles = currentArticles(config, state);
-  const listRows = Math.max(1, rows - 3);
+  const listRows = previewViewRows(rows);
   state.articleOffset = fitOffset(state.articleOffset, state.articleIndex, listRows, articles.length);
+  const layout = articleColumnsLayout(width);
+  const selected = articles[state.articleIndex];
+  const previewContent = selectedPreviewContent(state, selected);
+  if (!previewHasAction(previewContent)) {
+    state.previewActionSelected = false;
+  }
+  const preview = buildPreviewLines(selected, layout.previewWidth, previewContent, {
+    actionSelected: state.previewActionSelected
+  });
+  state.previewScroll = clamp(state.previewScroll, 0, Math.max(0, preview.length - listRows));
 
-  const lines = [
-    `Unread ${articles.length ? `${state.articleIndex + 1}/${articles.length}` : '0/0'}`,
-    ''
-  ];
+  const lines = [articleColumnsHeader(state, articles.length, layout)];
 
   if (!articles.length) {
-    lines.push('No unread articles');
+    lines.push(articleColumnsLine('No unread articles', preview[0] || '', layout));
   } else {
     for (let row = 0; row < listRows; row += 1) {
       const index = state.articleOffset + row;
       const article = articles[index];
-      if (!article) {
-        lines.push('');
-        continue;
-      }
-
-      const cursor = index === state.articleIndex ? '>' : ' ';
-      const marker = article.read ? ' ' : '*';
-      lines.push(`${cursor} ${marker} ${article.title}`);
+      const listLine = article
+        ? `${index === state.articleIndex ? '>' : ' '} ${article.read ? ' ' : '*'} ${article.title}`
+        : '';
+      lines.push(articleColumnsLine(listLine, preview[state.previewScroll + row] || '', layout));
     }
   }
 
-  drawLines(lines, rows, width, footerText(state, 'j/k  C-d/C-u  gg/G  Enter/l  o  r  h  q'), renderer);
+  const footer = state.pane === 'preview'
+    ? '←: articles  ↑/↓: scroll/select  Enter/l: activate  o: Firefox  r  q'
+    : '↑/↓: articles  →: preview  Enter/l: read  o: Firefox  r  h  q';
+  drawLines(lines, rows, width, footerText(state, footer), renderer);
 }
 
 function renderArticle(state, rows, width, renderer) {
@@ -512,7 +604,7 @@ function renderArticle(state, rows, width, renderer) {
   const viewRows = Math.max(1, rows - 1);
   state.articleScroll = clamp(state.articleScroll, 0, Math.max(0, lines.length - viewRows));
   const visible = lines.slice(state.articleScroll, state.articleScroll + viewRows);
-  const footer = footerText(state, 'j/k  C-d/C-u  gg/G  n/p  o  r  q/h');
+  const footer = footerText(state, 'j/k  C-d/C-u  gg/G  n/p  o: Firefox  r  q/h');
   drawLines(visible, rows, width, footer, renderer);
 }
 
@@ -575,6 +667,176 @@ function buildArticleLines(article, width) {
   return [...titleLines, '', ...bodyLines];
 }
 
+function previewViewRows(rows) {
+  return Math.max(1, rows - 2);
+}
+
+function articleColumnsLayout(width) {
+  const separatorWidth = 3;
+  const available = Math.max(2, width - separatorWidth);
+  const listWidth = clamp(Math.floor(available * 0.42), 1, Math.max(1, available - 1));
+
+  return {
+    listWidth,
+    previewWidth: Math.max(1, available - listWidth)
+  };
+}
+
+function articleColumnsHeader(state, total, layout) {
+  const position = total ? `${state.articleIndex + 1}/${total}` : '0/0';
+  // The selected row, rather than the column header, is the cursor in the
+  // article list. This keeps the current article obvious when focus returns.
+  const listTitle = `Articles ${position}`;
+  const previewTitle = 'Preview';
+  const listHeader = state.pane === 'articles' ? `[ ${listTitle} ]` : listTitle;
+  const previewHeader = state.pane === 'preview' ? `[ ${previewTitle} ]` : previewTitle;
+  return articleColumnsLine(listHeader, previewHeader, layout);
+}
+
+function articleColumnsLine(listValue, previewValue, layout) {
+  return `${formatColumnCell(listValue, layout.listWidth)} │ ${formatColumnCell(previewValue, layout.previewWidth)}`;
+}
+
+function formatColumnCell(value, width) {
+  return truncateDisplay(value, width).padEnd(width, ' ');
+}
+
+function selectedPreviewContent(state, article) {
+  if (!article || !state.previewContent) {
+    return null;
+  }
+
+  return state.previewContent[previewArticleKey(article)] || null;
+}
+
+function previewArticleKey(article) {
+  return String(article && (article.link || article.url) || '');
+}
+
+function loadSelectedPreview(config, state, render) {
+  const article = currentArticles(config, state)[state.articleIndex];
+  if (!article) {
+    state.status = 'No article';
+    return;
+  }
+
+  const key = previewArticleKey(article);
+  const current = selectedPreviewContent(state, article);
+  if (!key || current && current.status === 'loading') {
+    return;
+  }
+
+  state.previewContent[key] = { status: 'loading' };
+  state.previewScroll = 0;
+  state.previewActionSelected = false;
+  render();
+
+  void loadFullArticle(article.link || article.url)
+    .then((full) => {
+      state.previewContent[key] = {
+        status: 'ready',
+        text: removeDuplicateTitle(cleanDisplay(full.text), cleanDisplay(article.title))
+          || 'The full article has no readable text.'
+      };
+    })
+    .catch((error) => {
+      state.previewContent[key] = {
+        status: 'error',
+        message: error.message || String(error)
+      };
+    })
+    .finally(() => {
+      if (!state.closed) {
+        render();
+      }
+    });
+}
+
+function focusPreviewAction(config, state) {
+  const article = currentArticles(config, state)[state.articleIndex];
+  const preview = selectedPreviewContent(state, article);
+  if (!previewHasAction(preview)) {
+    state.previewScroll = 0;
+    state.previewActionSelected = false;
+    return;
+  }
+
+  const { rows, columns } = terminalSize();
+  const layout = articleColumnsLayout(columns);
+  state.previewScroll = maxPreviewScroll(article, layout.previewWidth, previewViewRows(rows), preview);
+  state.previewActionSelected = true;
+}
+
+function previewHasAction(previewContent) {
+  return !previewContent || previewContent.status === 'error';
+}
+
+function buildPreviewLines(article, width, previewContent = null, options = {}) {
+  if (!article) {
+    return ['Choose an article to preview it.'];
+  }
+
+  const summary = cleanDisplay(article.summary)
+    || 'This feed does not include a preview. Press Enter to load the full article.';
+  const fullText = previewContent && previewContent.status === 'ready'
+    ? removeDuplicateTitle(cleanDisplay(previewContent.text), cleanDisplay(article.title))
+    : '';
+  const content = fullText || summary;
+  const lines = formatPreviewParagraphs(content, width);
+
+  if (previewContent && previewContent.status === 'ready') {
+    return lines;
+  }
+
+  if (previewContent && previewContent.status === 'loading') {
+    return [...lines, '', previewActionLine('Loading full article...', width)];
+  }
+
+  if (previewContent && previewContent.status === 'error') {
+    return [...lines, '', previewActionLine(`Retry full article: ${cleanDisplay(previewContent.message)}`, width, options.actionSelected)];
+  }
+
+  return [...lines, '', previewActionLine('Read full article', width, options.actionSelected)];
+}
+
+function previewActionLine(label, width, selected = false) {
+  const marker = selected ? '> ' : '  ';
+  return truncateDisplay(`${marker}[ ${label} ]`, Math.max(1, width));
+}
+
+function formatPreviewParagraphs(text, width) {
+  const lines = [];
+
+  for (const rawLine of String(text || '').replace(/\r/g, '').split('\n')) {
+    const line = rawLine.trim();
+    if (!line) {
+      if (lines.length && lines[lines.length - 1] !== '') {
+        lines.push('');
+      }
+      continue;
+    }
+
+    lines.push(...wrapTextToWidth(line.replace(/[ \t]+/g, ' '), width).split('\n'));
+  }
+
+  while (lines.length && lines[lines.length - 1] === '') {
+    lines.pop();
+  }
+  return lines;
+}
+
+function wrapTextToWidth(text, width) {
+  const safeWidth = Math.max(10, width);
+  return String(text)
+    .split('\n')
+    .map((line) => wrapLine(line, safeWidth))
+    .join('\n');
+}
+
+function maxPreviewScroll(article, width, viewRows, previewContent = null) {
+  return Math.max(0, buildPreviewLines(article, width, previewContent).length - viewRows);
+}
+
 function maxArticleScroll(state) {
   const lines = buildArticleLines(state.article, terminalSize().columns);
   const viewRows = Math.max(1, terminalSize().rows - 1);
@@ -583,7 +845,12 @@ function maxArticleScroll(state) {
 
 function clampBrowserState(config, state) {
   const articles = currentArticles(config, state);
-  state.articleIndex = clamp(state.articleIndex, 0, articles.length - 1);
+  const nextIndex = clamp(state.articleIndex, 0, articles.length - 1);
+  if (nextIndex !== state.articleIndex) {
+    state.articleIndex = nextIndex;
+    state.previewScroll = 0;
+    state.previewActionSelected = false;
+  }
 }
 
 function currentArticles(config, state) {
@@ -593,8 +860,17 @@ function currentArticles(config, state) {
 }
 
 function moveArticleSelection(config, state, delta) {
+  setArticleSelection(config, state, state.articleIndex + delta);
+}
+
+function setArticleSelection(config, state, index) {
   const articles = currentArticles(config, state);
-  state.articleIndex = clamp(state.articleIndex + delta, 0, articles.length - 1);
+  const nextIndex = clamp(index, 0, articles.length - 1);
+  if (nextIndex !== state.articleIndex) {
+    state.articleIndex = nextIndex;
+    state.previewScroll = 0;
+    state.previewActionSelected = false;
+  }
 }
 
 function browserPageSize() {
@@ -634,6 +910,14 @@ function clamp(value, min, max) {
 
 function isOpenKey(value, key) {
   return vimKey(value) === 'l' || key.name === 'right' || key.name === 'return' || key.name === 'enter';
+}
+
+function isPreviewKey(value, key) {
+  return key.name === 'right';
+}
+
+function isPreviewBackKey(value, key) {
+  return isQuitKey(value, key) || key.name === 'left' || key.name === 'escape' || vimKey(value) === 'h';
 }
 
 function isBackKey(value, key) {
@@ -968,21 +1252,59 @@ function isStaleArticle(published, cutoff) {
   return Number.isFinite(value) && value < cutoff;
 }
 
-function openUrl(url) {
-  if (!url) {
+function openInFirefox(filePath) {
+  if (!filePath) {
     return;
   }
 
   const platform = process.platform;
-  const command = platform === 'darwin' ? 'open' : platform === 'win32' ? 'cmd' : 'xdg-open';
-  const args = platform === 'win32'
-    ? ['/c', 'start', '', url]
-    : platform === 'darwin'
-      ? ['-g', url]
-      : [url];
+  const command = platform === 'darwin' ? 'open' : platform === 'win32' ? 'firefox.exe' : 'firefox';
+  // `-g` avoids foreground activation and `-j` launches a new Firefox process
+  // hidden. Firefox may still activate itself when it is already running, so
+  // restore iTerm after the open event as a fallback.
+  const args = platform === 'darwin' ? ['-g', '-j', '-a', 'Firefox', filePath] : [filePath];
   const child = spawn(command, args, { detached: true, stdio: 'ignore' });
   child.on('error', () => {});
   child.unref();
+
+  restoreTerminalFocus();
+}
+
+function restoreTerminalFocus() {
+  if (process.platform !== 'darwin') {
+    return;
+  }
+
+  const appId = terminalApplicationId();
+  if (!appId) {
+    return;
+  }
+
+  // The first attempt handles an existing Firefox window; the second one
+  // covers the delayed document-open event emitted by macOS.
+  for (const delay of [150, 500]) {
+    const timer = setTimeout(() => {
+      const child = spawn('osascript', ['-e', `tell application id "${appId}" to activate`], {
+        detached: true,
+        stdio: 'ignore'
+      });
+      child.on('error', () => {});
+      child.unref();
+    }, delay);
+    timer.unref();
+  }
+}
+
+function terminalApplicationId(termProgram = process.env.TERM_PROGRAM) {
+  if (termProgram === 'iTerm.app' || termProgram === 'iTerm2') {
+    return 'com.googlecode.iterm2';
+  }
+
+  if (termProgram === 'Apple_Terminal') {
+    return 'com.apple.Terminal';
+  }
+
+  return '';
 }
 
 async function resolveArticle(configPath, config, args) {
@@ -1154,5 +1476,15 @@ function usage() {
 
 module.exports = {
   main,
-  parseArgs
+  parseArgs,
+  __test: {
+    articleColumnsLayout,
+    articleColumnsHeader,
+    articleColumnsLine,
+    buildPreviewLines,
+    maxPreviewScroll,
+    previewHasAction,
+    setArticleSelection,
+    terminalApplicationId
+  }
 };

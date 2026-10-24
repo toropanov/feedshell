@@ -35,6 +35,38 @@ function extractReadableText(html, title = '') {
   return removeLeadingTitle(htmlToText(article || clean), title);
 }
 
+function extractReadableHtml(html) {
+  const clean = stripNoiseElements(String(html));
+  return preferredArticleBody(clean) || bestContentBlock(clean);
+}
+
+function preferredArticleBody(html) {
+  const candidates = collectContentBlocks(html)
+    .filter((block) => preferredBodyScore(block.openTag) > 0)
+    .map((block) => ({ ...block, score: scoreBlock(block), preference: preferredBodyScore(block.openTag) }))
+    .filter((block) => block.score > 0)
+    .sort((left, right) => {
+      return right.preference - left.preference
+        || right.score - left.score
+        || left.html.length - right.html.length;
+    });
+
+  return candidates[0] ? candidates[0].html : '';
+}
+
+function preferredBodyScore(openTag) {
+  const attrs = attributeText(openTag);
+  if (/\barticle-formatted-body\b/i.test(attrs)) {
+    return 3;
+  }
+
+  if (/\b(article-body|article-content|entry-body|entry-content|post-body|post-content)\b/i.test(attrs)) {
+    return 2;
+  }
+
+  return 0;
+}
+
 function bestContentBlock(html) {
   const candidates = collectContentBlocks(html)
     .map((block) => ({ ...block, score: scoreBlock(block) }))
@@ -474,6 +506,7 @@ const ATTRIBUTE_FILTER_TAGS = new Set([
 const NOISE_ATTRIBUTE_PATTERN = /\b(ad|ads|advert|advertisement|article-card|banner|breadcrumb|comment|comments|cookie|display-card|modal|newsletter|outbrain|popup|popular|promo|recommend|recommended|recommendation|related|share|social|subscribe|taboola|tags|teaser|trending|widget|yandex|zen)\b/i;
 
 module.exports = {
+  extractReadableHtml,
   extractReadableText,
   loadFullArticle
 };
