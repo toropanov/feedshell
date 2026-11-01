@@ -20,6 +20,9 @@ feedshell add https://example.com/feed.xml
 # Добавить источник со своим названием
 feedshell add https://example.com/feed.xml --title "Example"
 
+# Добавить публичный Telegram-канал
+feedshell add https://t.me/s/pda_4
+
 # Показать источники
 feedshell sources
 
@@ -30,6 +33,8 @@ feedshell remove https://example.com/feed.xml
 ```
 
 Шорткаты команд: `list` — `sources`, `rm` — `remove`.
+
+Публичные Telegram-каналы поддерживаются по ссылке вида `https://t.me/s/<канал>` (также можно использовать `telegram.me`). FeedShell получает открытые сообщения со страницы канала; приватные каналы и чаты без публичного имени недоступны.
 
 ## Чтение
 

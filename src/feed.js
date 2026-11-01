@@ -3,7 +3,7 @@ const crypto = require('node:crypto');
 async function fetchFeed(source) {
   assertFetch();
 
-  const response = await fetch(source.url, {
+  const response = await fetch(telegramPublicChannelUrl(source.url) || source.url, {
     headers: {
       accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.8',
       'user-agent': 'feedshell/0.1.0'
@@ -29,6 +29,11 @@ function parseFeed(xml, source) {
     return vcFeed;
   }
 
+  const telegramFeed = parseTelegramChannelFeed(xml, source);
+  if (telegramFeed) {
+    return telegramFeed;
+  }
+
   const channel = firstMatch(xml, /<channel\b[^>]*>([\s\S]*?)<\/channel>/i) || xml;
   const feedTitle = textFromTag(channel, 'title') || source.title || source.url;
   const rssItems = blocks(xml, 'item');
@@ -39,6 +44,99 @@ function parseFeed(xml, source) {
     title: feedTitle,
     items: nodes.map((node) => parseItem(node, source.id)).filter((item) => item.title && item.link)
   };
+}
+
+function parseTelegramChannelFeed(html, source) {
+  const channelUrl = telegramPublicChannelUrl(source.url);
+  if (!channelUrl) {
+    return null;
+  }
+
+  const channel = new URL(channelUrl).pathname.split('/').pop();
+  const items = telegramMessageBlocks(html)
+    .map((block) => telegramEntry(block, source.id, channel))
+    .filter((item) => item.title && item.link);
+
+  if (!items.length) {
+    return null;
+  }
+
+  return {
+    title: telegramChannelTitle(html) || source.title || source.url,
+    items
+  };
+}
+
+function telegramPublicChannelUrl(value) {
+  try {
+    const url = new URL(value);
+    const hostname = url.hostname.toLowerCase();
+    if (hostname !== 't.me' && hostname !== 'telegram.me' && hostname !== 'www.telegram.me') {
+      return '';
+    }
+
+    const parts = url.pathname.split('/').filter(Boolean);
+    const channel = parts[0] === 's' ? parts[1] : parts[0];
+    if (!/^[a-z0-9_]{5,}$/i.test(channel || '')) {
+      return '';
+    }
+
+    return `https://t.me/s/${channel}`;
+  } catch {
+    return '';
+  }
+}
+
+function telegramChannelTitle(html) {
+  const title = htmlByClass(html, 'tgme_channel_info_header_title')
+    || htmlByClass(html, 'tgme_header_title');
+  return cleanText(title);
+}
+
+function telegramMessageBlocks(html) {
+  const pattern = /<div\b[^>]*\bclass=["'][^"']*\btgme_widget_message_wrap\b[^"']*["'][^>]*>([\s\S]*?)(?=<div\b[^>]*\bclass=["'][^"']*\btgme_widget_message_wrap\b|$)/gi;
+  return [...String(html).matchAll(pattern)].map((match) => match[1]);
+}
+
+function telegramEntry(block, sourceId, channel) {
+  const post = attributeValue(block, 'data-post');
+  const link = telegramPostLink(block, post, channel);
+  const summary = cleanText(htmlByClass(block, 'tgme_widget_message_text'));
+  const published = firstMatch(block, /<time\b[^>]*\bdatetime=["']([^"']+)["'][^>]*>/i);
+  const title = titleFromArticle(summary) || `Публикация @${channel}`;
+
+  return {
+    id: stableId(`${sourceId}:${post || link}`),
+    sourceId,
+    title: cleanText(title),
+    link,
+    published: normalizeDate(published),
+    summary,
+    read: false,
+    fetchedAt: new Date().toISOString()
+  };
+}
+
+function telegramPostLink(block, post, channel) {
+  const link = firstMatch(block, /<a\b[^>]*\bclass=["'][^"']*\btgme_widget_message_date\b[^"']*["'][^>]*\bhref=["']([^"']+)["']/i);
+  if (link) {
+    return decodeXml(link);
+  }
+
+  if (post && post.includes('/')) {
+    return `https://t.me/${post}`;
+  }
+
+  return `https://t.me/${channel}`;
+}
+
+function htmlByClass(html, className) {
+  const pattern = new RegExp(`<(?:div|span)\\b[^>]*\\bclass=["'][^"']*\\b${escapeRegex(className)}\\b[^"']*["'][^>]*>([\\s\\S]*?)<\\/(?:div|span)>`, 'i');
+  return firstMatch(String(html), pattern);
+}
+
+function attributeValue(html, name) {
+  return firstMatch(String(html), new RegExp(`\\b${escapeRegex(name)}=["']([^"']*)["']`, 'i'));
 }
 
 function parseVcCommunityFeed(html, source) {

@@ -32,6 +32,9 @@ npm link
 # Add a feed; its title is detected automatically.
 feedshell add https://example.com/feed.xml
 
+# Add a public Telegram channel.
+feedshell add https://t.me/s/pda_4
+
 # Open the interactive reader.
 feedshell
 
@@ -39,6 +42,8 @@ feedshell
 feedshell fetch
 feedshell articles
 ```
+
+Public Telegram channels are supported through URLs such as `https://t.me/s/<channel>` (the `telegram.me` form also works). FeedShell reads posts published on the channel's public page; private channels and chats without a public username are unavailable.
 
 ## Commands
 
